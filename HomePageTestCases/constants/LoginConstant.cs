@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace find_information_products_services_tests.HomePageTestCases.utilities
+namespace find_information_products_services_tests.HomePageTestCases.constants
 {
-    internal class TestConstant
+    internal class LoginConstant
     {
         public static string USERNAME = "";
         public static string PASSWORD = "";

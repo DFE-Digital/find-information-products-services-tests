@@ -1,6 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
-using find_information_products_services_tests.HomePageTestCases.utilities;
+using find_information_products_services_tests.HomePageTestCases.constants;
 using FiPSAutomation.HomePageTestCases.utilities;
 using Microsoft.Playwright;
 using Microsoft.VisualBasic;
@@ -36,23 +36,23 @@ namespace FiPSAutomation.HomePageTestCases
 
         [Test, Order(2), Category("smoke")]
         public async Task LoginWithUsernameAndPassword() {
-            await page.GotoAsync("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=code+id_token&redirect_uri=https%3A%2F%2Ffind-products-services-dev.education.gov.uk%2F.auth%2Flogin%2Faad%2Fcallback&client_id=31ff7feb-28d4-450b-9eef-0d79bb8edb1f&scope=openid+profile+email&response_mode=form_post&nonce=47d64632ccef4060980eed87c512efee_20250915055830&state=redir%3D%252F");
+            await page.GotoAsync(URLConstant.LOGIN_URL);
             await page.GetByPlaceholder("Email or phone").ClickAsync();
 
-            await page.GetByPlaceholder("Email or phone").FillAsync(TestConstant.USERNAME);
+            await page.GetByPlaceholder("Email or phone").FillAsync(URLConstant.LOGIN_OAUTH_URL);
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-            await page.WaitForURLAsync("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=code+id_token&redirect_uri=https%3A%2F%2Ffind-products-services-dev.education.gov.uk%2F.auth%2Flogin%2Faad%2Fcallback&client_id=31ff7feb-28d4-450b-9eef-0d79bb8edb1f&scope=openid+profile+email&response_mode=form_post&nonce=47d64632ccef4060980eed87c512efee_20250915055830&state=redir%3D%252F&sso_reload=true");
+            await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
 
             await page.GetByPlaceholder("Password").ClickAsync();
 
-            await page.GetByPlaceholder("Password").FillAsync(TestConstant.PASSWORD);
+            await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-            await page.WaitForURLAsync("https://login.microsoftonline.com/common/login");
+            await page.WaitForURLAsync(URLConstant.LOGIN_URL);
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-            await page.WaitForURLAsync("https://find-products-services-dev.education.gov.uk/");
+            await page.WaitForURLAsync(URLConstant.FIPS_URL);
             _extentTest?.Log(Status.Pass, "Pressed Enter");
         }
 
