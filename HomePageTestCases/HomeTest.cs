@@ -26,7 +26,7 @@ namespace FiPSAutomation.HomePageTestCases
             playwright = await Playwright.CreateAsync();
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                Headless = false,//false true
+                Headless = true,//false true
             });
 
             browserContext = await browser.NewContextAsync();
@@ -36,10 +36,10 @@ namespace FiPSAutomation.HomePageTestCases
 
         [Test, Order(2), Category("smoke")]
         public async Task LoginWithUsernameAndPassword() {
-            await page.GotoAsync(URLConstant.LOGIN_URL);
+            await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
             await page.GetByPlaceholder("Email or phone").ClickAsync();
 
-            await page.GetByPlaceholder("Email or phone").FillAsync(URLConstant.LOGIN_OAUTH_URL);
+            await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
             await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
@@ -69,11 +69,11 @@ namespace FiPSAutomation.HomePageTestCases
             await Assertions.Expect(page.GetByText("Find information about products and services")).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("Use this service to explore what DfE delivers. Build on existing work, avoid duplication, and work more effectively across teams.")).ToBeVisibleAsync();
 
-            var searchlink = page.Locator("[class=\"govuk-button govuk-button--start govuk-button--inverse home-cta-link\"]");
+            var searchlink = page.Locator(FipsLocator.HOME_SEARCH_LOCATOR);
             await Assertions.Expect(searchlink).ToHaveTextAsync(" Search products and services ");
             _extentTest?.Log(Status.Pass, "Search assertion passed"); 
 
-            var link1 = page.Locator("//*[contains(text(),'About this service')]");
+            var link1 = page.Locator(FipsLocator.ABOUT_SERVICE_LOCATOR);
             await Assertions.Expect(link1).ToHaveTextAsync("About this service");
             _extentTest?.Log(Status.Pass, "About this service assertion passed");
         }
@@ -81,7 +81,7 @@ namespace FiPSAutomation.HomePageTestCases
         [Test, Order(5), Category("functional")]
        public async Task ClickSearchButtonAC2()
         {
-            await page.Locator("[class=\"govuk-button govuk-button--start govuk-button--inverse home-cta-link\"]").ClickAsync();
+            await page.Locator(FipsLocator.HOME_SEARCH_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
             await page.GoBackAsync();
             _extentTest?.Log(Status.Pass, "clickSearchButtonAC2 passed");
@@ -113,7 +113,7 @@ namespace FiPSAutomation.HomePageTestCases
         [Test, Order(8), Category("functional")]
         public async Task ClickAllproductsAndServicesAC5()
         {
-            await page.Locator("//h2[text() = 'All products and services']").ClickAsync();
+            await page.Locator(FipsLocator.ALL_PRODUCT_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
             await page.GoBackAsync();
             _extentTest?.Log(Status.Pass, "ClickAllproductsAndServicesAC5 passed");
@@ -122,7 +122,7 @@ namespace FiPSAutomation.HomePageTestCases
         [Test, Order(9), Category("functional")]
         public async Task ClickBrowseCategoriesAC6()
         {
-            await page.Locator("//h2[text() = 'Browse categories']").ClickAsync();
+            await page.Locator(FipsLocator.BROWSE_CATEGORY_LOCATOR).ClickAsync();
             //await Assertions.Expect(page.GetByText("Browse categories")).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Browse categories" })).ToBeVisibleAsync();
             await page.GoBackAsync();
@@ -132,7 +132,7 @@ namespace FiPSAutomation.HomePageTestCases
         [Test, Order(10), Category("functional")]
         public async Task ClickUseTheDataAC7()
         {
-            await page.Locator("//h2[text() = 'Use the data']").ClickAsync();           
+            await page.Locator(FipsLocator.USE_DATA_LOCATOR).ClickAsync();           
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Using the data" })).ToBeVisibleAsync();
             await page.GoBackAsync();
             _extentTest?.Log(Status.Pass, "ClickUseTheDataAC7 passed");
@@ -141,7 +141,7 @@ namespace FiPSAutomation.HomePageTestCases
         [Test, Order(11), Category("functional")]
         public async Task ClickKeepingInformationUpdatedAC8()
         {
-            await page.Locator("//h2[text() = 'Keeping information updated']").ClickAsync();
+            await page.Locator(FipsLocator.KEEPING_INFO_UPDATE_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Get help" })).ToBeVisibleAsync();
             await page.GoBackAsync();
             _extentTest?.Log(Status.Pass, "ClickKeepingInformationUpdatedAC8 passed");
