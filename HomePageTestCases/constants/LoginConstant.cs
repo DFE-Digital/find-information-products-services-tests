@@ -8,7 +8,7 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
 {
     internal class LoginConstant
     {
-        public static string USERNAME = "";
-        public static string PASSWORD = "";
+        public static readonly string USERNAME = "";
+        public static readonly string PASSWORD = "";
     }
 }
