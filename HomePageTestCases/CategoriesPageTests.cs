@@ -17,7 +17,7 @@
 //    {
 
 //        [Test, Order(1), Category("smoke")]
-//        public async Task LoginWithUsernameAndPassword()
+//        public async Task loginWithUsernameAndPassword()
 //        {
 //            await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
 //            await page.GetByPlaceholder("Email or phone").ClickAsync();
