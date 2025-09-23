@@ -14,5 +14,7 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string BROWSE_CATEGORY_LOCATOR = "//h2[text() = 'Browse categories']";
         public static readonly string USE_DATA_LOCATOR = "//h2[text() = 'Use the data']";
         public static readonly string KEEPING_INFO_UPDATE_LOCATOR = "//h2[text() = 'Keeping information updated']";
+        public static readonly string USER_GROUP_CHEVRON_LINK = ".dfe-chevron-card__link.category-link[href='/categories/user-group']";
+        public static readonly string CATEGORY_CHANNEL_LINK = "a[href='/categories/channel']";
     }
 }
