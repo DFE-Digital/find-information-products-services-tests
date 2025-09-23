@@ -1,4 +1,5 @@
 ﻿using AventStack.ExtentReports;
+using find_information_products_services_tests.HomePageTestCases.pages;
 using FiPSAutomation.HomePageTestCases.utilities;
 using Microsoft.Playwright;
 
@@ -15,9 +16,15 @@ namespace FiPSAutomation.HomePageTestCases
 
         protected ExtentTest? extentTest;
 
+        // Declare properties for each of your page object models
+        protected LoginPage? loginPage { get; private set; }
+        protected HomePage? homePage { get; private set; }
+        protected CategoriesPage? categoryPage { get; private set; }
+
         [OneTimeSetUp]
         public async Task RunBeforeAnyTests()
         {
+            // 1. Initialize Playwright
             playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
@@ -27,6 +34,11 @@ namespace FiPSAutomation.HomePageTestCases
             page = await context.NewPageAsync();
             //var reportPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestResults", "extent1.html");
             extent = ExtentReportHelper.InitialiseReport("extent-"+ DateTime.Now.ToString("yyyy-MM-dd HHmmss")+".html", "FiPS Automation Report");
+
+            // 2. Initialize each Page Object Model with the same IPage instance
+            //loginPage = new LoginPage(page);
+            //homePage = new HomePage(page);
+            //categoryPage = new CategoriesPage(page);
         }
 
         [OneTimeTearDown]
