@@ -28,7 +28,7 @@ namespace FiPSAutomation.HomePageTestCases
             playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                Headless = false,//false true
+                Headless = true,//false true
             });
             context = await browser.NewContextAsync();
             page = await context.NewPageAsync();
