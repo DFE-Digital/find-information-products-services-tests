@@ -1,4 +1,5 @@
 ﻿using AventStack.ExtentReports;
+using find_information_products_services_tests.HomePageTestCases.constants;
 using find_information_products_services_tests.HomePageTestCases.pages;
 using FiPSAutomation.HomePageTestCases.utilities;
 using Microsoft.Playwright;
@@ -73,5 +74,17 @@ namespace FiPSAutomation.HomePageTestCases
                 extentTest?.Log(Status.Pass, "Test passed");
             }
         }
+
+        public async void goToLink(String link) {
+            //await page.GoBackAsync();
+            await page.GotoAsync(URLConstant.FIPS_URL + link);
+        }
+
+        public async void clickLink(String link)
+        {
+            await page.Locator(link).ClickAsync();
+
+        }
+
     }
 }
