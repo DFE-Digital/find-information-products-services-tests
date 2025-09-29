@@ -6,7 +6,7 @@ namespace find_information_products_services_tests.HomePageTestCases.utilities
     {
         public static List<FipsSheetRow> getRowsFromExcelFileBySheetName(string fileName, string sheetName)
         {
-            string testDirectory = TestContext.CurrentContext.TestDirectory;
+            //string testDirectory = TestContext.CurrentContext.TestDirectory;
 
             string excelFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName 
                 +"//" +fileName;
@@ -17,7 +17,7 @@ namespace find_information_products_services_tests.HomePageTestCases.utilities
             }
 
             // List to hold the data from the Excel file
-            var userDataList = new List<FipsSheetRow>();
+            var dataList = new List<FipsSheetRow>();
 
             using (var workbook = new XLWorkbook(excelFilePath))
             {
@@ -47,10 +47,10 @@ namespace find_information_products_services_tests.HomePageTestCases.utilities
                         Filter_Text_Locator = row.Cell(5).Value.ToString(),
                         Checkbox_Locator = row.Cell(6).Value.ToString()
                     };
-                    userDataList.Add(userData);
+                    dataList.Add(userData);
                 }
             }
-            return userDataList;
+            return dataList;
         }
     }
 }

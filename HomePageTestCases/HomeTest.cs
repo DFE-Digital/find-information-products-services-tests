@@ -225,7 +225,7 @@ namespace FiPSAutomation.HomePageTestCases
         }
 
         [Test, Order(14), Category("functional")]
-        public async Task ClickRequestLinkAC2()
+        public async Task ClickRequestSubcategoryLinkAC2()
         {
             //await page.Locator("[aria-hidden='true'][href='/products?phase=request']").WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Hidden });
             //await page.Locator(FipsLocator.PHASE_REQUEST_LINK).ClickAsync();
@@ -239,13 +239,46 @@ namespace FiPSAutomation.HomePageTestCases
             // Assert that the filter tag exists and is visible
             await Assertions.Expect(requestTag).ToBeVisibleAsync();
             //await Assertions.Expect(page.Locator(".moj-filter__tag")).ToHaveTextAsync(" Request");
-            //await Assertions.Expect(page.Locator("//h3[normalize-space()='Phase']")).ToHaveTextAsync("Phase");
         }
 
         [Test, Order(15), Category("functional")]
-        public async Task ClickRequestLinkAC2A()
+        public async Task ClickSubcategoryLinksForPhaseCategoryAC()
         {
-            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "products");
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_phase");
+            // Iterate through each data row
+            foreach (var row in dataRows)
+            {
+                // Print a log to the NUnit output for traceability
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
+
+                goToLink(row.Product_Locator);
+
+                var requestTag = page.Locator(row.Filter_Tag);
+
+                // Assert that the filter tag exists and is visible
+                await Assertions.Expect(requestTag).ToBeVisibleAsync();
+
+                //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
+                await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
+
+                //Locate and assert the page header and "phase" subheading
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading,
+                    new() { NameString = row.Heading })).ToBeVisibleAsync();
+
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Phase");
+
+                bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isRequestChecked, Is.True);
+
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
+            }
+        }
+
+        [Test, Order(16), Category("functional")]
+        public async Task ClickSubcategoryLinksForChannelAC()
+        {
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_channel");
             // Iterate through each data row
             foreach (var row in dataRows)
             {
@@ -267,7 +300,77 @@ namespace FiPSAutomation.HomePageTestCases
                 await Assertions.Expect(page.GetByRole(AriaRole.Heading,
                     new() { NameString = row.Heading })).ToBeVisibleAsync();
 
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Phase");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Channel");
+
+                bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isRequestChecked, Is.True);
+
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
+            }
+        }
+
+        [Test, Order(17), Category("functional")]
+        public async Task ClickSubcategoryLinksForGroupAC()
+        {
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_group");
+            // Iterate through each data row
+            foreach (var row in dataRows)
+            {
+                //Task.Delay(1000);
+                // Print a log to the NUnit output for traceability
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
+
+                goToLink(row.Product_Locator);
+
+                var requestTag = page.Locator(row.Filter_Tag);
+
+                // Assert that the filter tag exists and is visible
+                await Assertions.Expect(requestTag).ToBeVisibleAsync();
+
+                //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
+                await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
+
+                //Locate and assert the page header and "phase" subheading
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading,
+                    new() { NameString = row.Heading })).ToBeVisibleAsync();
+
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Group");
+
+                bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isRequestChecked, Is.True);
+
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
+            }
+        }
+
+        [Test, Order(18), Category("functional")]
+        public async Task ClickSubcategoryLinksForTypeAC()
+        {
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_type");
+            // Iterate through each data row
+            foreach (var row in dataRows)
+            {
+                //Task.Delay(1000);
+                // Print a log to the NUnit output for traceability
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
+
+                goToLink(row.Product_Locator);
+
+                var requestTag = page.Locator(row.Filter_Tag);
+
+                // Assert that the filter tag exists and is visible
+                await Assertions.Expect(requestTag).ToBeVisibleAsync();
+
+                //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
+                await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
+
+                //Locate and assert the page header and "phase" subheading
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading,
+                    new() { NameString = row.Heading })).ToBeVisibleAsync();
+
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Type");
 
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
