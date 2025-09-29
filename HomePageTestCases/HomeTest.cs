@@ -1,50 +1,19 @@
 ﻿using AventStack.ExtentReports;
-using AventStack.ExtentReports.Gherkin.Model;
 using find_information_products_services_tests.HomePageTestCases.constants;
 using find_information_products_services_tests.HomePageTestCases.utilities;
-using FiPSAutomation.HomePageTestCases.utilities;
 using Microsoft.Playwright;
-using Microsoft.VisualBasic;
 
 namespace FiPSAutomation.HomePageTestCases
 {
     public class HomeTest : BaseTest
     {
-
         [Test, Order(1), Category("smoke")]
         public async Task LoginWithUsernameAndPassword()
         {
-            await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
-            await page.GetByPlaceholder("Email or phone").ClickAsync();
-
-            await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
-
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-            await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
-
-            await page.GetByPlaceholder("Password").ClickAsync();
-
-            await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
-
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-            await page.WaitForURLAsync(URLConstant.LOGIN_URL);
-
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-            await page.WaitForURLAsync(URLConstant.FIPS_URL);
-
-            extentTest?.Log(Status.Pass, "loginWithUsernameAndPassword passed");
+            await loginWithUsernameAndPasswordAndAcceptAndHideCookies();
         }
 
         [Test, Order(2), Category("functional")]
-        public async Task AcceptCookiesAndHide()
-        {
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Accept analytics cookies" }).ClickAsync();
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Hide cookie message" }).ClickAsync();
-
-            extentTest?.Log(Status.Pass, "acceptCookiesAndHide passed");
-        }
-
-        [Test, Order(3), Category("functional")]
         public async Task HomePageVerificationAC1()
         {
             await Assertions.Expect(page).ToHaveTitleAsync("Find information about products and services - FIPS");
@@ -63,7 +32,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "homePageVerificationAC1 assertion passed");
         }
 
-        [Test, Order(4), Category("functional")]
+        [Test, Order(3), Category("functional")]
         public async Task ClickSearchButtonAC2()
         {
             await page.Locator(FipsLocator.HOME_SEARCH_LOCATOR).ClickAsync();
@@ -73,7 +42,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "clickSearchButtonAC2 passed");
         }
 
-        [Test, Order(5), Category("functional")]
+        [Test, Order(4), Category("functional")]
         public async Task ClickAboutThisServiceAC3()
         {
             await page.GetByRole(AriaRole.Link, new() { NameString = "About this service" }).ClickAsync();
@@ -83,7 +52,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "clickAboutThisServiceAC3 passed");
         }
 
-        [Test, Order(6), Category("functional")]
+        [Test, Order(5), Category("functional")]
         public async Task TilesAreVisibleAC4()
         {
             //await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "All products and services" })).ToBeVisibleAsync();
@@ -96,7 +65,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "tilesAreVisibleAC4 passed");
         }
 
-        [Test, Order(7), Category("functional")]
+        [Test, Order(6), Category("functional")]
         public async Task ClickAllproductsAndServicesAC5()
         {
             await page.Locator(FipsLocator.ALL_PRODUCT_LOCATOR).ClickAsync();
@@ -106,7 +75,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "clickAllproductsAndServicesAC5 passed");
         }
 
-        [Test, Order(8), Category("functional")]
+        [Test, Order(7), Category("functional")]
         public async Task ClickBrowseCategoriesAC6()
         {
             await page.Locator(FipsLocator.BROWSE_CATEGORY_LOCATOR).ClickAsync();
@@ -117,7 +86,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "clickBrowseCategoriesAC6 passed");
         }
 
-        [Test, Order(9), Category("functional")]
+        [Test, Order(8), Category("functional")]
         public async Task ClickUseTheDataAC7()
         {
             await page.Locator(FipsLocator.USE_DATA_LOCATOR).ClickAsync();
@@ -128,7 +97,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "clickUseTheDataAC7 passed");
         }
 
-        [Test, Order(10), Category("functional")]
+        [Test, Order(9), Category("functional")]
         public async Task ClickKeepingInformationUpdatedAC8()
         {
             await page.Locator(FipsLocator.KEEPING_INFO_UPDATE_LOCATOR).ClickAsync();
@@ -139,7 +108,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "clickKeepingInformationUpdatedAC8 passed");
         }
 
-        [Test, Order(11), Category("functional")]
+        [Test, Order(10), Category("functional")]
         public async Task CheckPageDescriptionAC2()
         {
             await page.Locator(FipsLocator.BROWSE_CATEGORY_LOCATOR).ClickAsync();
@@ -148,7 +117,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "checkPageDescriptionAC2 passed");
         }
 
-        [Test, Order(12), Category("functional")]
+        [Test, Order(11), Category("functional")]
         public async Task CheckCategoriesListAndDescriptionAC3()
         {
             //verifying Channel link -
@@ -179,7 +148,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "checkCategoriesListAndDescriptionAC3 passed");
         }
 
-        [Test, Order(13), Category("functional")]
+        [Test, Order(12), Category("functional")]
         public async Task ClickCategoriesLinksAC4()
         {
             //await page.GotoAsync(URLConstant.FIPS_URL + "categories/channel");
@@ -217,7 +186,7 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "clickCategoriesLinksAC4 passed");
         }
 
-        [Test, Order(14), Category("functional")]
+        [Test, Order(13), Category("functional")]
         public async Task CheckPhaseCategoryListAC1()
         {
             goToLink("categories/phase");
@@ -255,8 +224,8 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "CheckPhaseCategoryListAC1 passed");
         }
 
-        [Test, Order(15), Category("functional")]
-        public async Task ClickRequestLinkAC2()
+        [Test, Order(14), Category("functional")]
+        public async Task ClickRequestSubcategoryLinkAC2()
         {
             //await page.Locator("[aria-hidden='true'][href='/products?phase=request']").WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Hidden });
             //await page.Locator(FipsLocator.PHASE_REQUEST_LINK).ClickAsync();
@@ -270,13 +239,46 @@ namespace FiPSAutomation.HomePageTestCases
             // Assert that the filter tag exists and is visible
             await Assertions.Expect(requestTag).ToBeVisibleAsync();
             //await Assertions.Expect(page.Locator(".moj-filter__tag")).ToHaveTextAsync(" Request");
-            //await Assertions.Expect(page.Locator("//h3[normalize-space()='Phase']")).ToHaveTextAsync("Phase");
+        }
+
+        [Test, Order(15), Category("functional")]
+        public async Task ClickSubcategoryLinksForPhaseCategoryAC()
+        {
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_phase");
+            // Iterate through each data row
+            foreach (var row in dataRows)
+            {
+                // Print a log to the NUnit output for traceability
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
+
+                goToLink(row.Product_Locator);
+
+                var requestTag = page.Locator(row.Filter_Tag);
+
+                // Assert that the filter tag exists and is visible
+                await Assertions.Expect(requestTag).ToBeVisibleAsync();
+
+                //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
+                await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
+
+                //Locate and assert the page header and "phase" subheading
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading,
+                    new() { NameString = row.Heading })).ToBeVisibleAsync();
+
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Phase");
+
+                bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isRequestChecked, Is.True);
+
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
+            }
         }
 
         [Test, Order(16), Category("functional")]
-        public async Task ClickRequestLinkAC2A()
+        public async Task ClickSubcategoryLinksForChannelAC()
         {
-            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "products");
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_channel");
             // Iterate through each data row
             foreach (var row in dataRows)
             {
@@ -298,7 +300,77 @@ namespace FiPSAutomation.HomePageTestCases
                 await Assertions.Expect(page.GetByRole(AriaRole.Heading,
                     new() { NameString = row.Heading })).ToBeVisibleAsync();
 
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Phase");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Channel");
+
+                bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isRequestChecked, Is.True);
+
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
+            }
+        }
+
+        [Test, Order(17), Category("functional")]
+        public async Task ClickSubcategoryLinksForGroupAC()
+        {
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_group");
+            // Iterate through each data row
+            foreach (var row in dataRows)
+            {
+                //Task.Delay(1000);
+                // Print a log to the NUnit output for traceability
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
+
+                goToLink(row.Product_Locator);
+
+                var requestTag = page.Locator(row.Filter_Tag);
+
+                // Assert that the filter tag exists and is visible
+                await Assertions.Expect(requestTag).ToBeVisibleAsync();
+
+                //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
+                await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
+
+                //Locate and assert the page header and "phase" subheading
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading,
+                    new() { NameString = row.Heading })).ToBeVisibleAsync();
+
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Group");
+
+                bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isRequestChecked, Is.True);
+
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
+            }
+        }
+
+        [Test, Order(18), Category("functional")]
+        public async Task ClickSubcategoryLinksForTypeAC()
+        {
+            List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_type");
+            // Iterate through each data row
+            foreach (var row in dataRows)
+            {
+                //Task.Delay(1000);
+                // Print a log to the NUnit output for traceability
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
+
+                goToLink(row.Product_Locator);
+
+                var requestTag = page.Locator(row.Filter_Tag);
+
+                // Assert that the filter tag exists and is visible
+                await Assertions.Expect(requestTag).ToBeVisibleAsync();
+
+                //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
+                await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
+
+                //Locate and assert the page header and "phase" subheading
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading,
+                    new() { NameString = row.Heading })).ToBeVisibleAsync();
+
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Type");
 
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);

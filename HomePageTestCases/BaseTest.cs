@@ -86,5 +86,33 @@ namespace FiPSAutomation.HomePageTestCases
 
         }
 
+        protected async Task loginWithUsernameAndPasswordAndAcceptAndHideCookies()
+        {
+            await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
+            await page.GetByPlaceholder("Email or phone").ClickAsync();
+
+            await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
+
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
+            await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
+
+            await page.GetByPlaceholder("Password").ClickAsync();
+
+            await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
+
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
+            await page.WaitForURLAsync(URLConstant.LOGIN_URL);
+
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
+            await page.WaitForURLAsync(URLConstant.FIPS_URL);
+
+            extentTest?.Log(Status.Pass, "loginWithUsernameAndPassword passed");
+
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Accept analytics cookies" }).ClickAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Hide cookie message" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "acceptCookiesAndHide passed");
+        }
+
     }
 }
