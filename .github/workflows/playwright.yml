@@ -1,22 +1,39 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [ feature/test-job ]
+#  push:
+#    branches: [ main ]
   pull_request:
-    branches: [ feature/test-job ]
+    branches: [ main ]
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Build & Install
-      run: dotnet build
-    - name: Ensure browsers are installed
-      run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
-    - name: Run your tests
-      run: dotnet test
+      - uses: actions/checkout@v4
+      
+      # Step 1: Set up the correct .NET environment
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x # Use your project's target framework
+      
+      # Step 2: Build the project to generate the Playwright installation script
+      - name: Build
+        run: dotnet build
+      
+      # Step 3: Run the installation script for browsers
+      - name: Install browsers
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
+      
+      # Step 4: Run your tests
+      - name: Run tests
+        run: dotnet test --settings test.runsettings
+
+      # Step 5: Upload the Playwright HTML report
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always() # Upload report even if tests fail
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

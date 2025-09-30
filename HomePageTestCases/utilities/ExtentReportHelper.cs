@@ -11,7 +11,7 @@ namespace FiPSAutomation.HomePageTestCases.utilities
         public static ExtentReports InitialiseReport(string reportPath, string reportName)
         {
             var htmlReporter = new ExtentSparkReporter(Directory.GetParent(Environment.CurrentDirectory)
-                .Parent.Parent.FullName+ "//reports//" + reportPath);
+                .Parent.Parent.FullName + "//playwright-report//" + reportPath);
             htmlReporter.Config.DocumentTitle = reportName;
             htmlReporter.Config.ReportName = "Automation";
             htmlReporter.Config.Encoding = "utf-8";
