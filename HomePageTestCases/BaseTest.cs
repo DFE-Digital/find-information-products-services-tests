@@ -61,17 +61,26 @@ namespace FiPSAutomation.HomePageTestCases
         }
 
         [TearDown]
-        public void TearDown()
+        public async Task TearDown()
         {
             // Add final test status (e.g., Pass, Fail)
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             if (status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
+                byte[] screenshot = await page.ScreenshotAsync();
+                string base64Screenshot = Convert.ToBase64String(screenshot);
+                extentTest?.Fail("Test failed", MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64Screenshot).Build());
+
                 extentTest?.Log(Status.Fail, "Test failed");
             }
             else if (status == NUnit.Framework.Interfaces.TestStatus.Passed)
             {
                 extentTest?.Log(Status.Pass, "Test passed");
+                extentTest?.Pass("Test passed ...");
+            }
+            else
+            {
+                extentTest?.Skip("Test skipped");
             }
         }
 
