@@ -3,6 +3,7 @@ using find_information_products_services_tests.HomePageTestCases.constants;
 using find_information_products_services_tests.HomePageTestCases.pages;
 using FiPSAutomation.HomePageTestCases.utilities;
 using Microsoft.Playwright;
+using System.Text;
 
 namespace FiPSAutomation.HomePageTestCases
 {
@@ -103,11 +104,11 @@ namespace FiPSAutomation.HomePageTestCases
             await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-            await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
+            await page.WaitForURLAsync(Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"))));// URLConstant.LOGIN_SSO_URL);
 
             await page.GetByPlaceholder("Password").ClickAsync();
 
-            await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
+            await page.GetByPlaceholder("Password").FillAsync(Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"))));// LoginConstant.PASSWORD);
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
             await page.WaitForURLAsync(URLConstant.LOGIN_URL);
