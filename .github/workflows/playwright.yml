@@ -8,6 +8,11 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
+    env:
+      # Access a GitHub variable
+      KEY11: ${{ vars.KEY1 }}
+      # Access a GitHub secret
+      KEY22: ${{ secrets.KEY2 }}
     steps:
       - uses: actions/checkout@v4
       
