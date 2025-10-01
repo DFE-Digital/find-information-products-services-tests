@@ -32,4 +32,4 @@ bin/
 obj/
 
 appsettings.json
-reports/
+playwright-report/
