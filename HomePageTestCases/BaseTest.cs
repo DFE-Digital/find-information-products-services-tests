@@ -99,17 +99,28 @@ namespace FiPSAutomation.HomePageTestCases
         protected async Task loginWithUsernameAndPasswordAndAcceptAndHideCookies()
         {
             await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
-            await page.GetByPlaceholder("Email or phone").ClickAsync();
 
-            await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
+            try
+            {
+                await page.GetByPlaceholder("Email or phone").ClickAsync();
+                await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-            await page.WaitForURLAsync(Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"))));// URLConstant.LOGIN_SSO_URL);
+                byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"));
+                string decodedString = Encoding.UTF8.GetString(decodedBytes);
+                await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);// LoginConstant.USERNAME);
 
-            await page.GetByPlaceholder("Password").ClickAsync();
+                await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
+                //await page.WaitForURLAsync(Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"))));// URLConstant.LOGIN_SSO_URL);
 
-            await page.GetByPlaceholder("Password").FillAsync(Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"))));// LoginConstant.PASSWORD);
+                await page.GetByPlaceholder("Password").ClickAsync();
 
+                byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"));
+                string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
+                await page.GetByPlaceholder("Password").FillAsync(decodedString2);// Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"))));// LoginConstant.PASSWORD);
+            
+            } catch (FormatException ex) {
+                Console.WriteLine("Error with :- " + ex.Message);
+            }
             await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
             await page.WaitForURLAsync(URLConstant.LOGIN_URL);
 
