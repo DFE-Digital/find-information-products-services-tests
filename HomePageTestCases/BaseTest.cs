@@ -19,9 +19,9 @@ namespace FiPSAutomation.HomePageTestCases
         protected ExtentTest? extentTest;
 
         // Declare properties for each of your page object models
-        protected LoginPage? loginPage { get; private set; }
-        protected HomePage? homePage { get; private set; }
-        protected CategoriesPage? categoryPage { get; private set; }
+        //protected LoginPage? loginPage { get; private set; }
+        //protected HomePage? homePage { get; private set; }
+        //protected CategoriesPage? categoryPage { get; private set; }
 
         [OneTimeSetUp]
         public async Task RunBeforeAnyTests()
@@ -87,7 +87,14 @@ namespace FiPSAutomation.HomePageTestCases
 
         public async void goToLink(String link) {
             //await page.GoBackAsync();
-            await page.GotoAsync(URLConstant.FIPS_URL + link);
+            if (URLConstant.TEST_ENVIRONMENT == "dev")
+            {
+                await page.GotoAsync(URLConstant.FIPS_URL + link);
+            }
+            else if (URLConstant.TEST_ENVIRONMENT == "test")
+            {
+                await page.GotoAsync(URLConstant.FIPS_TEST_URL + link);
+            }
         }
 
         public async void clickLink(String link)
@@ -98,34 +105,40 @@ namespace FiPSAutomation.HomePageTestCases
 
         protected async Task loginWithUsernameAndPasswordAndAcceptAndHideCookies()
         {
-            await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
-
-            try
+            if (URLConstant.TEST_ENVIRONMENT == "dev")
             {
-                await page.GetByPlaceholder("Email or phone").ClickAsync();
+                await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
+                try
+                {
+                    await page.GetByPlaceholder("Email or phone").ClickAsync();
 
-                byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"));
-                string decodedString = Encoding.UTF8.GetString(decodedBytes);
-                await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
-                //await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
-                await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
+                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"));
+                    //string decodedString = Encoding.UTF8.GetString(decodedBytes);
+                    //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
+                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
+                    await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
-                await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
-                await page.GetByPlaceholder("Password").ClickAsync();
+                    await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
+                    await page.GetByPlaceholder("Password").ClickAsync();
 
-                byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"));
-                string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
-                await page.GetByPlaceholder("Password").FillAsync(decodedString2);
-                //await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
-            } catch (FormatException ex) {
-                Console.WriteLine("Error with :- " + ex.Message);
+                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"));
+                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
+                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
+                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Error with :- " + ex.Message);
+                }
+                await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
+                await page.WaitForURLAsync(URLConstant.LOGIN_URL);
+
+                await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
+                await page.WaitForURLAsync(URLConstant.FIPS_URL);
             }
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-            await page.WaitForURLAsync(URLConstant.LOGIN_URL);
-
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-            await page.WaitForURLAsync(URLConstant.FIPS_URL);
-
+            else if (URLConstant.TEST_ENVIRONMENT == "test") {
+                goToLink("");
+            }
             extentTest?.Log(Status.Pass, "loginWithUsernameAndPassword passed");
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Accept analytics cookies" }).ClickAsync();
