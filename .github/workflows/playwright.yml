@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       # Access a GitHub variable
-      KEY11: ${{ vars.KEY1 }}
+      KEY11: ${{ secrets.KEY1 }}
       # Access a GitHub secret
       KEY22: ${{ secrets.KEY2 }}
     steps:
