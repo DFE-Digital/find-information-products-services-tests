@@ -10,7 +10,7 @@
 //    {
 //        public static void Main(string[] args)
 //        {
-//            string originalString = "Shalini.SHIWANI@education.gov.uk";
+//            string originalString = "abc@edu.uk";
 
 //            Console.WriteLine("Original String: " + originalString);
 
