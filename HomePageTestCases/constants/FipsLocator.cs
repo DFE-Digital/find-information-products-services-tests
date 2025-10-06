@@ -32,13 +32,34 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string SHOWING_PRODUCTS_MESSAGE = "div[class='govuk-!-margin-bottom-4'] p[class='govuk-body']";
         public static readonly string REQUEST_CHECKBOX = "#phase-request";
         public static readonly string EXPLORE_CHECKBOX = "#phase-explore";
-        public static readonly string TRIAGE_CHECKBOX = "";
-        public static readonly string DISCOVERY_CHECKBOX = "";
-        public static readonly string ALPHA_CHECKBOX = "";
-        public static readonly string PRIVATE_BETA_CHECKBOX = "";
-        public static readonly string PUBLIC_BETA_CHECKBOX = "";
-        public static readonly string LIVE_CHECKBOX = "";
-        public static readonly string DECOMMISSIONING_CHECKBOX = "";
-        public static readonly string DECOMMISSIONED_CHECKBOX = "";
+        public static readonly string CHANNEL_CHAT_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
+        public static readonly string CHANNEL_EMAIL_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
+        public static readonly string CHANNEL_FACETOFACE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
+        public static readonly string CHANNEL_NATIVEAPP_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
+        public static readonly string CHANNEL_OTHERDIGITALMEDIA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[5]/div/p";
+        public static readonly string CHANNEL_PHONE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[6]/div/p";
+        public static readonly string CHANNEL_PRINTMEDIA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[7]/div/p";
+        public static readonly string CHANNEL_SMS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[8]/div/p";
+        public static readonly string CHANNEL_WEB_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[9]/div/p";
+
+        public static readonly string GROUP_FAMILIES_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
+        public static readonly string GROUP_REGIONS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
+        public static readonly string GROUP_SCHOOLS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
+        public static readonly string GROUP_SKILLS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
+        public static readonly string GROUP_OPERATIONSANDINFRA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[5]/div/p";
+        public static readonly string GROUP_STRATEGY_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[6]/div/p";
+
+        public static readonly string OPERATIONSANDINFRA_HEADING_DESC = "//*[@id=\"main-content\"]/div/div/div/h1";
+        public static readonly string OPERATIONSANDINFRA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[1]/li/div/p";
+        public static readonly string OPERATIONSANDINFRA_CXD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[1]/div/p";
+        public static readonly string OPERATIONSANDINFRA_ENTERPRISEDATA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[2]/div/p";
+        public static readonly string OPERATIONSANDINFRA_FUNDING_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[3]/div/p";
+        public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK = "//*[@id=\"main-content\"]/div/div/div/h2";
+        public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/p[2]";
+
+        public static readonly string TYPE_API_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
+        public static readonly string TYPE_CAMPAIGN_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
+        public static readonly string TYPE_INFORMATION_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
+        public static readonly string TYPE_TRANSACTIONAL_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
     }
 }
