@@ -61,5 +61,17 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string TYPE_CAMPAIGN_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
         public static readonly string TYPE_INFORMATION_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
         public static readonly string TYPE_TRANSACTIONAL_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
+
+        public static readonly string USERGROUP_ADULTLEARNER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
+        public static readonly string USERGROUP_CAREERSADVISER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
+        public static readonly string USERGROUP_CHILDORYOUNGPERSON_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
+        public static readonly string USERGROUP_DFEWORKFORCE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
+        public static readonly string USERGROUP_EPANDEYWORKFORCE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[5]/div/p";
+        public static readonly string USERGROUP_EMPLOYER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[6]/div/p";
+        public static readonly string USERGROUP_LAWORKFORCE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[7]/div/p";
+        public static readonly string USERGROUP_NEETORCS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[8]/div/p";
+        public static readonly string USERGROUP_PARENTORCARER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[9]/div/p";
+        public static readonly string USERGROUP_PROFEXTERUSERDFE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[10]/div/p";
+        public static readonly string USERGROUP_SCWORKFORCE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[11]/div/p";
     }
 }
