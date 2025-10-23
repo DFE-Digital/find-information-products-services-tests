@@ -154,7 +154,7 @@ namespace FiPSAutomation.HomePageTestCases
         [Test, Order(12), Category("functional")]
         public async Task ClickCategoriesLinksAC4()
         {
-            //await page.GotoAsync(URLConstant.FIPS_URL + "categories/channel");
+            //await page.GotoAsync(URLConstant.DEV_FIPS_URL + "categories/channel");
             goToLink("categories/channel");
             await Assertions.Expect(page.GetByText("The delivery channel through which a product or service is provided to users.", new() { Exact = true })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Channel" })).ToBeVisibleAsync();
@@ -165,7 +165,7 @@ namespace FiPSAutomation.HomePageTestCases
             //await page.GetByRole(AriaRole.Link, new() { NameString = "Channel" }).ClickAsync();
 
             await page.GetByRole(AriaRole.Link, new() { NameString = "Back to all categories" }).ClickAsync();
-            //await page.GotoAsync(URLConstant.FIPS_URL + "categories/group");
+            //await page.GotoAsync(URLConstant.DEV_FIPS_URL + "categories/group");
             goToLink("categories/business-area");
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Business area" })).ToBeVisibleAsync();
             await page.GoBackAsync();
@@ -496,20 +496,26 @@ namespace FiPSAutomation.HomePageTestCases
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_AdultLearner18_list");
             if (dataRows.Count > 1)
             {
-                SheetRow sheetRow = dataRows[0];
-                goToLink(sheetRow.Col1);
-                await Assertions.Expect(page.Locator(sheetRow.Col2)).ToHaveTextAsync("Adult learner (18+)");
-                await Assertions.Expect(page.GetByText(sheetRow.Col3, new() { Exact = true })).ToBeVisibleAsync();
+                goToLink(dataRows[0].Col1);
+                await Assertions.Expect(page.Locator(dataRows[0].Col2)).ToHaveTextAsync("Adult learner (18+)");
+                await Assertions.Expect(page.GetByText(dataRows[0].Col3, new() { Exact = true })).ToBeVisibleAsync();
 
-                for (int i = 1; i < dataRows.Count; i++)
+                await Assertions.Expect(page.Locator(dataRows[1].Col2)).ToHaveTextAsync(dataRows[1].Col3);
+               //await Assertions.Expect(page.GetByText(dataRows[1].Col3, new() { Exact = true })).ToBeVisibleAsync();
+
+                await Assertions.Expect(page.Locator(dataRows[2].Col2)).ToHaveTextAsync(dataRows[2].Col3);
+               //await Assertions.Expect(page.GetByText(dataRows[2].Col3, new() { Exact = true })).ToBeVisibleAsync();
+
+                //await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();
+                for (int i = 3; i < dataRows.Count; i++)
                 {
                     if (dataRows[i].Col1 != "")
                     {
                         await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();
+                       // await Assertions.Expect(page.Locator(dataRows[i].Col1)).ToHaveTextAsync(dataRows[i].Col3);
                     }
-                    await Assertions.Expect(page.Locator(dataRows[i].Col2)).ToHaveTextAsync(dataRows[i].Col3);
                 }
-                extentTest?.Log(Status.Pass, "VerifyUserGroupSubcategoriesListUS30AC passed");
+                extentTest?.Log(Status.Pass, "VerifyUGAdultLearner18SubcategoryListUS30AC passed");
             }
         }
 

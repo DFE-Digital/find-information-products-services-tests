@@ -19,13 +19,13 @@
 //        [Test, Order(1), Category("smoke")]
 //        public async Task loginWithUsernameAndPassword()
 //        {
-//            await page.GotoAsync(URLConstant.LOGIN_OAUTH_URL);
+//            await page.GotoAsync(URLConstant.DEV_LOGIN_OAUTH_URL);
 //            await page.GetByPlaceholder("Email or phone").ClickAsync();
 
 //            await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
 
 //            await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-//            await page.WaitForURLAsync(URLConstant.LOGIN_SSO_URL);
+//            await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
 
 //            await page.GetByPlaceholder("Password").ClickAsync();
 
@@ -35,7 +35,7 @@
 //            await page.WaitForURLAsync(URLConstant.LOGIN_URL);
 
 //            await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-//            await page.WaitForURLAsync(URLConstant.FIPS_URL);
+//            await page.WaitForURLAsync(URLConstant.DEV_FIPS_URL);
 //            extentTest?.Log(Status.Pass, "Pressed Enter");
 //        }
 
@@ -88,7 +88,7 @@
 //        [Test, Order(5), Category("functional")]
 //        public async Task ClickCategoriesLinksAC4()
 //        {
-//            await page.GotoAsync(URLConstant.FIPS_URL+"categories/channel");
+//            await page.GotoAsync(URLConstant.DEV_FIPS_URL+"categories/channel");
 //            await Assertions.Expect(page.GetByText("The delivery channel through which a product or service is provided to users.", new() { Exact = true })).ToBeVisibleAsync();
 //            //await page.Locator("a").Filter(new() { HasTextString = "Channel" }).Nth(1).ClickAsync();
 //            ///await page.GetByText("The delivery channel through which a product or service is provided to users.").ClickAsync();
