@@ -30,7 +30,7 @@ namespace FiPSAutomation.HomePageTestCases
             playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                Headless = false,//false true
+                Headless = true,//false true
             });
             context = await browser.NewContextAsync();
             page = await context.NewPageAsync();
@@ -134,7 +134,7 @@ namespace FiPSAutomation.HomePageTestCases
                 await page.WaitForURLAsync(URLConstant.LOGIN_URL);
 
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.TEST_FIPS_URL);
+                await page.WaitForURLAsync(URLConstant.DEV_FIPS_URL);
             }
             else if (URLConstant.ENVIRONMENT == "test")
             {
@@ -165,7 +165,7 @@ namespace FiPSAutomation.HomePageTestCases
                 await page.WaitForURLAsync(URLConstant.LOGIN_URL);
 
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.DEV_FIPS_URL);
+                await page.WaitForURLAsync(URLConstant.TEST_FIPS_URL);
             }
             else if(URLConstant.ENVIRONMENT == "WITHOUT_LOGIN") {
                 goToLink("");
