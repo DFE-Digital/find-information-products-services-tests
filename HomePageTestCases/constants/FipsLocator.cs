@@ -73,5 +73,11 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string USERGROUP_PARENTORCARER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[9]/div/p";
         public static readonly string USERGROUP_PROFEXTERUSERDFE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[10]/div/p";
         public static readonly string USERGROUP_SCWORKFORCE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[11]/div/p";
+        public static readonly string SAVE_COOKIES_RADIO_OFF = "#analytics-off";
+        public static readonly string SAVE_COOKIES_RADIO_ON = "#analytics-on";
+        public static readonly string SAVE_COOKIES_ALERT = ".govuk-notification-banner.govuk-notification-banner--success";
+        public static readonly string FEEDBACK_TEXTBOX_LINK = "textarea#feedback_form_input";
+        public static readonly string FEEDBACK_MAXCHARS_ERROR_MESSAGE = "//*[@id=\"feedback_form_group\"]/div[3]";
+        public static readonly string FEEDBACK_SUBMIT_ERROR_MESSAGE = "//div[@id=\"feedback-error-summary\"]";
     }
 }

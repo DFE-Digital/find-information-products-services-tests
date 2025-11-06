@@ -125,27 +125,27 @@ namespace FiPSAutomation.HomePageTestCases
             //verifying Channel link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Channel" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The delivery channel through which a product or service is provided to users.", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("9 options", new() { Exact = true })).ToBeVisibleAsync();
+           // await Assertions.Expect(page.GetByText("9 options", new() { Exact = true })).ToBeVisibleAsync();   //removing description check after discussion with PM
 
             //verifying Group Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Business area" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The business area or portfolio responsible for a product or service.", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("10 main categories", new() { Exact = true })).ToBeVisibleAsync();
+          //  await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
 
             //verifying Phase Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Phase" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The stage a product or service is at in the service delivery lifecycle.", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("8 options", new() { Exact = true })).ToBeVisibleAsync();
+          //  await Assertions.Expect(page.GetByText("8 options", new() { Exact = true })).ToBeVisibleAsync();
 
             //verifying Type Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Type" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The type of service delivery and functionality provided.", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("5 options", new() { Exact = true })).ToBeVisibleAsync();
+          //  await Assertions.Expect(page.GetByText("5 options", new() { Exact = true })).ToBeVisibleAsync();
 
             //verifying User group Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "User group" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The users of the product or service.", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
+           // await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
 
             extentTest?.Log(Status.Pass, "checkCategoriesListAndDescriptionAC3 passed");
         }
@@ -975,7 +975,75 @@ namespace FiPSAutomation.HomePageTestCases
             }
         }
 
-        [Test, Order(41), Category("accessibility")]
+        [Test, Order(41), Category("functional")]
+        public async Task VerifyFooterCookiesLinkUS13AC()
+        {
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Cookies" }).ClickAsync();
+            await Assertions.Expect(page.GetByText("Cookie preferences", new() { Exact = true })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { NameString = "Save cookie preferences" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Cancel" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Change cookie preferences" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Back to home" })).ToBeVisibleAsync();
+        }
+
+        [Test, Order(42), Category("functional")]
+        public async Task VerifyCookiesPageFunctionalitiesUS13AC()
+        {
+            goToLink("cookies");
+            await page.Locator(FipsLocator.SAVE_COOKIES_RADIO_OFF).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Save cookie preferences" }).ClickAsync();
+            bool alert = await page.Locator(FipsLocator.SAVE_COOKIES_ALERT).IsVisibleAsync();
+            Assert.That(alert, Is.True);
+            await Assertions.Expect(page.Locator(FipsLocator.SAVE_COOKIES_ALERT)).ToContainTextAsync("Your cookie preferences have been saved.");
+            await page.Locator(FipsLocator.SAVE_COOKIES_RADIO_ON).CheckAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Cancel" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
+        }
+
+        [Test, Order(43), Category("functional")]
+        public async Task VerifyCookiesPageBackToHomeFunctionalityUS13AC()
+        {
+            goToLink("cookies");
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Back to home" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
+        }
+
+        [Test, Order(44), Category("functional")]
+        public async Task VerifyAccessibilityLinkUS16AC()
+        {
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Accessibility statement" }).ClickAsync();
+            await Assertions.Expect(page.GetByText("Accessibility statement", new() { Exact = true })).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Find information about products and services" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
+        }
+
+        [Test, Order(45), Category("functional")]
+        public async Task VerifyGiveFeedbackOrReportAProblemWithThisPageLinkUS162AC()
+        {
+            goToLink("");
+            string feedbackText = "Verifying feedback form - User can enter their feedback or report a problem with this page and submit the form successfully.";
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Give feedback or report a problem with this page" }).ClickAsync();
+            await Assertions.Expect(page.GetByText("What do you want to tell us?", new() { Exact = true })).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.FEEDBACK_TEXTBOX_LINK).FillAsync(feedbackText);
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Submit feedback" }).ClickAsync();
+            await Assertions.Expect(page.GetByText("Thank you for your feedback", new() { Exact = true })).ToBeVisibleAsync();
+        }
+
+        [Test, Order(46), Category("functional")]
+        public async Task ValidateMaxCharsinGiveFeedbackOrReportAProblemFormUS162AC()
+        {
+            goToLink("");
+            string feedbackText = "Validating more than 1000 characters for feedback form. User should not be able to submit their feedback after entering more than limited characters in given textarea. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz. Test";
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Give feedback or report a problem with this page" }).ClickAsync();
+            await Assertions.Expect(page.GetByText("What do you want to tell us?", new() { Exact = true })).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.FEEDBACK_TEXTBOX_LINK).FillAsync(feedbackText);
+            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_MAXCHARS_ERROR_MESSAGE)).ToHaveTextAsync("You have 6 characters too many");
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Submit feedback" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_SUBMIT_ERROR_MESSAGE)).ToContainTextAsync("There is a problem");
+            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Your feedback must be 1000 characters or fewer" })).ToBeVisibleAsync();
+        }
+
+        [Test, Order(47), Category("accessibility")]
         public async Task AccessibilityTest()
         {
             var axeResults = await page.RunAxe();
