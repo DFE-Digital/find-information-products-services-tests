@@ -4,7 +4,9 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
 {
     internal class FipsLocator
     {
+        //Home page locators -
         public static readonly string HOME_SEARCH_LOCATOR = "[class=\"govuk-button govuk-button--start govuk-button--inverse home-cta-link\"]";
+        public static readonly string HOME_PAGE_TILES = "(//div[@class='govuk-grid-column-full'])[1]";
         public static readonly string ABOUT_SERVICE_LOCATOR = "//*[@id=\"main-content\"]/div/div/div/div[2]/a[2]";
         public static readonly string ALL_PRODUCT_LOCATOR = "//h2[text() = 'All products and services']";
         public static readonly string BROWSE_CATEGORY_LOCATOR = "//h2[text() = 'Browse categories']";
@@ -12,11 +14,11 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string KEEP_INFO_UPDATE_LOCATOR = "//h2[text() = 'Keep information updated']";
         public static readonly string USER_GROUP_CHEVRON_LINK = ".dfe-chevron-card__link.category-link[href='/categories/user-group']";
         public static readonly string CATEGORY_CHANNEL_LINK = "a[href='/categories/channel']";
-
-       // public static readonly string PHASE_REQUEST_LINK = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/h2/a";
-       // public static readonly string PHASE_REQUEST_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
-       // public static readonly string PHASE_EXPLORE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
-      //  public static readonly string PHASE_TRIAGE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
+        //Phase description locators -
+        // public static readonly string PHASE_REQUEST_LINK = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/h2/a";
+        // public static readonly string PHASE_REQUEST_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
+        // public static readonly string PHASE_EXPLORE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
+        //  public static readonly string PHASE_TRIAGE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
         public static readonly string PHASE_DISCOVERY_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
         public static readonly string PHASE_ALPHA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[5]/div/p";
         public static readonly string PHASE_PRIVATEBETA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[6]/div/p";
@@ -27,11 +29,11 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
 
         public static readonly string PHASE_FILTER_REQUEST_TAG = "ul.moj-filter-tags li a:has-text('Request')";
         public static readonly string PHASE_FILTER_EXPLORE_TAG = "ul.moj-filter-tags li a:has-text('Explore')";
-
         public static readonly string PHASE_FILTER_TEXT = "//h3[normalize-space()='Phase']";
         public static readonly string SHOWING_PRODUCTS_MESSAGE = "//p[@class =\"govuk-body\" and contains(text(), \"products and services\")]";
         public static readonly string REQUEST_CHECKBOX = "#phase-request";
         public static readonly string EXPLORE_CHECKBOX = "#phase-explore";
+        //Channel description locators -
         public static readonly string CHANNEL_CHAT_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string CHANNEL_EMAIL_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
         public static readonly string CHANNEL_FACETOFACE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
@@ -41,27 +43,27 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string CHANNEL_PRINTMEDIA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[7]/div/p";
         public static readonly string CHANNEL_SMS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[8]/div/p";
         public static readonly string CHANNEL_WEB_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[9]/div/p";
-
+        //Business area description locators -
         public static readonly string GROUP_FAMILIES_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string GROUP_REGIONS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
         public static readonly string GROUP_SCHOOLS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
         public static readonly string GROUP_SKILLS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
         public static readonly string GROUP_OPERATIONSANDINFRA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[5]/div/p";
         public static readonly string GROUP_STRATEGY_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[6]/div/p";
-
-        public static readonly string OPERATIONSANDINFRA_HEADING_DESC = "//*[@id=\"main-content\"]/div/div/div/h1";
-        public static readonly string OPERATIONSANDINFRA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[1]/li/div/p";
-        public static readonly string OPERATIONSANDINFRA_CXD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[1]/div/p";
-        public static readonly string OPERATIONSANDINFRA_ENTERPRISEDATA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[2]/div/p";
-        public static readonly string OPERATIONSANDINFRA_FUNDING_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[3]/div/p";
-        public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK = "//*[@id=\"main-content\"]/div/div/div/h2";
-        public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/p[2]";
-
+        
+        //public static readonly string OPERATIONSANDINFRA_HEADING_DESC = "//*[@id=\"main-content\"]/div/div/div/h1";
+        //public static readonly string OPERATIONSANDINFRA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[1]/li/div/p";
+        //public static readonly string OPERATIONSANDINFRA_CXD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[1]/div/p";
+        //public static readonly string OPERATIONSANDINFRA_ENTERPRISEDATA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[2]/div/p";
+        //public static readonly string OPERATIONSANDINFRA_FUNDING_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[3]/div/p";
+        //public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK = "//*[@id=\"main-content\"]/div/div/div/h2";
+        //public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/p[2]";
+        //Type description locators -
         public static readonly string TYPE_API_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string TYPE_CAMPAIGN_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
         public static readonly string TYPE_INFORMATION_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
         public static readonly string TYPE_TRANSACTIONAL_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
-
+        //User group subcategories description locators -
         public static readonly string USERGROUP_ADULTLEARNER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string USERGROUP_CAREERSADVISER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
         public static readonly string USERGROUP_CHILDORYOUNGPERSON_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
@@ -73,11 +75,34 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string USERGROUP_PARENTORCARER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[9]/div/p";
         public static readonly string USERGROUP_PROFEXTERUSERDFE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[10]/div/p";
         public static readonly string USERGROUP_SCWORKFORCE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[11]/div/p";
+        //Footer links and Feedback locators -
         public static readonly string SAVE_COOKIES_RADIO_OFF = "#analytics-off";
         public static readonly string SAVE_COOKIES_RADIO_ON = "#analytics-on";
         public static readonly string SAVE_COOKIES_ALERT = ".govuk-notification-banner.govuk-notification-banner--success";
         public static readonly string FEEDBACK_TEXTBOX_LINK = "textarea#feedback_form_input";
         public static readonly string FEEDBACK_MAXCHARS_ERROR_MESSAGE = "//*[@id=\"feedback_form_group\"]/div[3]";
         public static readonly string FEEDBACK_SUBMIT_ERROR_MESSAGE = "//div[@id=\"feedback-error-summary\"]";
+        //Products page locators -
+        public static readonly string PRODUCTS_AND_SERVICES_LIST = "ul.dfe-chevron-card__list";
+        public static readonly string PRODUCT_NAME_TEXTBOX = "#keywords";
+        public static readonly string USER_GROUPS_LISTBOX = "#user-autocomplete";
+        public static readonly string USER_GROUPS_OPTION1 = "#user-autocomplete__option--1";
+        public static readonly string USER_GROUPS_OPTION2 = "#user-autocomplete__option--3";
+        public static readonly string USER_GROUPS_OPTION3 = "#user-autocomplete__option--2";
+        public static readonly string SELECTED_USERTYPES_CHECKBOX = "#user-0";
+        public static readonly string BUSINESS_AREA_CATEGORY = "//button[@data-target=\"group-filter\"]";
+        public static readonly string CHANNEL_CATEGORY = "//button[@data-target=\"channel-filter\"]";
+        public static readonly string PHASE_CATEGORY = "//button[@data-target=\"phase-filter\"]";
+        public static readonly string TYPE_CATEGORY = "//button[@data-target=\"type-filter\"]";
+        public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' enterprise-data')";
+        public static readonly string BUSINESS_AREA_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('operations-and-infrastructure')";
+        public static readonly string CHANNEL_SELECTED_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Web')";
+        public static readonly string PAGE_2_LINK = "a[aria-label = \"Page 2\"]";
+        public static readonly string PAGE_3_LINK = "a[aria-label = \"Page 3\"]";
+        public static readonly string NEXT_PAGE_LINK = "//span[@class='govuk-pagination__link-title']";
+        public static readonly string MAKE_A_REQUEST_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div/p";
+        public static readonly string CLEAR_FILTER_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/p[2]"; // No Product Found case
+       // public static readonly string MAKE_A_REQUEST_LINK = "";
+        public static readonly string CONTACT_US_EMAIL_DESC = "//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]";
     }
 }
