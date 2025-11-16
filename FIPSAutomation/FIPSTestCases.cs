@@ -125,7 +125,7 @@ namespace FiPSAutomation.HomePageTestCases
         [Test, Order(9), Category("functional")]
         public async Task CheckBrowseCategoriesPageDescriptionAC2()
         {
-            
+
             await page.Locator(FipsLocator.BROWSE_CATEGORY_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByText("Find products and services by how they are categorised", new() { Exact = true })).ToBeVisibleAsync();
 
@@ -138,27 +138,27 @@ namespace FiPSAutomation.HomePageTestCases
             //verifying Channel link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Channel" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The delivery channel through which a product or service is provided to users.", new() { Exact = true })).ToBeVisibleAsync();
-           // await Assertions.Expect(page.GetByText("9 options", new() { Exact = true })).ToBeVisibleAsync();   //removing description check after discussion with PM
+            // await Assertions.Expect(page.GetByText("9 options", new() { Exact = true })).ToBeVisibleAsync();   //removing description check after discussion with PM
 
             //verifying Group Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Business area" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The business area or portfolio responsible for a product or service.", new() { Exact = true })).ToBeVisibleAsync();
-          //  await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
+            //  await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
 
             //verifying Phase Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Phase" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The stage a product or service is at in the service delivery lifecycle.", new() { Exact = true })).ToBeVisibleAsync();
-          //  await Assertions.Expect(page.GetByText("8 options", new() { Exact = true })).ToBeVisibleAsync();
+            //  await Assertions.Expect(page.GetByText("8 options", new() { Exact = true })).ToBeVisibleAsync();
 
             //verifying Type Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Type" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The type of service delivery and functionality provided.", new() { Exact = true })).ToBeVisibleAsync();
-          //  await Assertions.Expect(page.GetByText("5 options", new() { Exact = true })).ToBeVisibleAsync();
+            //  await Assertions.Expect(page.GetByText("5 options", new() { Exact = true })).ToBeVisibleAsync();
 
             //verifying User group Link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "User group" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("The users of the product or service.", new() { Exact = true })).ToBeVisibleAsync();
-           // await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
+            // await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
 
             extentTest?.Log(Status.Pass, "checkCategoriesListAndDescriptionAC3 passed");
         }
@@ -203,10 +203,10 @@ namespace FiPSAutomation.HomePageTestCases
         {
             goToLink("categories/phase");
             await Assertions.Expect(page.GetByText("The stage a product or service is at in the service delivery lifecycle.", new() { Exact = true })).ToBeVisibleAsync();
-           // await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Request" })).ToBeVisibleAsync();
-           // await Assertions.Expect(page.Locator(FipsLocator.PHASE_REQUEST_LINK_DESC)).ToHaveTextAsync("View products in this category";
-          // await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Explore" })).ToBeVisibleAsync();
-          // await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Triage" })).ToBeVisibleAsync();
+            // await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Request" })).ToBeVisibleAsync();
+            // await Assertions.Expect(page.Locator(FipsLocator.PHASE_REQUEST_LINK_DESC)).ToHaveTextAsync("View products in this category";
+            // await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Explore" })).ToBeVisibleAsync();
+            // await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Triage" })).ToBeVisibleAsync();
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Discovery" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Alpha" })).ToBeVisibleAsync();
@@ -393,7 +393,7 @@ namespace FiPSAutomation.HomePageTestCases
             await Assertions.Expect(page.GetByText("The type of service delivery and functionality provided.", new() { Exact = true })).ToBeVisibleAsync();
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "API" })).ToBeVisibleAsync();
-         // await Assertions.Expect(page.Locator(FipsLocator.TYPE_API_LINK_DESC)).ToHaveTextAsync("View products in this category");
+            // await Assertions.Expect(page.Locator(FipsLocator.TYPE_API_LINK_DESC)).ToHaveTextAsync("View products in this category");
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Campaign" })).ToBeVisibleAsync();
             //await Assertions.Expect(page.Locator(FipsLocator.TYPE_CAMPAIGN_LINK_DESC)).ToHaveTextAsync("View products in this category");
@@ -401,10 +401,10 @@ namespace FiPSAutomation.HomePageTestCases
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Data collection and reporting" })).ToBeVisibleAsync();
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Information" })).ToBeVisibleAsync();
-          //await Assertions.Expect(page.Locator(FipsLocator.TYPE_INFORMATION_LINK_DESC)).ToHaveTextAsync("View products in this category");
+            //await Assertions.Expect(page.Locator(FipsLocator.TYPE_INFORMATION_LINK_DESC)).ToHaveTextAsync("View products in this category");
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Transactional" })).ToBeVisibleAsync();
-          //await Assertions.Expect(page.Locator(FipsLocator.TYPE_TRANSACTIONAL_LINK_DESC)).ToHaveTextAsync("View products in this category");
+            //await Assertions.Expect(page.Locator(FipsLocator.TYPE_TRANSACTIONAL_LINK_DESC)).ToHaveTextAsync("View products in this category");
 
             extentTest?.Log(Status.Pass, "VerifyTypeCategoryListAC passed");
         }
@@ -496,17 +496,17 @@ namespace FiPSAutomation.HomePageTestCases
                 await Assertions.Expect(page.GetByText(dataRows[0].Col3, new() { Exact = true })).ToBeVisibleAsync();
 
                 await Assertions.Expect(page.Locator(dataRows[1].Col2)).ToHaveTextAsync(dataRows[1].Col3);
-               //await Assertions.Expect(page.GetByText(dataRows[1].Col3, new() { Exact = true })).ToBeVisibleAsync();
+                //await Assertions.Expect(page.GetByText(dataRows[1].Col3, new() { Exact = true })).ToBeVisibleAsync();
 
                 await Assertions.Expect(page.Locator(dataRows[2].Col2)).ToHaveTextAsync(dataRows[2].Col3);
-               //await Assertions.Expect(page.GetByText(dataRows[2].Col3, new() { Exact = true })).ToBeVisibleAsync();
+                //await Assertions.Expect(page.GetByText(dataRows[2].Col3, new() { Exact = true })).ToBeVisibleAsync();
 
                 //await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();
                 for (int i = 3; i < dataRows.Count; i++)
                 {
                     if (dataRows[i].Col1 != "")
                     {
-                        await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();                    
+                        await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();
                     }
                 }
                 extentTest?.Log(Status.Pass, "VerifyUGAdultLearner18SubcategoryListUS30AC passed");
@@ -810,7 +810,7 @@ namespace FiPSAutomation.HomePageTestCases
         public async Task ClickSubcategoryLinksForChildOrYoungPersonUS92AC()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_ChildOrYoungPers");
-             foreach (var row in dataRows)
+            foreach (var row in dataRows)
             {
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
@@ -1194,11 +1194,145 @@ namespace FiPSAutomation.HomePageTestCases
             await Assertions.Expect(page.Locator(FipsLocator.MAKE_A_REQUEST_DESC)).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "make a request" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
+            await page.GoBackAsync();
 
             extentTest?.Log(Status.Pass, "VerifyMakeARequestLinkOnPageUS103AC passed");
         }
 
-        [Test, Order(55), Category("accessibility")]
+        [Test, Order(55), Category("functional")]
+        public async Task VerifyProductOverviewPageHeadersUS168AC()
+        {
+            goToLink("product/VRM-926");
+            // await page.Locator(FipsLocator.PRODUCT_LINK).ClickAsync();
+            // await page.Locator("a").Filter(new() { HasTextString = "Accessibility and inclusion" }).Nth(1).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Accessibility and inclusion manual" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.FIPS_ID_LINK)).ToHaveTextAsync("VRM-926");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_COLUMN)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_COLUMN)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.CONTACTS_COLUMN)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.VIEW_PRODUCT_COLUMN)).ToBeVisibleAsync();
+
+            var targetHeader = page.Locator(".govuk-table__head .govuk-table__row").
+                                                   Filter(new() { HasTextString = "Phase" }).
+                                                   Filter(new() { HasTextString = "Business area" }).
+                                                   Filter(new() { HasTextString = "Contacts" }).
+                                                   Filter(new() { HasTextString = "View product" });
+            var targetValueRow = page.Locator(".govuk-table__body .govuk-table__row").
+                                                   Filter(new LocatorFilterOptions { HasTextString = "Live" }).
+                                                   Filter(new LocatorFilterOptions { HasTextString = "Operations and Infrastructure" }).
+                                                   Filter(new LocatorFilterOptions { HasTextString = "1 contacts" }).
+                                                   Filter(new LocatorFilterOptions { HasTextString = "View product" });
+            await Assertions.Expect(targetHeader).ToBeVisibleAsync();
+            await Assertions.Expect(targetValueRow).ToBeVisibleAsync();
+
+            // Assert that when clicking on '1 contacts' link Contacts description is displayed -
+            await targetValueRow.GetByRole(AriaRole.Link, new LocatorGetByRoleOptions { NameString = "1 contacts" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.RESPONSIBILITIES_AND_CONTACTS_HEADER)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SERVICE_OWNER_LOCATOR)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.CONTACTS_NAME_LINK)).ToBeVisibleAsync();
+
+            //Assert clicking on 'View products',product page opens in new tab -
+            //await targetValueRow.GetByRole(AriaRole.Link, new() { NameString = "View product" }).ClickAsync();
+
+        }
+
+        [Test, Order(56), Category("functional")]
+        public async Task VerifyProductOverviewPageLinksUS168AC()
+        {
+            //Assertion for Overview link - 
+            await Assertions.Expect(page.Locator(FipsLocator.OVERVIEW_LINK)).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Description" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByText("Standards and guidance for designing and building accessible and inclusive products and services in DfE.")).ToBeVisibleAsync();
+
+            //Assertion for categories link - 
+            await Assertions.Expect(page.Locator(FipsLocator.CATEGORIES_LINK)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CATEGORIES_LINK).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Categories" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.CATEGORIES_TABLE)).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Users of this product" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.USERS_OF_PRODUCT_TABLE)).ToBeVisibleAsync();
+
+            //Assertion for Propose a change link - 
+            await Assertions.Expect(page.Locator(FipsLocator.PROPOSE_A_CHANGE_LINK)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PROPOSE_A_CHANGE_LINK).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.PROPOSED_FORM)).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Propose a change to product details" })).ToBeVisibleAsync();
+        }
+
+        [Test, Order(57), Category("functional")]
+        public async Task VerifyProductDetailsInTable()
+        {
+            await page.Locator(FipsLocator.CATEGORIES_LINK).ClickAsync();
+            var expectedTableData = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string>
+                {
+                    { "Phase", "Phase: \n                                        Live" },
+                    { "Business area", "Business area: \nOperations and Infrastructure" },
+                    { "Contacts", "1 contacts" },
+                    { "View product", "View product: \n                                        View product" }
+                },
+            };
+
+            // Call the generic assertion method within the test
+            await AssertTableColumnValues(page, expectedTableData, FipsLocator.PRODUCT_DETAIL_TABLE);
+        }
+
+        [Test, Order(58), Category("functional")]
+        public async Task VerifyCategoriesDetailsInTable()
+        {
+            //goToLink("product/VRM-926/categories");
+            var expectedTableData = new List<Dictionary<string, string>>
+            {
+
+                new Dictionary<string, string>
+                {
+                    { "Name", "Operations and Infrastructure" },
+                    { "Type", "Business area" },
+                    { "Description", "Internal operations, technology infrastructure and support services." }
+                },
+
+                new Dictionary<string, string>
+                {
+                    { "Name", "Web" },
+                    { "Type", "Channel" },
+                    { "Description", "Real-time text-based communication delivered through web or mobile interfaces, often supporting automated and human interactions." }
+                },
+
+                new Dictionary<string, string>
+                {
+                    { "Name", "Live" },
+                    { "Type", "Phase" },
+                    { "Description", "Continously improving." }
+                },
+
+                new Dictionary<string, string>
+                {
+                    { "Name", "Information" },
+                    { "Type", "Type" },
+                    { "Description", "Provide guidance, policy content, or structured information to help people make decisions or understand their responsibilities." }
+                }
+            };
+
+            await AssertTableColumnValues(page, expectedTableData, FipsLocator.CATEGORIES_DETAIL_TABLE);
+        }
+
+        [Test, Order(59), Category("functional")]
+        public async Task VerifyUsersOfTheProductTable()
+        {
+            //goToLink("product/VRM-926/categories");
+            var expectedTableData = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string>
+                {
+                    { "Name", "Department for Education workforce" },
+                },
+            };
+
+            await AssertTableColumnValues(page, expectedTableData, FipsLocator.USER_PRODUCT_TABLE);
+        }
+
+        [Test, Order(60), Category("accessibility")]
         public async Task AccessibilityTest()
         {
             var axeResults = await page.RunAxe();

@@ -50,7 +50,7 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string GROUP_SKILLS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
         public static readonly string GROUP_OPERATIONSANDINFRA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[5]/div/p";
         public static readonly string GROUP_STRATEGY_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[6]/div/p";
-        
+
         //public static readonly string OPERATIONSANDINFRA_HEADING_DESC = "//*[@id=\"main-content\"]/div/div/div/h1";
         //public static readonly string OPERATIONSANDINFRA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[1]/li/div/p";
         //public static readonly string OPERATIONSANDINFRA_CXD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[1]/div/p";
@@ -102,7 +102,27 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string NEXT_PAGE_LINK = "//span[@class='govuk-pagination__link-title']";
         public static readonly string MAKE_A_REQUEST_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div/p";
         public static readonly string CLEAR_FILTER_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/p[2]"; // No Product Found case
-       // public static readonly string MAKE_A_REQUEST_LINK = "";
         public static readonly string CONTACT_US_EMAIL_DESC = "//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]";
+        //Product details page locators -
+        public static readonly string PRODUCT_LINK = "//a[contains(text(), \"Accessibility and inclusion manual\")]";
+        public static readonly string FIPS_ID_LINK = ".govuk-caption-m";
+        public static readonly string PHASE_COLUMN = "//th[normalize-space()='Phase']";
+        public static readonly string BUSINESS_AREA_COLUMN = "//th[normalize-space()='Business area']";
+        public static readonly string CONTACTS_COLUMN = "//th[normalize-space()='Contacts']";
+        public static readonly string VIEW_PRODUCT_COLUMN = "//th[normalize-space()='View product']";
+        public static readonly string OVERVIEW_LINK = "//*[@id=\"side-navigation\"]/li[1]/a";
+        public static readonly string CATEGORIES_LINK = "//*[@id=\"side-navigation\"]/li[2]/a";
+        public static readonly string PROPOSE_A_CHANGE_LINK = "//*[@id=\"side-navigation\"]/li[3]/a";
+        public static readonly string RESPONSIBILITIES_AND_CONTACTS_HEADER = "#contacts";
+        public static readonly string CONTACTS_NAME_LINK = ".govuk-link[href='mailto:andy.jones@education.gov.uk']";
+        public static readonly string SERVICE_OWNER_LOCATOR = "(//dt[@class = \"govuk-summary-list__key\"])[1]";
+        public static readonly string CATEGORIES_TABLE = "//main[@id='main-content']//table[1]";
+        public static readonly string USERS_OF_PRODUCT_TABLE = "//main[@id='main-content']//table[2]";
+        public static readonly string PROPOSED_FORM = "//form[@method='post']";
+        public static readonly string SUCCESS_MESSAGE_ALERT = ".govuk-notification-banner.govuk-notification-banner--success"; //after submission of proposed change
+        //message - Your proposed changes have been submitted. The FIPS team may contact you if additional action or information is needed.
+        public static readonly string PRODUCT_DETAIL_TABLE = "(//table[@class = \"govuk-table\"])[1]";
+        public static readonly string CATEGORIES_DETAIL_TABLE = "(//table[@class = \"govuk-table\"])[2]";
+        public static readonly string USER_PRODUCT_TABLE = "(//table[@class = \"govuk-table\"])[3]";
     }
 }
