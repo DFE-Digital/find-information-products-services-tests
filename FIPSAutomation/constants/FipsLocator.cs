@@ -94,9 +94,18 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string CHANNEL_CATEGORY = "//button[@data-target=\"channel-filter\"]";
         public static readonly string PHASE_CATEGORY = "//button[@data-target=\"phase-filter\"]";
         public static readonly string TYPE_CATEGORY = "//button[@data-target=\"type-filter\"]";
-        public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' enterprise-data')";
+        public static readonly string BA_CHECKBOX1_SELECTED = "label[for='group-enterprise-data']";
+        public static readonly string BA_CHECKBOX2_SELECTED = "label[for='group-operations-and-infrastructure']";
+        public static readonly string CHANNEL_CHECKBOX_SELECTED = "label[for='channel-web']";
+        public static readonly string PHASE_CHECKBOX_SELECTED = "label[for='phase-alpha']";
+        public static readonly string TYPE_CHECKBOX1_SELECTED = "label[for='type-campaign']";
+        public static readonly string TYPE_CHECKBOX2_SELECTED = "label[for='type-information']";
+       public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' enterprise-data')";
         public static readonly string BUSINESS_AREA_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('operations-and-infrastructure')";
-        public static readonly string CHANNEL_SELECTED_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Web')";
+        public static readonly string CHANNEL_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Web')";
+        public static readonly string PHASE_FILTERTAG = "ul.moj-filter-tags li a:has-text('Alpha')";
+        public static readonly string TYPE_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Campaign')";
+        public static readonly string TYPE_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('Information')";
         public static readonly string PAGE_2_LINK = "a[aria-label = \"Page 2\"]";
         public static readonly string PAGE_3_LINK = "a[aria-label = \"Page 3\"]";
         public static readonly string NEXT_PAGE_LINK = "//span[@class='govuk-pagination__link-title']";
@@ -119,10 +128,37 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string CATEGORIES_TABLE = "//main[@id='main-content']//table[1]";
         public static readonly string USERS_OF_PRODUCT_TABLE = "//main[@id='main-content']//table[2]";
         public static readonly string PROPOSED_FORM = "//form[@method='post']";
-        public static readonly string SUCCESS_MESSAGE_ALERT = ".govuk-notification-banner.govuk-notification-banner--success"; //after submission of proposed change
-        //message - Your proposed changes have been submitted. The FIPS team may contact you if additional action or information is needed.
         public static readonly string PRODUCT_DETAIL_TABLE = "(//table[@class = \"govuk-table\"])[1]";
         public static readonly string CATEGORIES_DETAIL_TABLE = "(//table[@class = \"govuk-table\"])[2]";
         public static readonly string USER_PRODUCT_TABLE = "(//table[@class = \"govuk-table\"])[3]";
+        public static readonly string PHASE_SELECTED_FILTERTAG = "ul.moj-filter-tags li a:has-text('Live')";
+        public static readonly string TYPE_SELECTED_FILTERTAG = "ul.moj-filter-tags li a:has-text('Information')";
+        public static readonly string USER_GROUPS_FILTERTAG = "ul.moj-filter-tags li a:has-text('Department for Education workforce')";
+        // Propose a change form locators -
+        public static readonly string PRODUCT_TITLE_TEXTBOX = "#ProposedTitle";
+        public static readonly string SHORT_DESCRIPTION_TEXTBOX = "#ProposedShortDescription";
+        public static readonly string PRODUCT_URL_TEXTBOX = "#ProposedProductUrl";
+        public static readonly string PRODUCT_CLASSIFICATION_PHASE = "legend:has-text(\"Phase\")";
+        public static readonly string PRODUCT_CLASSIFICATION_BUSINESSAREA = "legend:has-text(\"Business area\")";
+        public static readonly string PRODUCT_CLASSIFICATION_CHANNELS = "legend:has-text(\"Channels\")";
+        public static readonly string PRODUCT_CLASSIFICATION_TYPES = "legend:has-text(\"Types\")";
+        public static readonly string SELECTED_PHASE_RADIOBUTTON = "#ProposedPhaseId_389";
+        public static readonly string SELECTED_BUSINESSAREA_RADIOBUTTON = "#ProposedGroupId_409";
+        public static readonly string SELECTED_CHANNEL_CHECKBOXES = "#ProposedChannelIds_375";
+        public static readonly string SELECTED_TYPES_CHECKBOXES = "#ProposedTypeIds_393";
+        public static readonly string ADDITIONAL_INFO_TEXTBOX = "#ProposedUserDescription";
+        public static readonly string DELIVERY_MANAGER_TEXTBOX = "#ProposedDeliveryManager";
+        public static readonly string INFO_ASSET_OWNER_TEXTBOX = "#ProposedInformationAssetOwner";
+        public static readonly string PRODUCT_MANAGER_TEXTBOX = "#ProposedProductManager";
+        public static readonly string SENIOR_RESP_OFFICER_TEXTBOX = "#ProposedServiceOwner";
+        public static readonly string REASON_HINT_TEXT = "#Reason-hint";
+        public static readonly string REASON_FOR_CHANGE_TEXTBOX = "#Reason";
+        public static readonly string SUBMIT_CHANGE_BUTTON = "#submit-changes-btn";
+        public static readonly string CHANGED_PHASE_RADIOBUTTON = "#ProposedPhaseId_388";
+        public static readonly string CHANGED_BUSINESSAREA_RADIOBUTTON = "#ProposedGroupId_429";
+        public static readonly string ADDED_CHANNEL_CHECKBOXES = "#ProposedChannelIds_379";
+        public static readonly string ADDED_TYPES_CHECKBOXES = "#ProposedTypeIds_418";
+        public static readonly string SUCCESS_MESSAGE_ALERT = ".govuk-notification-banner.govuk-notification-banner--success"; //after submission of proposed change
+        //message - Your proposed changes have been submitted. The FIPS team may contact you if additional action or information is needed.
     }
 }
