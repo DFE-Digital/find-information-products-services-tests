@@ -1,18 +1,7 @@
-﻿using AventStack.ExtentReports;
-using AventStack.ExtentReports.MarkupUtils;
-using AventStack.ExtentReports.Model;
-using Deque.AxeCore.Playwright;
-using DocumentFormat.OpenXml.Spreadsheet;
-using find_information_products_services_tests.HomePageTestCases.constants;
-using find_information_products_services_tests.HomePageTestCases.utilities;
-using FiPSAutomation.HomePageTestCases;
-using Microsoft.Playwright;
-using Newtonsoft.Json;
-using NUnit.Framework;
-using System.Net;
-using static find_information_products_services_tests.HomePageTestCases.utilities.ExcelReader;
+﻿using AventStack.ExtentReports.Model;
+using FiPSAutomation;
 
-namespace find_information_products_services_tests.HomePageTestCases
+namespace find_information_products_services_tests
 {
     internal class FastTest : BaseTest
     {
@@ -23,21 +12,9 @@ namespace find_information_products_services_tests.HomePageTestCases
             await loginWithUsernameAndPasswordAndAcceptAndHideCookies();
         }
 
-        //[Test, Order(2), Category("functional")]
-        //public async Task VerifyTilesHeading()
-        //{
-        //    await Assertions.Expect(page.Locator(FipsLocator.HOME_PAGE_TILES)).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "All products and services" })).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Browse categories" })).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Keep information updated" })).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "About this service" })).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByText("Search and filter the products and services.", new() { Exact = true })).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByText("Find products and services by how they are categorised", new() { Exact = true })).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByText("How to update information about products listed in this service.", new() { Exact = true })).ToBeVisibleAsync();
-        //    await Assertions.Expect(page.GetByText("Find out what this service is and how it works.", new() { Exact = true })).ToBeVisibleAsync();
-        //}
 
-        //[Test, Order(6), Category("functional")]
+
+        //[Test, Order(3), Category("functional")]
         //public async Task ClickSubcategoryLinksForEPAndEYWorkforceUS94AC()   //excel sheet not created as story incomplete
         //{
         //    List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_EPandEYWorkforce");

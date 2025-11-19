@@ -1,11 +1,6 @@
 ﻿using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace find_information_products_services_tests.HomePageTestCases.pages
+namespace find_information_products_services_tests.pages
 {
     public class LoginPage
     {
@@ -18,7 +13,7 @@ namespace find_information_products_services_tests.HomePageTestCases.pages
 
         //public async Task NavigateToLoginAsync()
         //{
-        //    await _page.GotoAsync("https://www.example.com/login");
+        //    await _page.GotoAsync("https://find-products-services-test.azurewebsites.net/login");
         //}
 
         //public async Task LoginAsync(string username, string password)

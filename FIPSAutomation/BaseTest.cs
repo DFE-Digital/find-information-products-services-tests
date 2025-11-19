@@ -1,11 +1,9 @@
 ﻿using AventStack.ExtentReports;
-using find_information_products_services_tests.HomePageTestCases.constants;
-using find_information_products_services_tests.HomePageTestCases.pages;
-using FiPSAutomation.HomePageTestCases.utilities;
+using find_information_products_services_tests.constants;
+using FiPSAutomation.utilities;
 using Microsoft.Playwright;
-using System.Text;
 
-namespace FiPSAutomation.HomePageTestCases
+namespace FiPSAutomation
 {
     public abstract class BaseTest
     {
