@@ -1,6 +1,6 @@
 ﻿using ClosedXML.Excel;
 
-namespace find_information_products_services_tests.HomePageTestCases.utilities
+namespace find_information_products_services_tests.utilities
 {
     internal class ExcelReader
     {

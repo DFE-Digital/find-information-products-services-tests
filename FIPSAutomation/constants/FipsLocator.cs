@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Reflection;
 
-namespace find_information_products_services_tests.HomePageTestCases.constants
+namespace find_information_products_services_tests.constants
 {
     internal class FipsLocator
     {

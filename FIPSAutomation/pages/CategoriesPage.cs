@@ -1,11 +1,6 @@
 ﻿using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace find_information_products_services_tests.HomePageTestCases.pages
+namespace find_information_products_services_tests.pages
 {
     public class CategoriesPage
     {
@@ -18,7 +13,7 @@ namespace find_information_products_services_tests.HomePageTestCases.pages
 
         //public async Task NavigateToProductsAsync()
         //{
-        //    await _page.GotoAsync("https://www.example.com/products");
+        //    await _page.GotoAsync("https://find-products-services-test.azurewebsites.net/products");
         //}
 
         //public async Task<int> GetProductCountAsync()

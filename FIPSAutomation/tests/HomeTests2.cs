@@ -1,11 +1,11 @@
-﻿//using FiPSAutomation.HomePageTestCases;
+﻿//using FiPSAutomation;
 //using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
 //using System.Threading.Tasks;
 
-//namespace find_information_products_services_tests.HomePageTestCases.tests
+//namespace find_information_products_services_tests.tests
 //{
 //    public class HomeTests2 : BaseTest
 //    {

@@ -1,7 +1,7 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 
-namespace FiPSAutomation.HomePageTestCases.utilities
+namespace FiPSAutomation.utilities
 {
     internal class ExtentReportHelper
     {

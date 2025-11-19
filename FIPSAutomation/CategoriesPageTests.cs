@@ -1,6 +1,6 @@
 ﻿//using AventStack.ExtentReports;
-//using find_information_products_services_tests.HomePageTestCases.constants;
-//using FiPSAutomation.HomePageTestCases;
+//using find_information_products_services_tests.constants;
+//using FiPSAutomation;
 //using Microsoft.Playwright;
 //using NUnit.Framework.Interfaces;
 ////using Microsoft.Playwright.Assertions;
@@ -11,7 +11,7 @@
 //using System.Threading.Channels;
 //using System.Threading.Tasks;
 
-//namespace find_information_products_services_tests.HomePageTestCases
+//namespace find_information_products_services_tests
 //{
 //    internal class CategoriesPageTests : BaseTest
 //    {

@@ -1,13 +1,12 @@
 ﻿using AventStack.ExtentReports;
 using Deque.AxeCore.Playwright;
 using DocumentFormat.OpenXml.Wordprocessing;
-using find_information_products_services_tests.HomePageTestCases.constants;
-using find_information_products_services_tests.HomePageTestCases.utilities;
+using find_information_products_services_tests.constants;
+using find_information_products_services_tests.utilities;
 using Microsoft.Playwright;
-using NUnit.Framework.Constraints;
-using static find_information_products_services_tests.HomePageTestCases.utilities.ExcelReader;
+using static find_information_products_services_tests.utilities.ExcelReader;
 
-namespace FiPSAutomation.HomePageTestCases
+namespace FiPSAutomation
 {
     public class FIPSTestCases : BaseTest
     {

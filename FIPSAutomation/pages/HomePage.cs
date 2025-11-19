@@ -1,11 +1,6 @@
 ﻿using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace find_information_products_services_tests.HomePageTestCases.pages
+namespace find_information_products_services_tests.pages
 {
     public class HomePage
     {
