@@ -1519,7 +1519,54 @@ namespace FiPSAutomation.HomePageTestCases
             extentTest?.Log(Status.Pass, "EditProposeAChangeFormAndClickCancelUS168AC passed");
         }
 
-        [Test, Order(64), Category("accessibility")]
+        [Test, Order(65), Category("smoke")]
+        public async Task VerifyPrivacyPolicyLinkUS15AC()
+        {
+            var newTab = await page.RunAndWaitForPopupAsync(async () =>
+            {
+                await page.GetByRole(AriaRole.Link, new() { NameString = "Privacy policy" }).ClickAsync();
+            });
+
+            await newTab.WaitForLoadStateAsync();
+            await newTab.GetByRole(AriaRole.Button, new() { NameString = "Accept additional cookies" }).ClickAsync();
+            await newTab.GetByRole(AriaRole.Button, new() { NameString = "Hide cookie message" }).ClickAsync();
+
+            // Assertions in the new tab -
+            await Assertions.Expect(newTab).ToHaveURLAsync("https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter");
+            await Assertions.Expect(newTab).ToHaveTitleAsync("Personal information charter - Department for Education - GOV.UK");
+            await Assertions.Expect(newTab.GetByRole(AriaRole.Heading, new() { NameString = "Personal information charter" })).ToBeVisibleAsync();
+            await newTab.CloseAsync();
+            // Assertions back on the original page -
+            await Assertions.Expect(page).ToHaveTitleAsync("Propose changes to Accessibility and inclusion manual - FIPS");
+
+            extentTest?.Log(Status.Pass, "VerifyPrivacyPolicyLinkUS15AC passed");
+        }
+
+        [Test, Order(66), Category("functional")]
+        public async Task VerfiyImproveMissingOrInaccurateInformationLinkUS169AC()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BETA_PHASE_BANNER_DESC)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "improve missing or inaccurate information" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Keep information updated" })).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Search" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
+            await page.GoBackAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "request a new product entry" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
+            await page.GoBackAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "About this service" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "About this service" })).ToBeVisibleAsync();
+            await page.GoBackAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Contact us" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Contact us" })).ToBeVisibleAsync();
+            await page.GoBackAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Find information about products and services" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
+
+            extentTest?.Log(Status.Pass, "VerfiyImproveMissingOrInaccurateInformationLinkUS169AC passed");
+        }
+
+        [Test, Order(67), Category("accessibility")]
         public async Task AccessibilityTest()
         {
             var axeResults = await page.RunAxe();
