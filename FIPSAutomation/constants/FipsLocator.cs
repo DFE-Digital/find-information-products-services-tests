@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace find_information_products_services_tests.HomePageTestCases.constants
 {
@@ -159,6 +160,8 @@ namespace find_information_products_services_tests.HomePageTestCases.constants
         public static readonly string ADDED_CHANNEL_CHECKBOXES = "#ProposedChannelIds_379";
         public static readonly string ADDED_TYPES_CHECKBOXES = "#ProposedTypeIds_418";
         public static readonly string SUCCESS_MESSAGE_ALERT = ".govuk-notification-banner.govuk-notification-banner--success"; //after submission of proposed change
-        //message - Your proposed changes have been submitted. The FIPS team may contact you if additional action or information is needed.
+        public static readonly string BETA_PHASE_BANNER_DESC = "div[class='govuk-phase-banner'] div[class='govuk-width-container']";
+      //  public static readonly string IMPROVE_MISSING_INFO_LINK = "";
+
     }
 }
