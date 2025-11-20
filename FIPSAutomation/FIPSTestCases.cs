@@ -1565,7 +1565,54 @@ namespace FiPSAutomation
             extentTest?.Log(Status.Pass, "VerfiyImproveMissingOrInaccurateInformationLinkUS169AC passed");
         }
 
-        [Test, Order(67), Category("accessibility")]
+        [Test, Order(67), Category("functional")]
+        public async Task VerifyUGSocialWorkerSubcategoryListUS101AC()
+        {
+            List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_SocialWorker_list");
+            if (dataRows.Count > 1)
+            {
+                goToLink(dataRows[0].Col1);
+                await Assertions.Expect(page.Locator(dataRows[0].Col2)).ToHaveTextAsync("Social care workforce - Social worker");
+                await Assertions.Expect(page.GetByText(dataRows[0].Col3, new() { Exact = true })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(dataRows[1].Col2)).ToHaveTextAsync(dataRows[1].Col3);
+                await Assertions.Expect(page.Locator(dataRows[2].Col2)).ToHaveTextAsync(dataRows[2].Col3);
+
+                for (int i = 1; i < dataRows.Count; i++)
+                {
+                    if (dataRows[i].Col1 != "")
+                    {
+                        await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();
+                    }
+                }
+                extentTest?.Log(Status.Pass, "VerifyUGSocialWorkerSubcategoryListUS101AC passed");
+            }
+        }
+
+        [Test, Order(68), Category("functional")]
+        public async Task ClickSubcategoryLinksForSocialCareWorkforceUS101AC()
+        {
+            List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_SCWorkforce");
+            foreach (var row in dataRows)
+            {
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
+
+                goToLink(row.Product_Locator);
+
+                var FilterText = page.Locator(row.Filter_Tag);
+                await Assertions.Expect(FilterText).ToBeVisibleAsync();
+                await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
+                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isUsertypeChecked, Is.True);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
+            }
+        }
+
+        [Test, Order(69), Category("accessibility")]
         public async Task AccessibilityTest()
         {
             var axeResults = await page.RunAxe();
