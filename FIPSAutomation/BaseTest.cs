@@ -29,8 +29,13 @@ namespace FiPSAutomation
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
                 Headless = false,//false true
+                Args = new List<string> { "--start-maximized" },
             });
-            context = await browser.NewContextAsync();
+            //context = await browser.NewContextAsync();
+            var context = await browser.NewContextAsync(new BrowserNewContextOptions
+            {
+                ViewportSize = ViewportSize.NoViewport
+            });
             page = await context.NewPageAsync();
             //var reportPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestResults", "extent1.html");
             extent = ExtentReportHelper.InitialiseReport("extent-"+ DateTime.Now.ToString("yyyy-MM-dd HHmmss")+".html", "FiPS Automation Report");
