@@ -17,31 +17,33 @@ namespace FiPSAutomation
         }
 
         [Test, Order(2), Category("functional")]
-        public async Task HomePageVerificationAC1()
+        public async Task HomePageVerificationUS12AC1()
         {
             await Assertions.Expect(page).ToHaveTitleAsync("Find information about products and services - FIPS");
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("Use this service to explore what DfE delivers. Build on existing work, avoid duplication, and work more effectively across teams.")).ToBeVisibleAsync();
             var searchlink = page.Locator(FipsLocator.HOME_SEARCH_LOCATOR);
             await Assertions.Expect(searchlink).ToHaveTextAsync(" Search products and services ");
-            //var link1 = page.Locator(FipsLocator.ABOUT_SERVICE_LOCATOR);
-            //await Assertions.Expect(link1).ToHaveTextAsync("About this service");
 
-            extentTest?.Log(Status.Pass, "homePageVerificationAC1 assertion passed");
+            //About this service link is removed -
+            //var link1 = page.Locator(FipsLocator.ABOUT_SERVICE_LOCATOR);
+            //await Assertions.Expect(link1).ToHaveTextAsync("About this service"); 
+
+            extentTest?.Log(Status.Pass, "HomePageVerificationUS12AC1 assertion passed");
         }
 
         [Test, Order(3), Category("functional")]
-        public async Task ClickSearchButtonAC2()
+        public async Task ClickSearchButtonUS12AC2()
         {
             await page.Locator(FipsLocator.HOME_SEARCH_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
             await page.GoBackAsync();
 
-            extentTest?.Log(Status.Pass, "clickSearchButtonAC2 passed");
+            extentTest?.Log(Status.Pass, "ClickSearchButtonUS12AC2 passed");
         }
 
         [Test, Order(4), Category("functional")]
-        public async Task VerifyTilesAreVisibleAC4()
+        public async Task VerifyTilesAreVisibleUS12AC4()
         {
             await Assertions.Expect(page.Locator(FipsLocator.HOME_PAGE_TILES)).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "All products and services" })).ToBeVisibleAsync();
@@ -53,52 +55,41 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByText("How to update information about products listed in this service.", new() { Exact = true })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("Find out what this service is and how it works.", new() { Exact = true })).ToBeVisibleAsync();
 
-            extentTest?.Log(Status.Pass, "VerifyTilesAreVisibleAC4 passed");
+            extentTest?.Log(Status.Pass, "VerifyTilesAreVisibleUS12AC4 passed");
         }
 
         [Test, Order(5), Category("functional")]
-        public async Task ClickAllProductsAndServicesAC5()
+        public async Task ClickAllProductsAndServicesUS12AC5()
         {
             await page.Locator(FipsLocator.ALL_PRODUCT_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
             await page.GoBackAsync();
 
-            extentTest?.Log(Status.Pass, "clickAllProductsAndServicesAC5 passed");
+            extentTest?.Log(Status.Pass, "ClickAllProductsAndServicesUS12AC5 passed");
         }
 
         [Test, Order(6), Category("functional")]
-        public async Task ClickBrowseCategoriesAC6()
+        public async Task ClickBrowseCategoriesUS12AC6()
         {
             await page.Locator(FipsLocator.BROWSE_CATEGORY_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Browse categories" })).ToBeVisibleAsync();
             await page.GoBackAsync();
 
-            extentTest?.Log(Status.Pass, "clickBrowseCategoriesAC6 passed");
+            extentTest?.Log(Status.Pass, "ClickBrowseCategoriesUS12AC6 passed");
         }
 
-        //[Test, Order(8), Category("functional")]
-        //public async Task ClickUseTheDataAC7()
-        //{
-        //    await page.Locator(FipsLocator.USE_DATA_LOCATOR).ClickAsync();
-        //    await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Using the data" })).ToBeVisibleAsync();
-
-        //    await page.GoBackAsync();
-
-        //    extentTest?.Log(Status.Pass, "clickUseTheDataAC7 passed");
-        //}
-
         [Test, Order(7), Category("functional")]
-        public async Task ClickAboutThisServiceTileAC()
+        public async Task ClickAboutThisServiceTileUS12AC()
         {
             await page.Locator(FipsLocator.ABOUT_SERVICE_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByText("About this service", new() { Exact = true })).ToBeVisibleAsync();
             await page.GoBackAsync();
 
-            extentTest?.Log(Status.Pass, "ClickAboutThisServiceTileAC passed");
+            extentTest?.Log(Status.Pass, "ClickAboutThisServiceTileUS12AC passed");
         }
 
         [Test, Order(8), Category("functional")]
-        public async Task ClickKeepInformationUpdatedTileAC8()
+        public async Task ClickKeepInformationUpdatedTileUS12AC8()
         {
             await page.Locator(FipsLocator.KEEP_INFO_UPDATE_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Keep information updated" })).ToBeVisibleAsync();
@@ -118,21 +109,21 @@ namespace FiPSAutomation
             await page.GetByRole(AriaRole.Link, new() { NameString = "Find information about products and services" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
 
-            extentTest?.Log(Status.Pass, "ClickKeepInformationUpdatedTileAC8 passed");
+            extentTest?.Log(Status.Pass, "ClickKeepInformationUpdatedTileUS12AC8 passed");
         }
 
         [Test, Order(9), Category("functional")]
-        public async Task CheckBrowseCategoriesPageDescriptionAC2()
+        public async Task CheckBrowseCategoriesPageDescriptionUS05AC2()
         {
 
             await page.Locator(FipsLocator.BROWSE_CATEGORY_LOCATOR).ClickAsync();
             await Assertions.Expect(page.GetByText("Find products and services by how they are categorised", new() { Exact = true })).ToBeVisibleAsync();
 
-            extentTest?.Log(Status.Pass, "CheckBrowseCategoriesPageDescriptionAC2 passed");
+            extentTest?.Log(Status.Pass, "CheckBrowseCategoriesPageDescriptionUS05AC2 passed");
         }
 
         [Test, Order(10), Category("functional")]
-        public async Task CheckCategoriesListAndDescriptionAC3()
+        public async Task CheckCategoriesListAndDescriptionUS05AC3()
         {
             //verifying Channel link -
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Channel" })).ToBeVisibleAsync();
@@ -159,18 +150,18 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByText("The users of the product or service.", new() { Exact = true })).ToBeVisibleAsync();
             // await Assertions.Expect(page.GetByText("11 main categories", new() { Exact = true })).ToBeVisibleAsync();
 
-            extentTest?.Log(Status.Pass, "checkCategoriesListAndDescriptionAC3 passed");
+            extentTest?.Log(Status.Pass, "CheckCategoriesListAndDescriptionUS05AC3 passed");
         }
 
         [Test, Order(11), Category("functional")]
-        public async Task ClickCategoriesLinksAC4()
+        public async Task ClickCategoriesLinksUS05AC4()
         {
             //await page.GotoAsync(URLConstant.DEV_FIPS_URL + "categories/channel");
             goToLink("categories/channel");
             await Assertions.Expect(page.GetByText("The delivery channel through which a product or service is provided to users.", new() { Exact = true })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Channel" })).ToBeVisibleAsync();
 
-            //await page.Locator("a").Filter(new() { HasTextString = "Channel" }).Nth(1).ClickAsync();
+            //await page.Locator("a").Filter(new() { HasTextString = "Channel" }).Nth(1).ClickAsync(); 
             //await page.GetByText("The delivery channel through which a product or service is provided to users.").ClickAsync();
             //await page.Locator("a[href='/categories/channel']").Nth(1).ClickAsync();
             //await page.GetByRole(AriaRole.Link, new() { NameString = "Channel" }).ClickAsync();
@@ -194,11 +185,11 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "User group" })).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "Back to all categories" }).ClickAsync();
 
-            extentTest?.Log(Status.Pass, "clickCategoriesLinksAC4 passed");
+            extentTest?.Log(Status.Pass, "ClickCategoriesLinksUS05AC4 passed");
         }
 
         [Test, Order(12), Category("functional")]
-        public async Task VerifyPhaseCategoryListAC1()
+        public async Task VerifyPhaseCategoryListUS35AC1()
         {
             goToLink("categories/phase");
             await Assertions.Expect(page.GetByText("The stage a product or service is at in the service delivery lifecycle.", new() { Exact = true })).ToBeVisibleAsync();
@@ -217,7 +208,7 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Decommissioned" })).ToBeVisibleAsync();
 
             await page.GetByRole(AriaRole.Link, new() { NameString = "Back to all categories" }).ClickAsync(); //verifying Back link
-            extentTest?.Log(Status.Pass, "CheckPhaseCategoryListAC1 passed");
+            extentTest?.Log(Status.Pass, "VerifyPhaseCategoryListUS35AC1 passed");
         }
 
         //[Test, Order(14), Category("functional")]
@@ -238,7 +229,7 @@ namespace FiPSAutomation
         //}
 
         [Test, Order(13), Category("functional")]
-        public async Task ClickSubcategoryLinksForPhaseCategoryAC()
+        public async Task ClickSubcategoryLinksForPhaseCategoryUS35AC2()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_phase");
             // Iterate through each data row
@@ -272,7 +263,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(14), Category("functional")]
-        public async Task VerifyChannelCategoryListAC()
+        public async Task VerifyChannelCategoryListUS26AC1()
         {
             goToLink("categories/channel");
             await Assertions.Expect(page.GetByText("The delivery channel through which a product or service is provided to users.", new() { Exact = true })).ToBeVisibleAsync();
@@ -288,11 +279,11 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "SMS" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Web" })).ToBeVisibleAsync();
 
-            extentTest?.Log(Status.Pass, "VerifyChannelCategoryListAC passed");
+            extentTest?.Log(Status.Pass, "VerifyChannelCategoryListUS26AC1 passed");
         }
 
         [Test, Order(15), Category("functional")]
-        public async Task ClickSubcategoryLinksForChannelAC()
+        public async Task ClickSubcategoryLinksForChannelUS26AC2()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_channel");
             // Iterate through each data row
@@ -327,7 +318,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(16), Category("functional")]
-        public async Task VerifyBusinessAreaCategoryListAC()
+        public async Task VerifyBusinessAreaCategoryListUS27AC1()
         {
             goToLink("categories/business-area");
             await Assertions.Expect(page.GetByText("The business area or portfolio responsible for a product or service.", new() { Exact = true })).ToBeVisibleAsync();
@@ -351,7 +342,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(17), Category("functional")]
-        public async Task ClickSubcategoryLinksForBusinessAreaAC()
+        public async Task ClickSubcategoryLinksForBusinessAreaUS27AC2()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_businessarea");
             // Iterate through each data row
@@ -385,7 +376,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(18), Category("functional")]
-        public async Task VerifyTypeCategoryListAC()
+        public async Task VerifyTypeCategoryListUS29AC1()
         {
             goToLink("categories/type");
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Type" })).ToBeVisibleAsync();
@@ -393,23 +384,17 @@ namespace FiPSAutomation
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "API" })).ToBeVisibleAsync();
             // await Assertions.Expect(page.Locator(FipsLocator.TYPE_API_LINK_DESC)).ToHaveTextAsync("View products in this category");
-
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Campaign" })).ToBeVisibleAsync();
             //await Assertions.Expect(page.Locator(FipsLocator.TYPE_CAMPAIGN_LINK_DESC)).ToHaveTextAsync("View products in this category");
-
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Data collection and reporting" })).ToBeVisibleAsync();
-
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Information" })).ToBeVisibleAsync();
-            //await Assertions.Expect(page.Locator(FipsLocator.TYPE_INFORMATION_LINK_DESC)).ToHaveTextAsync("View products in this category");
-
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Transactional" })).ToBeVisibleAsync();
-            //await Assertions.Expect(page.Locator(FipsLocator.TYPE_TRANSACTIONAL_LINK_DESC)).ToHaveTextAsync("View products in this category");
-
-            extentTest?.Log(Status.Pass, "VerifyTypeCategoryListAC passed");
+            
+            extentTest?.Log(Status.Pass, "VerifyTypeCategoryListUS29AC1 passed");
         }
 
         [Test, Order(19), Category("functional")]
-        public async Task ClickSubcategoryLinksForTypeAC()
+        public async Task ClickSubcategoryLinksForTypeUS29AC2()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_type");
             // Iterate through each data row
@@ -1220,7 +1205,7 @@ namespace FiPSAutomation
                                                    Filter(new() { HasTextString = "View product" });
             var targetValueRow = page.Locator(".govuk-table__body .govuk-table__row").
                                                    Filter(new LocatorFilterOptions { HasTextString = "Live" }).
-                                                   Filter(new LocatorFilterOptions { HasTextString = "Operations and Infrastructure" }).
+                                                   Filter(new LocatorFilterOptions { HasTextString = "Customer Experience and Design" }).
                                                    Filter(new LocatorFilterOptions { HasTextString = "1 contacts" }).
                                                    Filter(new LocatorFilterOptions { HasTextString = "View product" });
             await Assertions.Expect(targetHeader).ToBeVisibleAsync();
@@ -1247,7 +1232,7 @@ namespace FiPSAutomation
                 new Dictionary<string, string>
                 {
                     { "Phase", "Phase: \n                                        Live" },
-                    { "Business area", "Business area: \nOperations and Infrastructure" },
+                    { "Business area", "Business area: \nCustomer Experience and Design" },
                     { "Contacts", "1 contacts" },
                     { "View product", "View product: \n                                        View product" }
                 },
@@ -1296,9 +1281,9 @@ namespace FiPSAutomation
 
                 new Dictionary<string, string>
                 {
-                    { "Name", "Operations and Infrastructure" },
+                    { "Name", "Customer Experience and Design" },
                     { "Type", "Business area" },
-                    { "Description", "Internal operations, technology infrastructure and support services." }
+                    { "Description", "Partner with DfE teams to champion user needs and connect, improve and simplify services." }
                 },
 
                 new Dictionary<string, string>
@@ -1348,13 +1333,13 @@ namespace FiPSAutomation
         [Test, Order(60), Category("functional")]
         public async Task ClickSubcategoriesLinkInCategoriesTableUS168AC()
         {
-            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Operations and Infrastructure" })).ToBeVisibleAsync();
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Operations and Infrastructure" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Customer Experience and Design" })).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Customer Experience and Design" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
-            // UNCOMMENT ONCE DEFECT IS FIXED -
-            //  await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG2)).ToHaveTextAsync("Remove this filter operations-and-infrastructure");
+            // UNCOMMENT ONCE BUG IS FIXED -
+            //  await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG2)).ToHaveTextAsync("Remove this filter customer-experience-and-design");
             await page.GoBackAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Web" })).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "Web" }).ClickAsync();
@@ -1636,7 +1621,78 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(70), Category("accessibility")]
+        [Test, Order(70), Category("functional")]
+        public async Task ClickSubcategoryLinksForEPAndEYWorkforceUS94AC()
+        {
+            List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_EPandEYWorkforce");
+            foreach (var row in dataRows)
+            {
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
+
+                goToLink(row.Product_Locator);
+
+                var FilterText = page.Locator(row.Filter_Tag);
+                await Assertions.Expect(FilterText).ToBeVisibleAsync();
+                await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
+                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isUsertypeChecked, Is.True);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
+            }
+        }
+
+        [Test, Order(71), Category("functional")]
+        public async Task VerifyUGEPEYAcademyAndTrustWorkforceSubcategoryListUS130AC()
+        {
+            List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEYAcademyTruWorkforce_list");
+            if (dataRows.Count > 1)
+            {
+                goToLink(dataRows[0].Col1);
+                await Assertions.Expect(page.Locator(dataRows[0].Col2)).ToHaveTextAsync("Education provider and early years workforce - Academy and trust workforce");
+                await Assertions.Expect(page.GetByText(dataRows[0].Col3, new() { Exact = true })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(dataRows[1].Col2)).ToHaveTextAsync(dataRows[1].Col3);
+                await Assertions.Expect(page.Locator(dataRows[2].Col2)).ToHaveTextAsync(dataRows[2].Col3);
+
+                for (int i = 1; i < dataRows.Count; i++)
+                {
+                    if (dataRows[i].Col1 != "")
+                    {
+                        await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();
+                    }
+                }
+                extentTest?.Log(Status.Pass, "VerifyUGEPEYAcademyAndTrustWorkforceSubcategoryListUS130AC passed");
+            }
+        }
+
+        [Test, Order(72), Category("functional")]
+        public async Task ClickSubcategoryLinksForEPEYAcademyAndTrustWorkforceUS130AC()
+        {
+            List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_AcademyTWorkforce");
+            foreach (var row in dataRows)
+            {
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
+
+                goToLink(row.Product_Locator);
+
+                var FilterText = page.Locator(row.Filter_Tag);
+                await Assertions.Expect(FilterText).ToBeVisibleAsync();
+                await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
+                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isUsertypeChecked, Is.True);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
+            }
+        }
+
+        [Test, Order(73), Category("accessibility")]
         public async Task AccessibilityTest()
         {
             var axeResults = await page.RunAxe();
