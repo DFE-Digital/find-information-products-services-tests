@@ -143,7 +143,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string PRODUCT_CLASSIFICATION_CHANNELS = "legend:has-text(\"Channels\")";
         public static readonly string PRODUCT_CLASSIFICATION_TYPES = "legend:has-text(\"Types\")";
         public static readonly string SELECTED_PHASE_RADIOBUTTON = "#ProposedPhaseId_389";
-        public static readonly string SELECTED_BUSINESSAREA_RADIOBUTTON = "#ProposedGroupId_409";
+        public static readonly string SELECTED_BUSINESSAREA_RADIOBUTTON = "#ProposedGroupId_445";
         public static readonly string SELECTED_CHANNEL_CHECKBOXES = "#ProposedChannelIds_375";
         public static readonly string SELECTED_TYPES_CHECKBOXES = "#ProposedTypeIds_393";
         public static readonly string ADDITIONAL_INFO_TEXTBOX = "#ProposedUserDescription";
