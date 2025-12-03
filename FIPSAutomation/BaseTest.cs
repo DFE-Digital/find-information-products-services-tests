@@ -79,8 +79,8 @@ namespace FiPSAutomation
             }
             else if (status == NUnit.Framework.Interfaces.TestStatus.Passed)
             {
-                extentTest?.Log(Status.Pass, "Test passed");
-                extentTest?.Pass("Test passed ...");
+                //extentTest?.Log(Status.Pass, "Test passed");
+                extentTest?.Pass("Test passed.");
             }
             else
             {
