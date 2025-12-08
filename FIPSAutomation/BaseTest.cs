@@ -35,7 +35,9 @@ namespace FiPSAutomation
             //context = await browser.NewContextAsync();
             var context = await browser.NewContextAsync(new BrowserNewContextOptions
             {
-                ViewportSize = ViewportSize.NoViewport
+                ViewportSize = ViewportSize.NoViewport,
+                Locale = "en-GB",
+                TimezoneId = "Europe/London"
             });
             page = await context.NewPageAsync();
             //var reportPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestResults", "extent1.html");
