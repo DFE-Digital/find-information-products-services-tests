@@ -150,8 +150,8 @@ namespace FiPSAutomation
 
                     byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
                     string decodedString = Encoding.UTF8.GetString(decodedBytes);
-                    Console.WriteLine("XXXXXXXXXXXXX: decodedString:" + decodedString);
-                    extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
+                    ////Console.WriteLine("XXXXXXXXXXXXX: decodedString:" + decodedString);
+                    ////extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
                     await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
                     //await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
@@ -166,10 +166,10 @@ namespace FiPSAutomation
 
                     byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
                     string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
-                    //extentTest?.Log(Status.Pass, "decodedString2:" + decodedString2);
-                    //Console.WriteLine("XXXXXXXXXXXXX: decodedString2:" + decodedString2);
+                    ////extentTest?.Log(Status.Pass, "decodedString2:" + decodedString2);
+                    ////Console.WriteLine("XXXXXXXXXXXXX: decodedString2:" + decodedString2);
                     await page.GetByPlaceholder("Password").FillAsync(decodedString2);
-                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
+                    //await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
                 }
                 catch (FormatException ex)
                 {
