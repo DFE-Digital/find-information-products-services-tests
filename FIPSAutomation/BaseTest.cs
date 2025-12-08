@@ -29,7 +29,7 @@ namespace FiPSAutomation
             playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                Headless = false,//false true
+                Headless = true,//false true
                 Args = new List<string> { "--start-maximized" },
             });
             //context = await browser.NewContextAsync();
