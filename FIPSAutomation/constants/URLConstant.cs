@@ -4,7 +4,7 @@ namespace find_information_products_services_tests.constants
 {
     internal class URLConstant
     {
-        public static readonly String ENVIRONMENT = "test";//dev, test, local-testing-using-test-env
+        public static readonly String ENVIRONMENT = "local-testing-using-test-env";//dev, test, local-testing-using-test-env
 
         public static readonly string LOGIN_URL = "https://login.microsoftonline.com/common/login";
 
