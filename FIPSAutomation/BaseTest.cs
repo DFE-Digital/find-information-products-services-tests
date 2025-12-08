@@ -32,12 +32,21 @@ namespace FiPSAutomation
                 Headless = true,//false true
                 Args = new List<string> { "--start-maximized" },
             });
+
+            var londonCoords = new Geolocation()
+            {
+                Latitude = 51.509865F,
+                Longitude = -0.118092F
+            };
+
             //context = await browser.NewContextAsync();
             var context = await browser.NewContextAsync(new BrowserNewContextOptions
             {
                 ViewportSize = ViewportSize.NoViewport,
                 Locale = "en-GB",
-                TimezoneId = "Europe/London"
+                TimezoneId = "Europe/London",
+                Geolocation = londonCoords,
+                Permissions = new[] { "geolocation" },
             });
             page = await context.NewPageAsync();
             //var reportPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestResults", "extent1.html");
