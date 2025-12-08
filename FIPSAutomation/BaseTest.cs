@@ -29,7 +29,7 @@ namespace FiPSAutomation
             playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
-                Headless = true,//false true
+                Headless = false,//false true
                 Args = new List<string> { "--start-maximized" },
             });
             //context = await browser.NewContextAsync();
@@ -115,18 +115,20 @@ namespace FiPSAutomation
                 try
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
+                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
 
-                    byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
-                    string decodedString = Encoding.UTF8.GetString(decodedBytes);
-                    await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
+                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
+                    //string decodedString = Encoding.UTF8.GetString(decodedBytes);
+                    //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
                     ////await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
+                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
 
-                    byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
-                    string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
-                    await page.GetByPlaceholder("Password").FillAsync(decodedString2);
+                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
+                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
+                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
                 }
                 catch (FormatException ex)
                 {
@@ -144,20 +146,22 @@ namespace FiPSAutomation
                 try
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
+                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
 
-                    byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
-                    string decodedString = Encoding.UTF8.GetString(decodedBytes);
+                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
+                    //string decodedString = Encoding.UTF8.GetString(decodedBytes);
                     ////Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ decodedString);
                     ////extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
-                    await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
+                    //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
                     ////await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
+                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
 
-                    byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
-                    string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
-                    await page.GetByPlaceholder("Password").FillAsync(decodedString2);
+                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
+                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
+                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
                 }
                 catch (FormatException ex)
                 {
