@@ -123,7 +123,7 @@ namespace FiPSAutomation
                     //await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
-                    await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
+                    //await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
 
                     byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
