@@ -148,12 +148,12 @@ namespace FiPSAutomation
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
 
-                    byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
-                    string decodedString = Encoding.UTF8.GetString(decodedBytes);
+                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
+                    //string decodedString = Encoding.UTF8.GetString(decodedBytes);
                     //Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ decodedString);
-                    extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
-                    await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
-                    //await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
+                    //extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
+                    //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
+                    await page.GetByPlaceholder("Email or phone").FillAsync("Shalini.SHIWANI@education.gov.uk");// LoginConstant.USERNAME);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
                     await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
@@ -168,6 +168,7 @@ namespace FiPSAutomation
                 }
                 catch (FormatException ex)
                 {
+                    extentTest?.Log(Status.Fail, "error:" + ex.Message);
                     Console.WriteLine("Error with :- " + ex.Message);
                 }
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
