@@ -3,16 +3,22 @@ on:
 #  push:
 #    branches: [ main ]
   pull_request:
+    types: [opened, synchronize, reopened]
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      reason:
+        required: false
+        default: 'Manual trigger'
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     env:
       # Access a GitHub variable
-      KEY11: ${{ secrets.KEY1 }}
+      KEY3: ${{ secrets.KEY3 }}
       # Access a GitHub secret
-      KEY22: ${{ secrets.KEY2 }}
+      KEY4: ${{ secrets.KEY4 }}
     steps:
       - uses: actions/checkout@v4
       

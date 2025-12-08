@@ -2,6 +2,7 @@
 using find_information_products_services_tests.constants;
 using FiPSAutomation.utilities;
 using Microsoft.Playwright;
+using System.Text;
 
 namespace FiPSAutomation
 {
@@ -114,20 +115,20 @@ namespace FiPSAutomation
                 try
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
+                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
 
-                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"));
+                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
                     //string decodedString = Encoding.UTF8.GetString(decodedBytes);
                     //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
-                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
-                    await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
+                    ////await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
+                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
 
-                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"));
+                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
                     //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
                     //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
-                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
                 }
                 catch (FormatException ex)
                 {
@@ -145,19 +146,44 @@ namespace FiPSAutomation
                 try
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
+                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
 
-                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY11"));
+                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
                     //string decodedString = Encoding.UTF8.GetString(decodedBytes);
+                    ////Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ decodedString);
+                    ////extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
                     //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
+                    await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
+
+                    ////await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
+                    await page.GetByPlaceholder("Password").ClickAsync();
+                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
+
+                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
+                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
+                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Error with :- " + ex.Message);
+                }
+                await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
+                await page.WaitForURLAsync(URLConstant.LOGIN_URL);
+
+                await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
+                await page.WaitForURLAsync(URLConstant.TEST_FIPS_URL);
+            }
+            else if (URLConstant.ENVIRONMENT == "local-testing-using-test-env")
+            {
+                await page.GotoAsync(URLConstant.TEST_LOGIN_OAUTH_URL);
+                try
+                {
+                    await page.GetByPlaceholder("Email or phone").ClickAsync();
                     await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
-                    await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
+                    //await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
-
-                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY22"));
-                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
-                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
                     await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
                 }
                 catch (FormatException ex)
