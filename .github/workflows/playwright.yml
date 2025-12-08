@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       # Access a GitHub variable
-      KEY1: ${{ secrets.KEY1 }}
+      KEY3: ${{ secrets.KEY3 }}
       # Access a GitHub secret
-      KEY2: ${{ secrets.KEY2 }}
+      KEY4: ${{ secrets.KEY4 }}
     steps:
       - uses: actions/checkout@v4
       

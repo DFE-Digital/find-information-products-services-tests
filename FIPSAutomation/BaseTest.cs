@@ -116,7 +116,7 @@ namespace FiPSAutomation
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
 
-                    byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY1"));
+                    byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
                     string decodedString = Encoding.UTF8.GetString(decodedBytes);
                     await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
 
@@ -126,7 +126,7 @@ namespace FiPSAutomation
                     await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
 
-                    byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY2"));
+                    byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
                     string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
                     await page.GetByPlaceholder("Password").FillAsync(decodedString2);
                     //await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
@@ -148,9 +148,10 @@ namespace FiPSAutomation
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
 
-                    byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY1"));
+                    byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
                     string decodedString = Encoding.UTF8.GetString(decodedBytes);
-                    Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ decodedString);
+                    //Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ decodedString);
+                    extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
                     await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
                     //await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
                     await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
@@ -158,8 +159,9 @@ namespace FiPSAutomation
                     await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
 
-                    byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY2"));
+                    byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
                     string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
+                    extentTest?.Log(Status.Pass, "decodedString2:" + decodedString2);
                     Console.WriteLine("XXXXXXXXXXXXX: decodedString2:"+ decodedString2);
                     await page.GetByPlaceholder("Password").FillAsync(decodedString2);
                     //await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
