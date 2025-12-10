@@ -95,10 +95,11 @@ namespace FiPSAutomation
             {
                 await page.GotoAsync(URLConstant.DEV_FIPS_URL + link);
             }
-            else if (URLConstant.ENVIRONMENT == "test")
+            else if (URLConstant.ENVIRONMENT == "test" || URLConstant.ENVIRONMENT == "local-testing-using-test-env")
             {
                 await page.GotoAsync(URLConstant.TEST_FIPS_URL + link);
             }
+            //else if (URLConstant.ENVIRONMENT == "")
         }
 
         public async void clickLink(String link)

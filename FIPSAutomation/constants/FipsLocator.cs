@@ -79,9 +79,10 @@ namespace find_information_products_services_tests.constants
         public static readonly string SAVE_COOKIES_RADIO_OFF = "#analytics-off";
         public static readonly string SAVE_COOKIES_RADIO_ON = "#analytics-on";
         public static readonly string SAVE_COOKIES_ALERT = ".govuk-notification-banner.govuk-notification-banner--success";
-        public static readonly string FEEDBACK_TEXTBOX_LINK = "textarea#feedback_form_input";
-        public static readonly string FEEDBACK_MAXCHARS_ERROR_MESSAGE = "//*[@id=\"feedback_form_group\"]/div[3]";
-        public static readonly string FEEDBACK_SUBMIT_ERROR_MESSAGE = "//div[@id=\"feedback-error-summary\"]";
+        public static readonly string FEEDBACK_TEXTBOX = "textarea#feedback_form_input";
+        public static readonly string FEEDBACK_FORM_ERROR_MSG = "#feedback_form_input-error";
+        public static readonly string FEEDBACK_MAXCHARS_ERROR_MSG = "//*[@id=\"feedback_form_group\"]/div[3]";
+        public static readonly string FEEDBACK_SUBMIT_ERROR_MSG = "//div[@id=\"feedback-error-summary\"]";
         //Products page locators -
         public static readonly string PRODUCTS_AND_SERVICES_LIST = "ul.dfe-chevron-card__list";
         public static readonly string PRODUCT_NAME_TEXTBOX = "#keywords";
@@ -100,8 +101,8 @@ namespace find_information_products_services_tests.constants
         public static readonly string PHASE_CHECKBOX_SELECTED = "label[for='phase-alpha']";
         public static readonly string TYPE_CHECKBOX1_SELECTED = "label[for='type-campaign']";
         public static readonly string TYPE_CHECKBOX2_SELECTED = "label[for='type-information']";
-       public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' enterprise-data')";
-        public static readonly string BUSINESS_AREA_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('operations-and-infrastructure')";
+       public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' Enterprise Data')";
+        public static readonly string BUSINESS_AREA_FILTERTAG2 = "ul.moj-filter-tags li a:has-text(' Operations and Infrastructure')";
         public static readonly string CHANNEL_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Web')";
         public static readonly string PHASE_FILTERTAG = "ul.moj-filter-tags li a:has-text('Alpha')";
         public static readonly string TYPE_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Campaign')";
@@ -160,7 +161,10 @@ namespace find_information_products_services_tests.constants
         public static readonly string ADDED_TYPES_CHECKBOXES = "#ProposedTypeIds_418";
         public static readonly string SUCCESS_MESSAGE_ALERT = ".govuk-notification-banner.govuk-notification-banner--success"; //after submission of proposed change
         public static readonly string BETA_PHASE_BANNER_DESC = "div[class='govuk-phase-banner'] div[class='govuk-width-container']";
-      //  public static readonly string IMPROVE_MISSING_INFO_LINK = "";
+        //Survey/feedback link locators -
+        public static readonly string FEEDBACK_BANNER = "//div[@class='dfe-feedback-banner--flex']";
+        public static readonly string SURVEY_LINK_TEXT = "//*[@id=\"feedback-link-text\"]/a[1]";
+        public static readonly string SURVEY_FIRST_PAGE = "//div[@class='QuestionText BorderColor']";
 
     }
 }
