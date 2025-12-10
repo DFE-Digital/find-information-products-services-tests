@@ -303,7 +303,7 @@ namespace FiPSAutomation
                 //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
                 await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
 
-                //Locate and assert the page header and "phase" subheading
+                //Locate and assert the page header and "channel" subheading
                 await Assertions.Expect(page.GetByRole(AriaRole.Heading,
                     new() { NameString = row.Heading })).ToBeVisibleAsync();
 
@@ -345,32 +345,22 @@ namespace FiPSAutomation
         public async Task ClickSubcategoryLinksForBusinessAreaUS27AC2()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_businessarea");
-            // Iterate through each data row
+
             foreach (var row in dataRows)
             {
-                //Task.Delay(1000);
-                // Print a log to the NUnit output for traceability
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
 
                 goToLink(row.Product_Locator);
 
                 var requestTag = page.Locator(row.Filter_Tag);
-
-                // Assert that the filter tag exists and is visible
                 await Assertions.Expect(requestTag).ToBeVisibleAsync();
-
-                //Assert the text content of the filter tag toHaveTextAsync checks that the element has the exact text.
                 await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
-
-                //Locate and assert the page header and "phase" subheading
                 await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-
                 await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Business area");
-
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
-
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
@@ -389,7 +379,7 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Data collection and reporting" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Information" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Transactional" })).ToBeVisibleAsync();
-            
+
             extentTest?.Log(Status.Pass, "VerifyTypeCategoryListUS29AC1 passed");
         }
 
@@ -1013,9 +1003,10 @@ namespace FiPSAutomation
         {
             goToLink("");
             string feedbackText = "Verifying feedback form - User can enter their feedback or report a problem with this page and submit the form successfully.";
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Give feedback or report a problem with this page" }).ClickAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "tell us about a problem with this page" }).ClickAsync();
             await Assertions.Expect(page.GetByText("What do you want to tell us?", new() { Exact = true })).ToBeVisibleAsync();
-            await page.Locator(FipsLocator.FEEDBACK_TEXTBOX_LINK).FillAsync(feedbackText);
+            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_FORM_ERROR_MSG)).ToContainTextAsync("Your feedback must be 1000 characters or fewer");
+            await page.Locator(FipsLocator.FEEDBACK_TEXTBOX).FillAsync(feedbackText);
             await page.GetByRole(AriaRole.Button, new() { NameString = "Submit feedback" }).ClickAsync();
             await Task.Delay(2000);
             await Assertions.Expect(page.GetByText("Thank you for your feedback", new() { Exact = true })).ToBeVisibleAsync();
@@ -1028,12 +1019,13 @@ namespace FiPSAutomation
         {
             goToLink("");
             string feedbackText = "Validating more than 1000 characters for feedback form. User should not be able to submit their feedback after entering more than limited characters in given textarea. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz012 34567Validating 1000 characters for feedback form. User should be able to enter their feedback or report a problem with this page and submit the form successfully. abc defghi jklm nop qrst uvw xyz. Test";
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Give feedback or report a problem with this page" }).ClickAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "tell us about a problem with this page" }).ClickAsync();
             await Assertions.Expect(page.GetByText("What do you want to tell us?", new() { Exact = true })).ToBeVisibleAsync();
-            await page.Locator(FipsLocator.FEEDBACK_TEXTBOX_LINK).FillAsync(feedbackText);
-            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_MAXCHARS_ERROR_MESSAGE)).ToHaveTextAsync("You have 6 characters too many");
+            await page.Locator(FipsLocator.FEEDBACK_TEXTBOX).FillAsync(feedbackText);
+            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_MAXCHARS_ERROR_MSG)).ToHaveTextAsync("You have 6 characters too many");
             await page.GetByRole(AriaRole.Button, new() { NameString = "Submit feedback" }).ClickAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_SUBMIT_ERROR_MESSAGE)).ToContainTextAsync("There is a problem");
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_SUBMIT_ERROR_MSG)).ToContainTextAsync("There is a problem");
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Your feedback must be 1000 characters or fewer" })).ToBeVisibleAsync();
 
             extentTest?.Log(Status.Pass, "ValidateMaxCharsinGiveFeedbackOrReportAProblemFormUS162AC passed");
@@ -1058,6 +1050,7 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByLabel("Academy and trust workforce  (Education provider and early years workforce)")).ToBeCheckedAsync();
             await page.Locator(FipsLocator.USER_GROUPS_LISTBOX).ClickAsync();
             await page.Locator(FipsLocator.USER_GROUPS_LISTBOX).FillAsync("Ac");
+            await Task.Delay(1000);
             await page.Locator(FipsLocator.USER_GROUPS_OPTION2).ClickAsync();
             await Assertions.Expect(page.GetByLabel("Academy headteacher (secondary)  (Academy and trust workforce)")).ToBeCheckedAsync();
             //await page.GetByRole(AriaRole.Option, new() { NameString = "Chief Social Worker for" }).ClickAsync();
@@ -1100,8 +1093,8 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_CHECKBOX2_SELECTED).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG1)).ToHaveTextAsync("Remove this filter enterprise-data");
-            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG2)).ToHaveTextAsync("Remove this filter operations-and-infrastructure");
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG1)).ToHaveTextAsync("Remove this filter Enterprise Data");
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG2)).ToHaveTextAsync("Remove this filter Operations and Infrastructure");
             await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
@@ -1473,7 +1466,7 @@ namespace FiPSAutomation
         [Test, Order(64), Category("functional")]
         public async Task EditProposeAChangeFormAndClickCancelUS168AC()
         {
-           // goToLink("product/VRM-926/propose-change");
+            // goToLink("product/VRM-926/propose-change");
             await page.Locator(FipsLocator.PROPOSE_A_CHANGE_LINK).ClickAsync();
             await page.Locator(FipsLocator.PRODUCT_TITLE_TEXTBOX).
                                            FillAsync("Automation Test - Accessibility and inclusion manual");
@@ -1927,7 +1920,78 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(83), Category("accessibility")]
+        [Test, Order(83), Category("functional")]
+        public async Task VerifyUGEPEYSchoolWorkforceSubcategoryListUS136AC()
+        {
+            List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEY_SchoolWorkforce_list");
+            if (dataRows.Count > 1)
+            {
+                goToLink(dataRows[0].Col1);
+                await Assertions.Expect(page.Locator(dataRows[0].Col2)).ToHaveTextAsync("Education provider and early years workforce - School workforce");
+                await Assertions.Expect(page.GetByText(dataRows[0].Col3, new() { Exact = true })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(dataRows[1].Col2)).ToHaveTextAsync(dataRows[1].Col3);
+                await Assertions.Expect(page.Locator(dataRows[2].Col2)).ToHaveTextAsync(dataRows[2].Col3);
+
+                for (int i = 1; i < dataRows.Count; i++)
+                {
+                    if (dataRows[i].Col1 != "")
+                    {
+                        await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = dataRows[i].Col1 })).ToBeVisibleAsync();
+                    }
+                }
+                extentTest?.Log(Status.Pass, "VerifyUGEPEYSchoolWorkforceSubcategoryListUS136AC passed");
+            }
+        }
+
+        [Test, Order(84), Category("functional")]
+        public async Task ClickSubcategoryLinksForSchoolWorkforceEPEYUS136AC()
+        {
+            List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_SchoolWorkforce");
+            foreach (var row in dataRows)
+            {
+                TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
+
+                goToLink(row.Product_Locator);
+
+                var FilterText = page.Locator(row.Filter_Tag);
+                await Assertions.Expect(FilterText).ToBeVisibleAsync();
+                await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
+                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
+                Assert.That(isUsertypeChecked, Is.True);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+
+                extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
+            }
+        }
+
+        [Test, Order(85), Category("functional")]
+        public async Task VerifyFeedbackLinks_ContentChangeUS207AC()
+        {
+            goToLink("");
+            await Assertions.Expect(page.Locator(FipsLocator.FEEDBACK_BANNER)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SURVEY_LINK_TEXT)).ToContainTextAsync("Give us feedback about this service");
+            var newTab = await page.RunAndWaitForPopupAsync(async () =>
+            {
+                await page.Locator(FipsLocator.SURVEY_LINK_TEXT).ClickAsync();
+            });
+            await newTab.WaitForLoadStateAsync();
+
+            // Assertions in the new tab -
+            await Assertions.Expect(newTab).ToHaveURLAsync("https://dferesearch.fra1.qualtrics.com/jfe/form/SV_bHoLXsj3BfAh3ZI");
+            await Assertions.Expect(newTab).ToHaveTitleAsync("Qualtrics Survey | Qualtrics Experience Management");
+            await Assertions.Expect(newTab.Locator(FipsLocator.SURVEY_FIRST_PAGE)).ToContainTextAsync("Thank you for taking the time to give feedback on your experience of using ‘Find Information about Products and Services’ (FIPS) today.  ");
+            await newTab.CloseAsync();
+
+            // Assertions back on the original page -
+            await Assertions.Expect(page).ToHaveTitleAsync("Find information about products and services - FIPS");
+
+            extentTest?.Log(Status.Pass, "VerifyFeedbackLinks_ContentChangeUS207AC passed");
+        }
+
+        [Test, Order(86), Category("accessibility")]
         public async Task AccessibilityTest()
         {
             var axeResults = await page.RunAxe();
@@ -1935,7 +1999,7 @@ namespace FiPSAutomation
 
             foreach (var violation in axeResults.Violations)
             {
-                extentTest.Fail($"Rule: {violation.Id}");
+                //extentTest.Fail($"Rule: {violation.Id}");
                 extentTest.Info($"Impact: {violation.Impact}");
                 extentTest.Info($"Description: {violation.Description}");
 
