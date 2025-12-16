@@ -101,7 +101,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string PHASE_CHECKBOX_SELECTED = "label[for='phase-alpha']";
         public static readonly string TYPE_CHECKBOX1_SELECTED = "label[for='type-campaign']";
         public static readonly string TYPE_CHECKBOX2_SELECTED = "label[for='type-information']";
-       public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' Enterprise Data')";
+        public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' Enterprise Data')";
         public static readonly string BUSINESS_AREA_FILTERTAG2 = "ul.moj-filter-tags li a:has-text(' Operations and Infrastructure')";
         public static readonly string CHANNEL_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Web')";
         public static readonly string PHASE_FILTERTAG = "ul.moj-filter-tags li a:has-text('Alpha')";
@@ -165,6 +165,44 @@ namespace find_information_products_services_tests.constants
         public static readonly string FEEDBACK_BANNER = "//div[@class='dfe-feedback-banner--flex']";
         public static readonly string SURVEY_LINK_TEXT = "//*[@id=\"feedback-link-text\"]/a[1]";
         public static readonly string SURVEY_FIRST_PAGE = "//div[@class='QuestionText BorderColor']";
-
+        //Request a new product page locators -
+        public static readonly string REQUEST_NEW_PRODUCT_FORM = "//form[@method='post']";
+        public static readonly string ADD_PRODUCT_TITLE = "#Title";
+        public static readonly string ADD_PRODUCT_DESCRIPTION = "#Description";
+        public static readonly string ADD_PRODUCT_URL = "#ServiceUrl";
+        public static readonly string CHECK_PHASE_TEXT = "legend:has-text('Phase')";
+        public static readonly string CHECK_BUSINESSAREA_TEXT = "legend:has-text('Business area')";
+        public static readonly string CHECK_CHANNELS_TEXT = "legend:has-text('Channels (optional)')";
+        public static readonly string CHECK_TYPES_TEXT = "legend:has-text('Types (optional)')";
+        public static readonly string ADD_PRODUCT_PHASE1 = "#PhaseId_387";
+        public static readonly string ADD_PRODUCT_PHASE2 = "#PhaseId_389";
+        public static readonly string ADD_PRODUCT_BUSINESSAREA1 = "#BusinessAreaId_445";
+        public static readonly string ADD_PRODUCT_BUSINESSAREA2 = "#BusinessAreaId_439";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB1 = "#ChannelIds_380";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB2 = "#ChannelIds_379";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB3 = "#ChannelIds_377";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB4 = "#ChannelIds_376";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB5 = "#ChannelIds_382";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB6 = "#ChannelIds_378";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB7 = "#ChannelIds_381";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB8 = "#ChannelIds_415";
+        public static readonly string ADD_PRODUCT_CHANNELS_CB9 = "#ChannelIds_375";
+        public static readonly string ADD_PRODUCT_TYPES_CB1 = "#TypeIds_416";
+        public static readonly string ADD_PRODUCT_TYPES_CB2 = "#TypeIds_394";
+        public static readonly string ADD_PRODUCT_TYPES_CB3 = "#TypeIds_418";
+        public static readonly string ADD_PRODUCT_TYPES_CB4 = "#TypeIds_393";
+        public static readonly string ADD_PRODUCT_TYPES_CB5 = "#TypeIds_392";
+        public static readonly string ADD_ADDITIONAL_INFO = "#Users";
+        public static readonly string ADD_DELIVERY_MANAGER = "#DeliveryManager";
+        public static readonly string ADD_PRODUCT_MANAGER = "#ProductManager";
+        public static readonly string ADD_SENIOR_RESP_OFFICER = "#SeniorResponsibleOfficer";
+        public static readonly string ADD_NOTES_TEXTBOX = "#Notes";
+        public static readonly string NOTES_HINT_TEXT = "#Notes-hint";
+        public static readonly string SUBMIT_REQUEST_BUTTON = "#submit-request-btn";
+        public static readonly string ADD_PRODUCT_SUCCESS_ALERT = "div[aria-labelledby = \"govuk-notification-banner-title\"]";
+        public static readonly string ERROR_MESSAGE_BOX = "//div[@aria-labelledby='error-summary-title']";
+        public static readonly string TITLE_ERROR_MESSAGE = "(//span[@class='govuk-error-message'])[1]";
+        public static readonly string DESCRIPTION_ERROR_MESSAGE = "(//span[@class='govuk-error-message'])[2]";
+        public static readonly string NOTES_ERROR_MESSAGE = "(//span[@class='govuk-error-message'])[3]";
     }
 }
