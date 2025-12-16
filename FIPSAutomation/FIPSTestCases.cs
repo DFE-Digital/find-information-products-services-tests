@@ -1210,8 +1210,20 @@ namespace FiPSAutomation
             await Assertions.Expect(page.Locator(FipsLocator.SERVICE_OWNER_LOCATOR)).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator(FipsLocator.CONTACTS_NAME_LINK)).ToBeVisibleAsync();
 
-            // clicking on 'View products', product details page opens in new tab -
-            await targetValueRow.GetByRole(AriaRole.Link, new() { NameString = "View product" }).ClickAsync();
+            // clicking on 'View products', product details page opens in new tab -            
+            var newTab = await page.RunAndWaitForPopupAsync(async () =>
+            {
+                await targetValueRow.GetByRole(AriaRole.Link, new() { NameString = "View product" }).ClickAsync();
+            });
+            await newTab.WaitForLoadStateAsync();
+
+            // Assertions in the new tab -
+            await Assertions.Expect(newTab).ToHaveURLAsync("https://accessibility.education.gov.uk/");
+            await Assertions.Expect(newTab).ToHaveTitleAsync("Accessibility and inclusive design manual | Accessibility manual - Department for Education");
+            await Assertions.Expect(newTab.GetByRole(AriaRole.Heading, new() { NameString = "Accessibility and inclusive design manual" })).ToBeVisibleAsync();
+            await newTab.CloseAsync();
+            // Assertions back on the original page -
+            await Assertions.Expect(page).ToHaveTitleAsync("Accessibility and inclusion manual - FIPS");
 
             extentTest?.Log(Status.Pass, "VerifyProductOverviewPageHeadersUS168AC passed");
         }
