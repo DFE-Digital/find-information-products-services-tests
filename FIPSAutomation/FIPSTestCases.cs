@@ -1343,6 +1343,7 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            // bug raised for below line issue, once fixed this TC will pass
             await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG2)).ToHaveTextAsync("Remove this filter Customer Experience and Design");
             await page.GoBackAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Web" })).ToBeVisibleAsync();
@@ -1730,7 +1731,7 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                //bug raised for missing UG subcategory, once fixed this TC will pass
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
@@ -1824,7 +1825,7 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                //bug raised for missing UG subcategory, once fixed this TC will pass
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
@@ -1965,7 +1966,7 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                // bug raised for missing UG subcategory, once fixed this TC will pass
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
@@ -2005,6 +2006,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(86), Category("functional")]
+        [Ignore("This test triggers product entry request email to all. So, skipped for now")]
         public async Task VerifyRequestNewProductEntryForm_AddingProductUS141AC()
         {
             goToLink("products");
@@ -2080,6 +2082,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(87), Category("functional")]
+        [Ignore("This test triggers product entry request email to all. So, skipped for now")]
         public async Task ValidateRequestNewProductForm_SubmitBlankFormUS141AC()
         {
             await Assertions.Expect(page.Locator(FipsLocator.REQUEST_NEW_PRODUCT_FORM)).ToBeVisibleAsync();
