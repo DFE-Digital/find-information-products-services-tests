@@ -110,7 +110,9 @@ namespace find_information_products_services_tests.constants
         public static readonly string PAGE_2_LINK = "a[aria-label = \"Page 2\"]";
         public static readonly string PAGE_3_LINK = "a[aria-label = \"Page 3\"]";
         public static readonly string NEXT_PAGE_LINK = "//span[@class='govuk-pagination__link-title']";
-        public static readonly string MAKE_A_REQUEST_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div/p";
+        public static readonly string MISSING_PROD_SERVICE_DESC = "//details[@class='govuk-details']";
+        public static readonly string MISSING_PROD_SERVICE_LINK = ".govuk-details__summary-text";
+        public static readonly string REQUEST_NEW_PRODUCT_DESC = ".govuk-details__text";
         public static readonly string CLEAR_FILTER_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/p[2]"; // No Product Found case
         public static readonly string CONTACT_US_EMAIL_DESC = "//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]";
         //Product details page locators -
