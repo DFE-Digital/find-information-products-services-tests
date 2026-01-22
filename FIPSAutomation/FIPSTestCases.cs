@@ -11,7 +11,7 @@ namespace FiPSAutomation
     public class FIPSTestCases : BaseTest
     {
         [Test, Order(1)]
-        public async Task LoginWithUsernameAndPassword()
+        public async Task LoginWithUsernameAndPasswordUS231AC2()
         {
             await loginWithUsernameAndPasswordAndAcceptAndHideCookies();
         }
@@ -257,7 +257,7 @@ namespace FiPSAutomation
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
 
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
@@ -312,7 +312,7 @@ namespace FiPSAutomation
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
 
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
@@ -359,7 +359,7 @@ namespace FiPSAutomation
                 await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Business area");
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
@@ -413,7 +413,7 @@ namespace FiPSAutomation
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
 
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
@@ -750,7 +750,7 @@ namespace FiPSAutomation
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
                 //await Assertions.Expect(page.GetByLabel("Adult learner (18+)")).ToBeVisibleAsync();
 
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -774,7 +774,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -798,7 +798,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -822,7 +822,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -846,7 +846,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -870,7 +870,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -894,7 +894,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -918,7 +918,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -942,7 +942,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1036,7 +1036,7 @@ namespace FiPSAutomation
         {
             await page.GetByRole(AriaRole.Link, new() { NameString = "Products" }).ClickAsync();
             await Assertions.Expect(page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
             extentTest?.Log(Status.Pass, "VerifyMainProductPageHeaderAndListUS103AC passed");
@@ -1055,7 +1055,7 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByLabel("Academy headteacher (secondary)  (Academy and trust workforce)")).ToBeCheckedAsync();
             //await page.GetByRole(AriaRole.Option, new() { NameString = "Chief Social Worker for" }).ClickAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
             //selecting another user groups value -
@@ -1063,7 +1063,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.USER_GROUPS_OPTION3).ClickAsync();
             await Assertions.Expect(page.GetByLabel("Colleague supporting DfE users  (Department for Education workforce)")).ToBeCheckedAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await Task.Delay(1000);
             await page.GetByRole(AriaRole.Link, new() { NameString = "Clear filters" }).ClickAsync();
@@ -1076,7 +1076,7 @@ namespace FiPSAutomation
         {
             await page.Locator(FipsLocator.PRODUCT_NAME_TEXTBOX).FillAsync("app");
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await Task.Delay(1000);
             await page.Locator(FipsLocator.PRODUCT_NAME_TEXTBOX).FillAsync(string.Empty);
@@ -1085,23 +1085,273 @@ namespace FiPSAutomation
         }
 
         [Test, Order(50), Category("functional")]
-        public async Task VerifyBusinessAreaCategorywiseSearchFunctionalityUS103AC()
+        public async Task VerifyBusinessAreaSearchFunctionality_CommercialCategoryUS234AC1()
         {
+            goToLink("products");
             await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
             await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
-            await page.Locator(FipsLocator.BA_CHECKBOX1_SELECTED).CheckAsync();
-            await page.Locator(FipsLocator.BA_CHECKBOX2_SELECTED).CheckAsync();
+            await page.Locator(FipsLocator.BA_COMMERCIAL_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG1)).ToHaveTextAsync("Remove this filter Enterprise Data");
-            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG2)).ToHaveTextAsync("Remove this filter Operations and Infrastructure");
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("result for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_COMMERCIAL_FILTERTAG)).
+                             ToHaveTextAsync("Commercial × Remove Commercial filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
 
-            extentTest?.Log(Status.Pass, "VerifyBusinessAreaCategorywiseSearchFunctionalityUS103AC passed");
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaCategorywiseSearchFunctionalityUS234AC1 passed");
         }
 
         [Test, Order(51), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_CustomerExpAndDesignUS234AC2()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_CUST_EXP_DESIGN_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_CUST_EXP_DESIGN_FILTERTAG)).
+                             ToHaveTextAsync("Customer Experience and Design × Remove Customer Experience and Design filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_CustomerExpAndDesignUS234AC2 passed");
+        }
+
+        [Test, Order(52), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_ChildrenAndFamiliesUS234AC3()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_CHILD_AND_FAMILIES_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_CHILD_AND_FAMILIES_FILTERTAG)).
+                             ToHaveTextAsync("Children and Families × Remove Children and Families filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_ChildrenAndFamiliesUS234AC3 passed");
+        }
+
+        [Test, Order(53), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_EnterpriseDataUS234AC4()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_ENTERPRISE_DATA_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_ENTERPRISE_DATA_FILTERTAG)).
+                             ToHaveTextAsync("Enterprise Data × Remove Enterprise Data filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            // going to next pages to check products list -
+            await page.Locator(FipsLocator.PAGE_2_LINK).ClickAsync();
+            await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?group=enterprise-data&page=2");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.NEXT_PAGE_LINK).ClickAsync();
+            await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?group=enterprise-data&page=3");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_EnterpriseDataUS234AC4 passed");
+        }
+
+        [Test, Order(54), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_FundingAndFinancialOversightUS234AC5()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_FUND_FINANCIAL_OS_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FUND_FINANCIAL_OS_FILTERTAG)).
+                             ToHaveTextAsync("Funding and Financial Oversight × Remove Funding and Financial Oversight filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_FundingAndFinancialOversightUS234AC5 passed");
+        }
+
+        [Test, Order(55), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_OperationsAndInfraUS234AC6()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_OPS_AND_INFRA_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_OPS_AND_INFRA_FILTERTAG)).
+                             ToHaveTextAsync("Operations and Infrastructure × Remove Operations and Infrastructure filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_OperationsAndInfraUS234AC6 passed");
+        }
+
+        [Test, Order(56), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_RegionalDigitalServicesUS234AC7()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_REGION_DIGI_SERVICES_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_REGION_DIGI_SERVICES_FILTERTAG)).
+                             ToHaveTextAsync("Regional Digital Services × Remove Regional Digital Services filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_RegionalDigitalServicesUS234AC7 passed");
+        }
+
+        [Test, Order(57), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_SchoolsDigitalUS234AC8()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_SCHOOLS_DIGI_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_SCHOOLS_DIGI_FILTERTAG)).
+                             ToHaveTextAsync("Schools Digital × Remove Schools Digital filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_SchoolsDigitalUS234AC8 passed");
+        }
+
+        [Test, Order(58), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_SectorFacingServicesUS234AC9()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_SECTOR_FACING_SERVICES_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_SECTOR_FACING_SERVICES_FILTERTAG)).
+                             ToHaveTextAsync("Sector Facing Services × Remove Sector Facing Services filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_SectorFacingServicesUS234AC9 passed");
+        }
+
+        [Test, Order(59), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_SkillsAndGrowthUS234AC10()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_SKILLS_AND_GROWTH_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_SKILLS_AND_GROWTH_FILTERTAG)).
+                             ToHaveTextAsync("Skills and Growth × Remove Skills and Growth filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_SkillsAndGrowthUS234AC10 passed");
+        }
+
+        [Test, Order(60), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_StrategyCategoryUS234AC11()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_STRATEGY_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_STRATEGY_FILTERTAG)).
+                             ToHaveTextAsync("Strategy × Remove Strategy filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_StrategyCategoryUS234AC11 passed");
+        }
+
+        [Test, Order(61), Category("functional")]
+        public async Task VerifyBusinessAreaSearchFunctionality_NotCategorisedUS234AC12()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_NOT_CATEGORISED_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+                             ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_NOT_CATEGORISED_FILTERTAG)).
+                             ToHaveTextAsync("Not categorised × Remove Not categorised filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            // going to next pages to check products list -
+            await page.Locator(FipsLocator.PAGE_2_LINK).ClickAsync();
+            await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?group=__not_categorised__&page=2");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PAGE_3_LINK).ClickAsync();
+            await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?group=__not_categorised__&page=3");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyBusinessAreaSearchFunctionality_NotCategorisedUS234AC12 passed");
+        }
+
+        [Test, Order(62), Category("functional")]
         public async Task VerifyChannelCategorywiseSearchFunctionalityUS103AC()
         {
             await page.GetByRole(AriaRole.Link, new() { NameString = "Clear filters" }).ClickAsync();
@@ -1110,7 +1360,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.CHANNEL_CHECKBOX_SELECTED).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTERTAG1)).ToHaveTextAsync("Remove this filter Web");
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await Task.Delay(1000);
             //going to next pages to check products list -
@@ -1134,8 +1384,8 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.PHASE_CHECKBOX_SELECTED).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTERTAG)).ToHaveTextAsync("Remove this filter Alpha");
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
-            await Assertions.Expect(page.Locator(FipsLocator.MAKE_A_REQUEST_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByText("No products found matching your filters.")).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator(FipsLocator.CLEAR_FILTER_DESC)).ToBeVisibleAsync();
             await Task.Delay(1000);
@@ -1155,7 +1405,7 @@ namespace FiPSAutomation
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Assertions.Expect(page.Locator(FipsLocator.TYPE_FILTERTAG1)).ToHaveTextAsync("Remove this filter Campaign");
             await Assertions.Expect(page.Locator(FipsLocator.TYPE_FILTERTAG2)).ToHaveTextAsync("Remove this filter Information");
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await page.Locator(FipsLocator.NEXT_PAGE_LINK).ClickAsync();
             await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?type=campaign&type=information&page=2");
@@ -1167,15 +1417,17 @@ namespace FiPSAutomation
         }
 
         [Test, Order(54), Category("functional")]
-        public async Task VerifyMakeARequestLinkOnPageUS103AC()
+        public async Task VerifyMissingProductOrServiceLink_ProductsPageUS219AC()
         {
             goToLink("products");
-            await Assertions.Expect(page.Locator(FipsLocator.MAKE_A_REQUEST_DESC)).ToBeVisibleAsync();
-            await page.GetByRole(AriaRole.Link, new() { NameString = "make a request" }).ClickAsync();
+            await page.Locator(FipsLocator.MISSING_PROD_SERVICE_LINK).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.REQUEST_NEW_PRODUCT_DESC)).ToContainTextAsync("If you cannot find a product or service, make a ");
+            await page.GetByRole(AriaRole.Link, new() { NameString = "request for a new product entry" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
             await page.GoBackAsync();
 
-            extentTest?.Log(Status.Pass, "VerifyMakeARequestLinkOnPageUS103AC passed");
+            extentTest?.Log(Status.Pass, "VerifyMissingProductOrServiceLink_ProductsPageUS219AC");
         }
 
         [Test, Order(55), Category("functional")]
@@ -1341,33 +1593,41 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Customer Experience and Design" })).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "Customer Experience and Design" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).
+                    ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             // bug raised for below line issue, once fixed this TC will pass
-            await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_FILTERTAG2)).ToHaveTextAsync("Remove this filter Customer Experience and Design");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_CUST_EXP_DESIGN_FILTERTAG)).
+                    ToHaveTextAsync("Customer Experience and Design × Remove Customer Experience and Design filter");
             await page.GoBackAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Web" })).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "Web" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).
+                    ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTERTAG1)).ToHaveTextAsync("Remove this filter Web");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTERTAG1)).
+                    ToHaveTextAsync("Remove this filter Web");
             await page.GoBackAsync();
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Live" })).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "Live" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).
+                     ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.PHASE_SELECTED_FILTERTAG)).ToHaveTextAsync("Remove this filter Live");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_SELECTED_FILTERTAG)).
+                     ToHaveTextAsync("Remove this filter Live");
             await page.GoBackAsync();
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Information" })).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "Information" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).
+                      ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.TYPE_SELECTED_FILTERTAG)).ToHaveTextAsync("Remove this filter Information");
+            await Assertions.Expect(page.Locator(FipsLocator.TYPE_SELECTED_FILTERTAG)).
+                      ToHaveTextAsync("Remove this filter Information");
             await page.GoBackAsync();
 
             extentTest?.Log(Status.Pass, "ClickSubcategoriesLinkInCategoriesTableUS168AC passed");
@@ -1380,7 +1640,7 @@ namespace FiPSAutomation
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Department for Education workforce" })).ToBeVisibleAsync();
             await page.GetByRole(AriaRole.Link, new() { NameString = "Department for Education workforce" }).ClickAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator(FipsLocator.USER_GROUPS_FILTERTAG)).ToHaveTextAsync("Remove this filter Department for Education workforce");
             await page.GoBackAsync();
@@ -1598,7 +1858,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1622,7 +1882,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1646,7 +1906,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1693,7 +1953,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1740,7 +2000,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1787,7 +2047,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1834,7 +2094,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1881,7 +2141,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1928,7 +2188,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -1975,7 +2235,7 @@ namespace FiPSAutomation
                 bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isUsertypeChecked, Is.True);
                 await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
-                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_PRODUCTS_MESSAGE)).ToContainTextAsync("products and services");
+                await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }

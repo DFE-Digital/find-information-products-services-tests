@@ -15,10 +15,10 @@ namespace find_information_products_services_tests.constants
         public static readonly string USER_GROUP_CHEVRON_LINK = ".dfe-chevron-card__link.category-link[href='/categories/user-group']";
         public static readonly string CATEGORY_CHANNEL_LINK = "a[href='/categories/channel']";
         //Phase description locators -
-        // public static readonly string PHASE_REQUEST_LINK = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/h2/a";
-        // public static readonly string PHASE_REQUEST_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
-        // public static readonly string PHASE_EXPLORE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
-        //  public static readonly string PHASE_TRIAGE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
+        //public static readonly string PHASE_REQUEST_LINK = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/h2/a";
+        //public static readonly string PHASE_REQUEST_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
+        //public static readonly string PHASE_EXPLORE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
+        //public static readonly string PHASE_TRIAGE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
         public static readonly string PHASE_DISCOVERY_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
         public static readonly string PHASE_ALPHA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[5]/div/p";
         public static readonly string PHASE_PRIVATEBETA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[6]/div/p";
@@ -30,9 +30,10 @@ namespace find_information_products_services_tests.constants
         public static readonly string PHASE_FILTER_REQUEST_TAG = "ul.moj-filter-tags li a:has-text('Request')";
         public static readonly string PHASE_FILTER_EXPLORE_TAG = "ul.moj-filter-tags li a:has-text('Explore')";
         public static readonly string PHASE_FILTER_TEXT = "//h3[normalize-space()='Phase']";
-        public static readonly string SHOWING_PRODUCTS_MESSAGE = "//p[@class =\"govuk-body\" and contains(text(), \"products and services\")]";
+        public static readonly string SHOWING_RESULTS_MESSAGE = "//p[@class =\"govuk-body\" and contains(text(), \"Showing \")]"; //update
         public static readonly string REQUEST_CHECKBOX = "#phase-request";
         public static readonly string EXPLORE_CHECKBOX = "#phase-explore";
+
         //Channel description locators -
         public static readonly string CHANNEL_CHAT_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string CHANNEL_EMAIL_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
@@ -43,6 +44,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string CHANNEL_PRINTMEDIA_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[7]/div/p";
         public static readonly string CHANNEL_SMS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[8]/div/p";
         public static readonly string CHANNEL_WEB_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[9]/div/p";
+
         //Business area description locators -
         public static readonly string GROUP_FAMILIES_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string GROUP_REGIONS_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
@@ -58,11 +60,13 @@ namespace find_information_products_services_tests.constants
         //public static readonly string OPERATIONSANDINFRA_FUNDING_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul[2]/li[3]/div/p";
         //public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK = "//*[@id=\"main-content\"]/div/div/div/h2";
         //public static readonly string OPERATIONSANDINFRA_SUBCATEGORIES_HEAD_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/p[2]";
+
         //Type description locators -
         public static readonly string TYPE_API_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string TYPE_CAMPAIGN_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
         public static readonly string TYPE_INFORMATION_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[3]/div/p";
         public static readonly string TYPE_TRANSACTIONAL_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[4]/div/p";
+
         //User group subcategories description locators -
         public static readonly string USERGROUP_ADULTLEARNER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[1]/div/p";
         public static readonly string USERGROUP_CAREERSADVISER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[2]/div/p";
@@ -75,6 +79,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string USERGROUP_PARENTORCARER_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[9]/div/p";
         public static readonly string USERGROUP_PROFEXTERUSERDFE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[10]/div/p";
         public static readonly string USERGROUP_SCWORKFORCE_LINK_DESC = "//*[@id=\"main-content\"]/div/div/div/ul/li[11]/div/p";
+
         //Footer links and Feedback locators -
         public static readonly string SAVE_COOKIES_RADIO_OFF = "#analytics-off";
         public static readonly string SAVE_COOKIES_RADIO_ON = "#analytics-on";
@@ -83,6 +88,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string FEEDBACK_FORM_ERROR_MSG = "#feedback_form_input-error";
         public static readonly string FEEDBACK_MAXCHARS_ERROR_MSG = "//*[@id=\"feedback_form_group\"]/div[3]";
         public static readonly string FEEDBACK_SUBMIT_ERROR_MSG = "//div[@id=\"feedback-error-summary\"]";
+
         //Products page locators -
         public static readonly string PRODUCTS_AND_SERVICES_LIST = "ul.dfe-chevron-card__list";
         public static readonly string PRODUCT_NAME_TEXTBOX = "#keywords";
@@ -95,24 +101,62 @@ namespace find_information_products_services_tests.constants
         public static readonly string CHANNEL_CATEGORY = "//button[@data-target=\"channel-filter\"]";
         public static readonly string PHASE_CATEGORY = "//button[@data-target=\"phase-filter\"]";
         public static readonly string TYPE_CATEGORY = "//button[@data-target=\"type-filter\"]";
-        public static readonly string BA_CHECKBOX1_SELECTED = "label[for='group-enterprise-data']";
-        public static readonly string BA_CHECKBOX2_SELECTED = "label[for='group-operations-and-infrastructure']";
+
+        //Business area checkboxes locators -
+        public static readonly string BA_COMMERCIAL_CHECKBOX = "label[for='group-commercial']";
+        public static readonly string BA_CUST_EXP_DESIGN_CHECKBOX = "label[for='group-customer-experience-and-design']";
+        public static readonly string BA_CHILD_AND_FAMILIES_CHECKBOX = "label[for='group-children-and-families']";
+        public static readonly string BA_ENTERPRISE_DATA_CHECKBOX = "label[for='group-enterprise-data']";
+        public static readonly string BA_FUND_FINANCIAL_OS_CHECKBOX = "label[for='group-funding-and-financial-oversight']";
+        public static readonly string BA_OPS_AND_INFRA_CHECKBOX = "label[for='group-operations-and-infrastructure']";
+        public static readonly string BA_REGION_DIGI_SERVICES_CHECKBOX = "label[for='group-regional-digital-services']";
+        public static readonly string BA_SCHOOLS_DIGI_CHECKBOX = "label[for='group-schools-digital']";
+        public static readonly string BA_SECTOR_FACING_SERVICES_CHECKBOX = "label[for='group-sector-facing-services']";
+        public static readonly string BA_SKILLS_AND_GROWTH_CHECKBOX = "label[for='group-skills-and-growth']";
+        public static readonly string BA_STRATEGY_CHECKBOX = "label[for='group-strategy']";
+        public static readonly string BA_NOT_CATEGORISED_CHECKBOX = "label[for='group-not-categorised']";
+
+        //Channel checkboxes locators -
         public static readonly string CHANNEL_CHECKBOX_SELECTED = "label[for='channel-web']";
+
+        //Phase checkboxes locators -
         public static readonly string PHASE_CHECKBOX_SELECTED = "label[for='phase-alpha']";
+
+        //Type checkboxes locators -
         public static readonly string TYPE_CHECKBOX1_SELECTED = "label[for='type-campaign']";
         public static readonly string TYPE_CHECKBOX2_SELECTED = "label[for='type-information']";
-        public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' Enterprise Data')";
-        public static readonly string BUSINESS_AREA_FILTERTAG2 = "ul.moj-filter-tags li a:has-text(' Operations and Infrastructure')";
+
+        //Product results page locators -
+        public static readonly string BA_FILTERED_PANEL = ".applied-filters-panel";   //new
+        public static readonly string BA_FILTER_HEADING = "//h3[normalize-space()='Business area']";   //new
+        //public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' Enterprise Data')";
+        public static readonly string BA_COMMERCIAL_FILTERTAG = "a.filter-badge:has(span:text-is('Commercial'))";  //new
+        public static readonly string BA_CUST_EXP_DESIGN_FILTERTAG = "a.filter-badge:has(span:text-is('Customer Experience and Design'))";
+        public static readonly string BA_CHILD_AND_FAMILIES_FILTERTAG = "a.filter-badge:has(span:text-is('Children and Families'))";
+        public static readonly string BA_ENTERPRISE_DATA_FILTERTAG = "a.filter-badge:has(span:text-is('Enterprise Data'))";
+        public static readonly string BA_FUND_FINANCIAL_OS_FILTERTAG = "a.filter-badge:has(span:text-is('Funding and Financial Oversight'))";
+        public static readonly string BA_OPS_AND_INFRA_FILTERTAG = "a.filter-badge:has(span:text-is('Operations and Infrastructure'))";
+        public static readonly string BA_REGION_DIGI_SERVICES_FILTERTAG = "a.filter-badge:has(span:text-is('Regional Digital Services'))";
+        public static readonly string BA_SCHOOLS_DIGI_FILTERTAG = "a.filter-badge:has(span:text-is('Schools Digital'))";
+        public static readonly string BA_SECTOR_FACING_SERVICES_FILTERTAG = "a.filter-badge:has(span:text-is('Sector Facing Services'))";
+        public static readonly string BA_SKILLS_AND_GROWTH_FILTERTAG = "a.filter-badge:has(span:text-is('Skills and Growth'))";
+        public static readonly string BA_STRATEGY_FILTERTAG = "a.filter-badge:has(span:text-is('Strategy'))";
+        public static readonly string BA_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
+
         public static readonly string CHANNEL_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Web')";
         public static readonly string PHASE_FILTERTAG = "ul.moj-filter-tags li a:has-text('Alpha')";
         public static readonly string TYPE_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Campaign')";
         public static readonly string TYPE_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('Information')";
         public static readonly string PAGE_2_LINK = "a[aria-label = \"Page 2\"]";
         public static readonly string PAGE_3_LINK = "a[aria-label = \"Page 3\"]";
-        public static readonly string NEXT_PAGE_LINK = "//span[@class='govuk-pagination__link-title']";
-        public static readonly string MAKE_A_REQUEST_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div/p";
+        public static readonly string PAGE_6_LINK = "a[aria-label = \"Page 6\"]";
+        public static readonly string NEXT_PAGE_LINK = "//span[@class ='govuk-pagination__link-title' and contains(text(), 'Next')]";
+        public static readonly string MISSING_PROD_SERVICE_DESC = "//details[@class='govuk-details']";
+        public static readonly string MISSING_PROD_SERVICE_LINK = ".govuk-details__summary-text";
+        public static readonly string REQUEST_NEW_PRODUCT_DESC = ".govuk-details__text";
         public static readonly string CLEAR_FILTER_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/p[2]"; // No Product Found case
         public static readonly string CONTACT_US_EMAIL_DESC = "//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]";
+
         //Product details page locators -
         public static readonly string PRODUCT_LINK = "//a[contains(text(), \"Accessibility and inclusion manual\")]";
         public static readonly string FIPS_ID_LINK = ".govuk-caption-m";
@@ -135,6 +179,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string PHASE_SELECTED_FILTERTAG = "ul.moj-filter-tags li a:has-text('Live')";
         public static readonly string TYPE_SELECTED_FILTERTAG = "ul.moj-filter-tags li a:has-text('Information')";
         public static readonly string USER_GROUPS_FILTERTAG = "ul.moj-filter-tags li a:has-text('Department for Education workforce')";
+
         // Propose a change form locators -
         public static readonly string PRODUCT_TITLE_TEXTBOX = "#ProposedTitle";
         public static readonly string SHORT_DESCRIPTION_TEXTBOX = "#ProposedShortDescription";
@@ -161,10 +206,12 @@ namespace find_information_products_services_tests.constants
         public static readonly string ADDED_TYPES_CHECKBOXES = "#ProposedTypeIds_418";
         public static readonly string SUCCESS_MESSAGE_ALERT = ".govuk-notification-banner.govuk-notification-banner--success"; //after submission of proposed change
         public static readonly string BETA_PHASE_BANNER_DESC = "div[class='govuk-phase-banner'] div[class='govuk-width-container']";
+
         //Survey/feedback link locators -
         public static readonly string FEEDBACK_BANNER = "//div[@class='dfe-feedback-banner--flex']";
         public static readonly string SURVEY_LINK_TEXT = "//*[@id=\"feedback-link-text\"]/a[1]";
         public static readonly string SURVEY_FIRST_PAGE = "//div[@class='QuestionText BorderColor']";
+
         //Request a new product page locators -
         public static readonly string REQUEST_NEW_PRODUCT_FORM = "//form[@method='post']";
         public static readonly string ADD_PRODUCT_TITLE = "#Title";
