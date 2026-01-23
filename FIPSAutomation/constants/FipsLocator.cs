@@ -117,7 +117,16 @@ namespace find_information_products_services_tests.constants
         public static readonly string BA_NOT_CATEGORISED_CHECKBOX = "label[for='group-not-categorised']";
 
         //Channel checkboxes locators -
-        public static readonly string CHANNEL_CHECKBOX_SELECTED = "label[for='channel-web']";
+        public static readonly string CHANNEL_CHAT_CHECKBOX = "label[for='channel-chat']";
+        public static readonly string CHANNEL_EMAIL_CHECKBOX = "label[for='channel-email']";
+        public static readonly string CHANNEL_FACETOFACE_CHECKBOX = "label[for='channel-face-to-face']";
+        public static readonly string CHANNEL_NATIVE_APP_CHECKBOX = "label[for='channel-native-app']";
+        public static readonly string CHANNEL_OTHER_DIGI_MEDIA_CHECKBOX = "label[for='channel-other-digital-media']";
+        public static readonly string CHANNEL_PHONE_CHECKBOX = "label[for='channel-phone']";
+        public static readonly string CHANNEL_PRINT_MEDIA_CHECKBOX = "label[for='channel-print-media']";
+        public static readonly string CHANNEL_SMS_CHECKBOX = "label[for='channel-sms']";
+        public static readonly string CHANNEL_WEB_CHECKBOX = "label[for='channel-web']";
+        public static readonly string CHANNEL_NOT_CATEGORISED_CHECKBOX = "label[for='channel-not-categorised']";
 
         //Phase checkboxes locators -
         public static readonly string PHASE_CHECKBOX_SELECTED = "label[for='phase-alpha']";
@@ -126,8 +135,8 @@ namespace find_information_products_services_tests.constants
         public static readonly string TYPE_CHECKBOX1_SELECTED = "label[for='type-campaign']";
         public static readonly string TYPE_CHECKBOX2_SELECTED = "label[for='type-information']";
 
-        //Product results page locators -
-        public static readonly string BA_FILTERED_PANEL = ".applied-filters-panel";   //new
+        //Product results page locators -/
+        public static readonly string APPLIED_FILTERED_PANEL = "div.applied-filters-panel";   //new
         public static readonly string BA_FILTER_HEADING = "//h3[normalize-space()='Business area']";   //new
         //public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' Enterprise Data')";
         public static readonly string BA_COMMERCIAL_FILTERTAG = "a.filter-badge:has(span:text-is('Commercial'))";  //new
@@ -142,8 +151,19 @@ namespace find_information_products_services_tests.constants
         public static readonly string BA_SKILLS_AND_GROWTH_FILTERTAG = "a.filter-badge:has(span:text-is('Skills and Growth'))";
         public static readonly string BA_STRATEGY_FILTERTAG = "a.filter-badge:has(span:text-is('Strategy'))";
         public static readonly string BA_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
+      
+        public static readonly string CHANNEL_FILTER_HEADING = "//h3[normalize-space()='Channel']";
+        public static readonly string CHANNEL_CHAT_FILTERTAG = "a.filter-badge:has(span:text-is('Chat'))";
+        public static readonly string CHANNEL_EMAIL_FILTERTAG = "a.filter-badge:has(span:text-is('Email'))";
+        public static readonly string CHANNEL_FACETOFACE_FILTERTAG = "a.filter-badge:has(span:text-is('Face-to-face'))";
+        public static readonly string CHANNEL_NATIVE_APP_FILTERTAG = "a.filter-badge:has(span:text-is('Native app'))";
+        public static readonly string CHANNEL_OTHER_DIGI_MEDIA_FILTERTAG = "a.filter-badge:has(span:text-is('Other digital media'))";
+        public static readonly string CHANNEL_PHONE_FILTERTAG = "a.filter-badge:has(span:text-is('Phone'))";
+        public static readonly string CHANNEL_PRINT_MEDIA_FILTERTAG = "a.filter-badge:has(span:text-is('Print media'))";
+        public static readonly string CHANNEL_SMS_FILTERTAG = "a.filter-badge:has(span:text-is('SMS'))";
+        public static readonly string CHANNEL_WEB_FILTERTAG = "a.filter-badge:has(span:text-is('Web'))";
+        public static readonly string CHANNEL_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
 
-        public static readonly string CHANNEL_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Web')";
         public static readonly string PHASE_FILTERTAG = "ul.moj-filter-tags li a:has-text('Alpha')";
         public static readonly string TYPE_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Campaign')";
         public static readonly string TYPE_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('Information')";

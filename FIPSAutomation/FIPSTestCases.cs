@@ -1093,7 +1093,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_COMMERCIAL_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("result for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_COMMERCIAL_FILTERTAG)).
@@ -1114,7 +1114,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_CUST_EXP_DESIGN_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_CUST_EXP_DESIGN_FILTERTAG)).
@@ -1135,7 +1135,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_CHILD_AND_FAMILIES_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_CHILD_AND_FAMILIES_FILTERTAG)).
@@ -1156,7 +1156,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_ENTERPRISE_DATA_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_ENTERPRISE_DATA_FILTERTAG)).
@@ -1184,7 +1184,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_FUND_FINANCIAL_OS_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FUND_FINANCIAL_OS_FILTERTAG)).
@@ -1205,7 +1205,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_OPS_AND_INFRA_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_OPS_AND_INFRA_FILTERTAG)).
@@ -1226,7 +1226,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_REGION_DIGI_SERVICES_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_REGION_DIGI_SERVICES_FILTERTAG)).
@@ -1247,7 +1247,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_SCHOOLS_DIGI_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_SCHOOLS_DIGI_FILTERTAG)).
@@ -1268,7 +1268,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_SECTOR_FACING_SERVICES_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_SECTOR_FACING_SERVICES_FILTERTAG)).
@@ -1289,7 +1289,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_SKILLS_AND_GROWTH_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_SKILLS_AND_GROWTH_FILTERTAG)).
@@ -1310,7 +1310,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_STRATEGY_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_STRATEGY_FILTERTAG)).
@@ -1331,7 +1331,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.BA_NOT_CATEGORISED_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Task.Delay(1000);
-            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTERED_PANEL)).
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
                              ToContainTextAsync("results for your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
             await Assertions.Expect(page.Locator(FipsLocator.BA_NOT_CATEGORISED_FILTERTAG)).
@@ -1352,17 +1352,181 @@ namespace FiPSAutomation
         }
 
         [Test, Order(62), Category("functional")]
-        public async Task VerifyChannelCategorywiseSearchFunctionalityUS103AC()
+        public async Task VerifyChannelSearchFunctionality_ChatCategoryUS235AC1()
         {
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear filters" }).ClickAsync();
+            goToLink("products");
             await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
             await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
-            await page.Locator(FipsLocator.CHANNEL_CHECKBOX_SELECTED).CheckAsync();
+            await page.Locator(FipsLocator.CHANNEL_CHAT_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTERTAG1)).ToHaveTextAsync("Remove this filter Web");
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
-            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CHAT_FILTERTAG)).
+                                                         ToHaveTextAsync("Chat × Remove Chat filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_ChatCategoryUS235AC1 passed");
+        }
+
+        [Test, Order(63), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_EmailCategoryUS235AC2()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_EMAIL_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_EMAIL_FILTERTAG)).
+                                                         ToHaveTextAsync("Email × Remove Email filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_EmailCategoryUS235AC2 passed");
+        }
+
+        [Test, Order(64), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_FaceToFaceCategoryUS235AC3()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_FACETOFACE_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                        ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FACETOFACE_FILTERTAG)).
+                                                        ToHaveTextAsync("Face-to-face × Remove Face-to-face filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_FaceToFaceCategoryUS235AC3 passed");
+        }
+
+        [Test, Order(65), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_NativeAppCategoryUS235AC4()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_NATIVE_APP_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                        ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_NATIVE_APP_FILTERTAG)).
+                                                        ToHaveTextAsync("Native app × Remove Native app filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_NativeAppCategoryUS235AC4 passed");
+        }
+
+        [Test, Order(66), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_OtherDigitalMediaCategoryUS235AC5()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_OTHER_DIGI_MEDIA_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_OTHER_DIGI_MEDIA_FILTERTAG)).
+                                         ToHaveTextAsync("Other digital media × Remove Other digital media filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_OtherDigitalMediaCategoryUS235AC5 passed");
+        }
+
+        [Test, Order(67), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_PhoneCategoryUS235AC6()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_PHONE_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_PHONE_FILTERTAG)).
+                                                         ToHaveTextAsync("Phone × Remove Phone filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_PhoneCategoryUS235AC6 passed");
+        }
+
+        [Test, Order(68), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_PrintMediaCategoryUS235AC7()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_PRINT_MEDIA_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_PRINT_MEDIA_FILTERTAG)).
+                                                         ToHaveTextAsync("Print media × Remove Print media filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_PrintMediaCategoryUS235AC7 passed");
+        }
+
+        [Test, Order(69), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_SMSCategoryUS235AC8()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_SMS_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_SMS_FILTERTAG)).
+                                                         ToHaveTextAsync("SMS × Remove SMS filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_SMSCategoryUS235AC8 passed");
+        }
+
+        [Test, Order(70), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_WebCategoryUS235AC9()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_WEB_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_WEB_FILTERTAG)).
+                                                         ToHaveTextAsync("Web × Remove Web filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             //going to next pages to check products list -
             await page.Locator(FipsLocator.PAGE_2_LINK).ClickAsync();
             await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?channel=web&page=2");
@@ -1370,9 +1534,33 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.PAGE_3_LINK).ClickAsync();
             await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?channel=web&page=3");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.NEXT_PAGE_LINK).ClickAsync();
+            await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?channel=web&page=4");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await Task.Delay(1000);
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
 
-            extentTest?.Log(Status.Pass, "VerifyChannelCategorywiseSearchFunctionalityUS103AC passed");
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_WebCategoryUS235AC9 passed");
+        }
+
+        [Test, Order(71), Category("functional")]
+        public async Task VerifyChannelSearchFunctionality_NotCategorisedUS235AC10()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_NOT_CATEGORISED_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Task.Delay(1000);
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                         ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_NOT_CATEGORISED_FILTERTAG)).
+                                                         ToHaveTextAsync("Not categorised × Remove Not categorised filter");
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_NotCategorisedUS235AC10 passed");
         }
 
         [Test, Order(52), Category("functional")]
@@ -1606,8 +1794,8 @@ namespace FiPSAutomation
             await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).
                     ToContainTextAsync("products and services");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTERTAG1)).
-                    ToHaveTextAsync("Remove this filter Web");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_WEB_FILTERTAG)).
+                    ToHaveTextAsync("Web × Remove Web filter");
             await page.GoBackAsync();
 
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Live" })).ToBeVisibleAsync();
