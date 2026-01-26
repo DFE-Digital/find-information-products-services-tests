@@ -1354,7 +1354,6 @@ namespace FiPSAutomation
         [Test, Order(62), Category("functional")]
         public async Task VerifyChannelSearchFunctionality_ChatCategoryUS235AC1()
         {
-            goToLink("products");
             await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_CATEGORY)).ToBeVisibleAsync();
             await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
             await page.Locator(FipsLocator.CHANNEL_CHAT_CHECKBOX).CheckAsync();
@@ -1563,27 +1562,193 @@ namespace FiPSAutomation
             extentTest?.Log(Status.Pass, "VerifyChannelSearchFunctionality_NotCategorisedUS235AC10 passed");
         }
 
-        [Test, Order(52), Category("functional")]
-        public async Task VerifyPhaseCategorywiseSearchFunctionalityUS103AC()
+        [Test, Order(72), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_DiscoveryCategoryUS236AC1()
         {
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear filters" }).ClickAsync();
             await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
             await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
-            await page.Locator(FipsLocator.PHASE_CHECKBOX_SELECTED).CheckAsync();
+            await page.Locator(FipsLocator.PHASE_DISCOVERY_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTERTAG)).ToHaveTextAsync("Remove this filter Alpha");
-            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("products and services");
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_DISCOVERY_FILTERTAG)).
+                                 ToHaveTextAsync("Discovery × Remove Discovery filter");
             await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
             await Assertions.Expect(page.GetByText("No products found matching your filters.")).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.CLEAR_FILTER_DESC)).ToBeVisibleAsync();
-            await Task.Delay(1000);
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.CLEAR_ALL_FILTERS_DESC)).ToContainTextAsync(" to see all products.");
+            await page.Locator(FipsLocator.CLEAR_ALL_FILTERS_LINK).ClickAsync();
 
-            extentTest?.Log(Status.Pass, "VerifyPhaseCategorywiseSearchFunctionalityUS103AC passed");
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DiscoveryCategoryUS236AC1 passed");
         }
 
-        [Test, Order(53), Category("functional")]
+        [Test, Order(73), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_AlphaCategoryUS236AC2()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_ALPHA_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_ALPHA_FILTERTAG)).
+                                 ToHaveTextAsync("Alpha × Remove Alpha filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.GetByText("No products found matching your filters.")).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.CLEAR_ALL_FILTERS_DESC)).ToContainTextAsync(" to see all products.");
+            await page.Locator(FipsLocator.CLEAR_ALL_FILTERS_LINK).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_AlphaCategoryUS236AC2 passed");
+        }
+
+        [Test, Order(74), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_DidNotProgressCategoryUS236AC3()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_DID_NOT_PROGRESS_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_DID_NOT_PROGRESS_FILTERTAG)).
+                                 ToHaveTextAsync("Did not progress × Remove Did not progress filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.GetByText("No products found matching your filters.")).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.CLEAR_ALL_FILTERS_DESC)).ToContainTextAsync(" to see all products.");
+            await page.Locator(FipsLocator.CLEAR_ALL_FILTERS_LINK).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DidNotProgressCategoryUS236AC3 passed");
+        }
+
+        [Test, Order(75), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_PrivateBetaCategoryUS236AC4()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_PRIVATE_BETA_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_PRIVATE_BETA_FILTERTAG)).
+                                 ToHaveTextAsync("Private beta × Remove Private beta filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_PrivateBetaCategoryUS236AC4 passed");
+        }
+
+        [Test, Order(76), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_PublicBetaCategoryUS236AC5()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_PUBLIC_BETA_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_PUBLIC_BETA_FILTERTAG)).
+                                 ToHaveTextAsync("Public beta × Remove Public beta filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.NEXT_PAGE_LINK).ClickAsync();
+            await Assertions.Expect(page).ToHaveURLAsync("https://find-products-services-test.azurewebsites.net/Products?phase=public-beta&page=2");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_PublicBetaCategoryUS236AC5 passed");
+        }
+
+        [Test, Order(77), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_LiveCategoryUS236AC6()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_LIVE_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_LIVE_FILTERTAG)).
+                                 ToHaveTextAsync("Live × Remove Live filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_LiveCategoryUS236AC6 passed");
+        }
+
+        [Test, Order(78), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_DecommissioningCategoryUS236AC7()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_DECOMMISSIONING_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_DECOMMISSIONING_FILTERTAG)).
+                                 ToHaveTextAsync("Decommissioning × Remove Decommissioning filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DecommissioningCategoryUS236AC7 passed");
+        }
+
+        [Test, Order(79), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_DecommissionedCategoryUS236AC8()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_DECOMMISSIONED_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_DECOMMISSIONED_FILTERTAG)).
+                                 ToHaveTextAsync("Decommissioned × Remove Decommissioned filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DecommissionedCategoryUS236AC8 passed");
+        }
+
+        [Test, Order(80), Category("functional")]
+        public async Task VerifyPhaseSearchFunctionality_NotCategorisedCategoryUS236AC9()
+        {
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_CATEGORY)).ToBeVisibleAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_NOT_CATEGORISED_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                    ToContainTextAsync("your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_NOT_CATEGORISED_FILTERTAG)).
+                                 ToHaveTextAsync("Not categorised × Remove Not categorised filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_NotCategorisedCategoryUS236AC9 passed");
+        }
+
+        [Test, Order(81), Category("functional")]
         public async Task VerifyTypeCategorywiseSearchFunctionalityUS103AC()
         {
             await Assertions.Expect(page.Locator(FipsLocator.TYPE_CATEGORY)).ToBeVisibleAsync();
