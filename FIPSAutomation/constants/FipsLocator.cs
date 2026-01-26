@@ -129,13 +129,21 @@ namespace find_information_products_services_tests.constants
         public static readonly string CHANNEL_NOT_CATEGORISED_CHECKBOX = "label[for='channel-not-categorised']";
 
         //Phase checkboxes locators -
-        public static readonly string PHASE_CHECKBOX_SELECTED = "label[for='phase-alpha']";
+        public static readonly string PHASE_DISCOVERY_CHECKBOX = "label[for='phase-discovery']";
+        public static readonly string PHASE_ALPHA_CHECKBOX = "label[for='phase-alpha']";
+        public static readonly string PHASE_DID_NOT_PROGRESS_CHECKBOX = "label[for='phase-did-not-progress']";
+        public static readonly string PHASE_PRIVATE_BETA_CHECKBOX = "label[for='phase-private-beta']";
+        public static readonly string PHASE_PUBLIC_BETA_CHECKBOX = "label[for='phase-public-beta']";
+        public static readonly string PHASE_LIVE_CHECKBOX = "label[for='phase-live']";
+        public static readonly string PHASE_DECOMMISSIONING_CHECKBOX = "label[for= 'phase-decommissioning']";
+        public static readonly string PHASE_DECOMMISSIONED_CHECKBOX = "label[for='phase-decommissioned']";
+        public static readonly string PHASE_NOT_CATEGORISED_CHECKBOX = "label[for='phase-not-categorised']";
 
         //Type checkboxes locators -
         public static readonly string TYPE_CHECKBOX1_SELECTED = "label[for='type-campaign']";
         public static readonly string TYPE_CHECKBOX2_SELECTED = "label[for='type-information']";
 
-        //Product results page locators -/
+        //Product results page locators - for business area
         public static readonly string APPLIED_FILTERED_PANEL = "div.applied-filters-panel";   //new
         public static readonly string BA_FILTER_HEADING = "//h3[normalize-space()='Business area']";   //new
         //public static readonly string BUSINESS_AREA_FILTERTAG1 = "ul.moj-filter-tags li a:has-text(' Enterprise Data')";
@@ -151,7 +159,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string BA_SKILLS_AND_GROWTH_FILTERTAG = "a.filter-badge:has(span:text-is('Skills and Growth'))";
         public static readonly string BA_STRATEGY_FILTERTAG = "a.filter-badge:has(span:text-is('Strategy'))";
         public static readonly string BA_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
-      
+        // for Channel -
         public static readonly string CHANNEL_FILTER_HEADING = "//h3[normalize-space()='Channel']";
         public static readonly string CHANNEL_CHAT_FILTERTAG = "a.filter-badge:has(span:text-is('Chat'))";
         public static readonly string CHANNEL_EMAIL_FILTERTAG = "a.filter-badge:has(span:text-is('Email'))";
@@ -163,10 +171,21 @@ namespace find_information_products_services_tests.constants
         public static readonly string CHANNEL_SMS_FILTERTAG = "a.filter-badge:has(span:text-is('SMS'))";
         public static readonly string CHANNEL_WEB_FILTERTAG = "a.filter-badge:has(span:text-is('Web'))";
         public static readonly string CHANNEL_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
-
-        public static readonly string PHASE_FILTERTAG = "ul.moj-filter-tags li a:has-text('Alpha')";
+        // for Phase -
+        public static readonly string PHASE_FILTER_HEADING = "//h3[normalize-space()='Phase']";
+        public static readonly string PHASE_DISCOVERY_FILTERTAG = "a.filter-badge:has(span:text-is('Discovery'))";
+        public static readonly string PHASE_ALPHA_FILTERTAG = "a.filter-badge:has(span:text-is('Alpha'))";
+        public static readonly string PHASE_DID_NOT_PROGRESS_FILTERTAG = "a.filter-badge:has(span:text-is('Did not progress'))";
+        public static readonly string PHASE_PRIVATE_BETA_FILTERTAG = "a.filter-badge:has(span:text-is('Private beta'))";
+        public static readonly string PHASE_PUBLIC_BETA_FILTERTAG = "a.filter-badge:has(span:text-is('Public beta'))";
+        public static readonly string PHASE_LIVE_FILTERTAG = "a.filter-badge:has(span:text-is('Live'))";
+        public static readonly string PHASE_DECOMMISSIONING_FILTERTAG = "a.filter-badge:has(span:text-is('Decommissioning'))";
+        public static readonly string PHASE_DECOMMISSIONED_FILTERTAG = "a.filter-badge:has(span:text-is('Decommissioned'))";
+        public static readonly string PHASE_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
+        // for Type -
         public static readonly string TYPE_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Campaign')";
         public static readonly string TYPE_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('Information')";
+
         public static readonly string PAGE_2_LINK = "a[aria-label = \"Page 2\"]";
         public static readonly string PAGE_3_LINK = "a[aria-label = \"Page 3\"]";
         public static readonly string PAGE_6_LINK = "a[aria-label = \"Page 6\"]";
@@ -174,7 +193,8 @@ namespace find_information_products_services_tests.constants
         public static readonly string MISSING_PROD_SERVICE_DESC = "//details[@class='govuk-details']";
         public static readonly string MISSING_PROD_SERVICE_LINK = ".govuk-details__summary-text";
         public static readonly string REQUEST_NEW_PRODUCT_DESC = ".govuk-details__text";
-        public static readonly string CLEAR_FILTER_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/p[2]"; // No Product Found case
+        public static readonly string CLEAR_ALL_FILTERS_DESC = "//*[@id=\"main-content\"]/div/div/div[2]/div[3]/p[2]"; // No Products found case
+        public static readonly string CLEAR_ALL_FILTERS_LINK = "div[class='govuk-inset-text'] a[class='govuk-link']";  // No Products found case
         public static readonly string CONTACT_US_EMAIL_DESC = "//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]";
 
         //Product details page locators -
