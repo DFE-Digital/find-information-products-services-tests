@@ -140,8 +140,12 @@ namespace find_information_products_services_tests.constants
         public static readonly string PHASE_NOT_CATEGORISED_CHECKBOX = "label[for='phase-not-categorised']";
 
         //Type checkboxes locators -
-        public static readonly string TYPE_CHECKBOX1_SELECTED = "label[for='type-campaign']";
-        public static readonly string TYPE_CHECKBOX2_SELECTED = "label[for='type-information']";
+        public static readonly string TYPE_API_CHECKBOX = "label[for='type-api']";
+        public static readonly string TYPE_CAMPAIGN_CHECKBOX = "label[for='type-campaign']";
+        public static readonly string TYPE_DATA_COLLECT_AND_REPORT_CHECKBOX = "label[for='type-data-collection-and-reporting']";
+        public static readonly string TYPE_INFORMATION_CHECKBOX = "label[for='type-information']";
+        public static readonly string TYPE_TRANSACTIONAL_CHECKBOX = "label[for='type-transactional']";
+        public static readonly string TYPE_NOT_CATEGORISED_CHECKBOX = "label[for='type-not-categorised']";
 
         //Product results page locators - for business area
         public static readonly string APPLIED_FILTERED_PANEL = "div.applied-filters-panel";   //new
@@ -183,8 +187,13 @@ namespace find_information_products_services_tests.constants
         public static readonly string PHASE_DECOMMISSIONED_FILTERTAG = "a.filter-badge:has(span:text-is('Decommissioned'))";
         public static readonly string PHASE_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
         // for Type -
-        public static readonly string TYPE_FILTERTAG1 = "ul.moj-filter-tags li a:has-text('Campaign')";
-        public static readonly string TYPE_FILTERTAG2 = "ul.moj-filter-tags li a:has-text('Information')";
+        public static readonly string TYPE_FILTER_HEADING = "//h3[normalize-space()='Type']";
+        public static readonly string TYPE_API_FILTERTAG = "a.filter-badge:has(span:text-is('API'))";
+        public static readonly string TYPE_CAMPAIGN_FILTERTAG = "a.filter-badge:has(span:text-is('Campaign'))";
+        public static readonly string TYPE_INFORMATION_FILTERTAG = "a.filter-badge:has(span:text-is('Information'))";
+        public static readonly string TYPE_DATA_COLLECT_AND_REPORT_FILTERTAG = "a.filter-badge:has(span:text-is('Data collection and reporting'))";
+        public static readonly string TYPE_TRANSACTIONAL_FILTERTAG = "a.filter-badge:has(span:text-is('Transactional'))";
+        public static readonly string TYPE_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
 
         public static readonly string PAGE_2_LINK = "a[aria-label = \"Page 2\"]";
         public static readonly string PAGE_3_LINK = "a[aria-label = \"Page 3\"]";
