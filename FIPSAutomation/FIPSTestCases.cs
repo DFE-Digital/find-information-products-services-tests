@@ -1075,12 +1075,12 @@ namespace FiPSAutomation
         [Test, Order(49), Category("functional")]
         public async Task VerifyProductNameSearchboxFunctionalityUS103AC()
         {
-            await page.Locator(FipsLocator.PRODUCT_NAME_TEXTBOX).FillAsync("app");
+            await page.Locator(FipsLocator.KEYWORD_SEARCH_TEXTBOX).FillAsync("app");
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
             await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
             await Task.Delay(1000);
-            await page.Locator(FipsLocator.PRODUCT_NAME_TEXTBOX).FillAsync(string.Empty);
+            await page.Locator(FipsLocator.KEYWORD_SEARCH_TEXTBOX).FillAsync(string.Empty);
 
             extentTest?.Log(Status.Pass, "VerifyProductNameSearchboxFunctionalityUS103AC passed");
         }
@@ -3087,7 +3087,65 @@ namespace FiPSAutomation
             extentTest?.Log(Status.Pass, "VerifyRequestNewProductForm_AddDetailsAndClickCancelUS141AC passed");
         }
 
-        [Test, Order(129), Category("accessibility")]
+        [Test, Order(129), Category("functional")]
+        public async Task ValidateNotCategorisedFilterOptions_SearchFunctionalityUS213AC()
+        {
+            goToLink("products");
+            await page.Locator(FipsLocator.BUSINESS_AREA_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.BA_NOT_CATEGORISED_CHECKBOX).CheckAsync();
+            await page.Locator(FipsLocator.CHANNEL_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.CHANNEL_NOT_CATEGORISED_CHECKBOX).CheckAsync();
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_LIVE_CHECKBOX).CheckAsync();
+            await page.Locator(FipsLocator.TYPE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.TYPE_NOT_CATEGORISED_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                     ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_LIVE_FILTERTAG)).
+                                                             ToHaveTextAsync("Live × Remove Live filter");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_FILTER_HEADING)).ToHaveTextAsync("Channel");
+            await Assertions.Expect(page.Locator(FipsLocator.CHANNEL_NOT_CATEGORISED_GROUP)).
+                                                             ToHaveTextAsync("Not categorised × Remove Not categorised filter");
+            await Assertions.Expect(page.Locator(FipsLocator.TYPE_FILTER_HEADING)).ToHaveTextAsync("Type");
+            await Assertions.Expect(page.Locator(FipsLocator.TYPE_NOT_CATEGORISED_GROUP)).
+                                                             ToHaveTextAsync("Not categorised × Remove Not categorised filter");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_FILTER_HEADING)).ToHaveTextAsync("Business area");
+            await Assertions.Expect(page.Locator(FipsLocator.BA_NOT_CATEGORISED_GROUP)).
+                                                             ToHaveTextAsync("Not categorised × Remove Not categorised filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "ValidateNotCategorisedFilterOption_SearchFunctionalityUS213AC passed");
+        }
+
+        [Test, Order(130), Category("functional")]
+        public async Task ValidateNotCategorisedFilterOptions_CombinedWithKeywordSearchFunctionalityUS213AC()
+        {
+            await page.Locator(FipsLocator.KEYWORD_SEARCH_TEXTBOX).FillAsync("Apprentice");
+            await page.Locator(FipsLocator.PHASE_CATEGORY).ClickAsync();
+            await page.Locator(FipsLocator.PHASE_NOT_CATEGORISED_CHECKBOX).CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
+                                                     ToContainTextAsync("results for your selected filters");
+            await Assertions.Expect(page.Locator(FipsLocator.SEARCH_FILTER_HEADING)).ToHaveTextAsync("Search term");
+            await Assertions.Expect(page.Locator(FipsLocator.KEYWORD_SEARCH_FILTERTAG)).
+                                                             ToHaveTextAsync("Apprentice × Remove Apprentice filter");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
+            await Assertions.Expect(page.Locator(FipsLocator.PHASE_NOT_CATEGORISED_FILTERTAG)).
+                                                             ToHaveTextAsync("Not categorised × Remove Not categorised filter");
+            await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+            await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+
+            extentTest?.Log(Status.Pass, "ValidateNotCategorisedFilterOptions_CombinedWithKeywordSearchFunctionalityUS213AC passed");
+        }
+
+        [Test, Order(131), Category("accessibility")]
         public async Task AccessibilityTest()
         {
             var axeResults = await page.RunAxe();
