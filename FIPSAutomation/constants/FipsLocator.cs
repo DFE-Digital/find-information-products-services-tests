@@ -91,7 +91,7 @@ namespace find_information_products_services_tests.constants
 
         //Products page locators -
         public static readonly string PRODUCTS_AND_SERVICES_LIST = "ul.dfe-chevron-card__list";
-        public static readonly string PRODUCT_NAME_TEXTBOX = "#keywords";
+        public static readonly string KEYWORD_SEARCH_TEXTBOX = "#keywords";
         public static readonly string USER_GROUPS_LISTBOX = "#user-autocomplete";
         public static readonly string USER_GROUPS_OPTION1 = "#user-autocomplete__option--1";
         public static readonly string USER_GROUPS_OPTION2 = "#user-autocomplete__option--3";
@@ -194,6 +194,14 @@ namespace find_information_products_services_tests.constants
         public static readonly string TYPE_DATA_COLLECT_AND_REPORT_FILTERTAG = "a.filter-badge:has(span:text-is('Data collection and reporting'))";
         public static readonly string TYPE_TRANSACTIONAL_FILTERTAG = "a.filter-badge:has(span:text-is('Transactional'))";
         public static readonly string TYPE_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
+
+        //Multi Not categorized grouping filter -
+        public static readonly string CHANNEL_NOT_CATEGORISED_GROUP = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[2]/div/a";
+        public static readonly string TYPE_NOT_CATEGORISED_GROUP = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[3]/div/a";
+        public static readonly string BA_NOT_CATEGORISED_GROUP = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[4]/div/a";
+        //Keyword Search locator -
+        public static readonly string SEARCH_FILTER_HEADING = "//h3[normalize-space()='Search term']";
+        public static readonly string KEYWORD_SEARCH_FILTERTAG = "a.filter-badge:has(span:text-is('Apprentice'))";
 
         public static readonly string PAGE_2_LINK = "a[aria-label = \"Page 2\"]";
         public static readonly string PAGE_3_LINK = "a[aria-label = \"Page 3\"]";
