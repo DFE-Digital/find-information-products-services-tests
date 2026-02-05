@@ -142,7 +142,7 @@ namespace find_information_products_services_tests.constants
         //Type checkboxes locators -
         public static readonly string TYPE_API_CHECKBOX = "label[for='type-api']";
         public static readonly string TYPE_CAMPAIGN_CHECKBOX = "label[for='type-campaign']";
-        public static readonly string TYPE_DATA_COLLECT_AND_REPORT_CHECKBOX = "label[for='type-data-collection-and-reporting']";
+        public static readonly string TYPE_DATA_CHECKBOX = "label[for='type-data']";
         public static readonly string TYPE_INFORMATION_CHECKBOX = "label[for='type-information']";
         public static readonly string TYPE_TRANSACTIONAL_CHECKBOX = "label[for='type-transactional']";
         public static readonly string TYPE_NOT_CATEGORISED_CHECKBOX = "label[for='type-not-categorised']";
@@ -191,7 +191,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string TYPE_API_FILTERTAG = "a.filter-badge:has(span:text-is('API'))";
         public static readonly string TYPE_CAMPAIGN_FILTERTAG = "a.filter-badge:has(span:text-is('Campaign'))";
         public static readonly string TYPE_INFORMATION_FILTERTAG = "a.filter-badge:has(span:text-is('Information'))";
-        public static readonly string TYPE_DATA_COLLECT_AND_REPORT_FILTERTAG = "a.filter-badge:has(span:text-is('Data collection and reporting'))";
+        public static readonly string TYPE_DATA_FILTERTAG = "a.filter-badge:has(span:text-is('Data   '))";
         public static readonly string TYPE_TRANSACTIONAL_FILTERTAG = "a.filter-badge:has(span:text-is('Transactional'))";
         public static readonly string TYPE_NOT_CATEGORISED_FILTERTAG = "a.filter-badge:has(span:text-is('Not categorised'))";
 
@@ -233,9 +233,9 @@ namespace find_information_products_services_tests.constants
         public static readonly string PRODUCT_DETAIL_TABLE = "(//table[@class = \"govuk-table\"])[1]";
         public static readonly string CATEGORIES_DETAIL_TABLE = "(//table[@class = \"govuk-table\"])[2]";
         public static readonly string USER_PRODUCT_TABLE = "(//table[@class = \"govuk-table\"])[3]";
-        public static readonly string PHASE_SELECTED_FILTERTAG = "ul.moj-filter-tags li a:has-text('Live')";
-        public static readonly string TYPE_SELECTED_FILTERTAG = "ul.moj-filter-tags li a:has-text('Information')";
-        public static readonly string USER_GROUPS_FILTERTAG = "ul.moj-filter-tags li a:has-text('Department for Education workforce')";
+      //public static readonly string PHASE_SELECTED_FILTERTAG = "a.filter-badge:has(span:text-is('Live'))";
+     // public static readonly string TYPE_SELECTED_FILTERTAG = "ul.moj-filter-tags li a:has-text('Information')";
+        public static readonly string USER_GROUPS_FILTERTAG = "a.filter-badge:has(span:text-is('Department for Education workforce'))";
 
         // Propose a change form locators -
         public static readonly string PRODUCT_TITLE_TEXTBOX = "#ProposedTitle";
@@ -260,7 +260,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string CHANGED_PHASE_RADIOBUTTON = "#ProposedPhaseId_388";
         public static readonly string CHANGED_BUSINESSAREA_RADIOBUTTON = "#ProposedGroupId_429";
         public static readonly string ADDED_CHANNEL_CHECKBOXES = "#ProposedChannelIds_379";
-        public static readonly string ADDED_TYPES_CHECKBOXES = "#ProposedTypeIds_418";
+        public static readonly string ADDED_TYPES_CHECKBOXES = "#ProposedTypeIds_453";
         public static readonly string SUCCESS_MESSAGE_ALERT = ".govuk-notification-banner.govuk-notification-banner--success"; //after submission of proposed change
         public static readonly string BETA_PHASE_BANNER_DESC = "div[class='govuk-phase-banner'] div[class='govuk-width-container']";
 
@@ -293,7 +293,7 @@ namespace find_information_products_services_tests.constants
         public static readonly string ADD_PRODUCT_CHANNELS_CB9 = "#ChannelIds_375";
         public static readonly string ADD_PRODUCT_TYPES_CB1 = "#TypeIds_416";
         public static readonly string ADD_PRODUCT_TYPES_CB2 = "#TypeIds_394";
-        public static readonly string ADD_PRODUCT_TYPES_CB3 = "#TypeIds_418";
+        public static readonly string ADD_PRODUCT_TYPES_CB3 = "#TypeIds_453";
         public static readonly string ADD_PRODUCT_TYPES_CB4 = "#TypeIds_393";
         public static readonly string ADD_PRODUCT_TYPES_CB5 = "#TypeIds_392";
         public static readonly string ADD_ADDITIONAL_INFO = "#Users";
