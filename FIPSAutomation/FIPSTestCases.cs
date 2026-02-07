@@ -229,7 +229,7 @@ namespace FiPSAutomation
         //}
 
         [Test, Order(13), Category("functional")]
-        public async Task ClickSubcategoryLinksForPhaseCategoryUS35AC2()
+        public async Task ClickSubcategoryLinksForPhaseCategory_US275AllAC()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_phase");
             // Iterate through each data row
@@ -239,7 +239,7 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
                 var requestTag = page.Locator(row.Filter_Tag);
 
                 // Assert that the filter tag exists and is visible
@@ -249,15 +249,13 @@ namespace FiPSAutomation
                 await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
 
                 //Locate and assert the page header and "phase" subheading
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading,
-                    new() { NameString = row.Heading })).ToBeVisibleAsync();
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Phase");
-
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
-
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
@@ -332,7 +330,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(17), Category("functional")]
-        public async Task ClickSubcategoryLinksForBusinessAreaUS27AC2()
+        public async Task ClickSubcategoryLinksForBusinessArea_US274AllAC()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_businessarea");
 
@@ -341,7 +339,7 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
                 var requestTag = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(requestTag).ToBeVisibleAsync();
                 await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
@@ -349,7 +347,9 @@ namespace FiPSAutomation
                 await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Business area");
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+                await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
@@ -2366,7 +2366,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(103), Category("functional")]
-        //[Ignore("This test triggers product update email to all. So, skipped for now")]
+        [Ignore("This test triggers product update email to FIPS Inbox. So, skipped for now")]
         public async Task EditAndSubmitProposeAChangeFormUS168AC()
         {
             await page.Locator(FipsLocator.PRODUCT_TITLE_TEXTBOX).
@@ -2928,7 +2928,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(126), Category("functional")]
-        //[Ignore("This test triggers product entry request email to all. So, skipped for now")]
+        [Ignore("This test triggers product entry request email to FIPS Inbox. So, skipped for now")]
         public async Task VerifyRequestNewProductEntryForm_AddingProductUS141AC()
         {
             goToLink("products");
@@ -3005,7 +3005,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(127), Category("functional")]
-        //[Ignore("This test triggers product entry request email to all. So, skipped for now")]
+        [Ignore("This test triggers product entry request email to FIPS Inbox. So, skipped for now")]
         public async Task ValidateRequestNewProductForm_SubmitBlankFormUS141AC()
         {
             await Assertions.Expect(page.Locator(FipsLocator.REQUEST_NEW_PRODUCT_FORM)).ToBeVisibleAsync();

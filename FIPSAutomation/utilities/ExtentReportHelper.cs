@@ -13,7 +13,7 @@ namespace FiPSAutomation.utilities
             var htmlReporter = new ExtentSparkReporter(Directory.GetParent(Environment.CurrentDirectory)
                 .Parent.Parent.FullName + "//playwright-report//" + reportPath);
             htmlReporter.Config.DocumentTitle = reportName;
-            htmlReporter.Config.ReportName = "Automation";
+            htmlReporter.Config.ReportName = "FIPS Automation";
             htmlReporter.Config.Encoding = "utf-8";
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Config.Theme.Standard;
 
