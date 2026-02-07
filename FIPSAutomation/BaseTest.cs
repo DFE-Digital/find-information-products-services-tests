@@ -1,8 +1,10 @@
 ﻿using AventStack.ExtentReports;
 using find_information_products_services_tests.constants;
+using find_information_products_services_tests.FIPSAutomation.login;
 using FiPSAutomation.utilities;
 using Microsoft.Playwright;
 using System.Text;
+using System.Text.Json;
 
 namespace FiPSAutomation
 {
@@ -16,6 +18,9 @@ namespace FiPSAutomation
         protected IPage? page { get; private set; }
 
         protected ExtentTest? extentTest;
+
+        protected LoginConfig loginConfig;
+        protected EnvironmentDetail activeEnvironment;
 
         // Declare properties for each of your page object models
         //protected LoginPage? loginPage { get; private set; }
@@ -68,19 +73,19 @@ namespace FiPSAutomation
         [TearDown]
         public async Task TearDown()
         {
-            // Add final test status (e.g., Pass, Fail)
+            // Add final test status Pass/Fail
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             if (status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
                 byte[] screenshot = await page.ScreenshotAsync();
                 string base64Screenshot = Convert.ToBase64String(screenshot);
+
                 extentTest?.Fail("Test failed", MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64Screenshot).Build());
 
                 extentTest?.Log(Status.Fail, "Test failed");
             }
             else if (status == NUnit.Framework.Interfaces.TestStatus.Passed)
             {
-                //extentTest?.Log(Status.Pass, "Test passed");
                 extentTest?.Pass("Test passed.");
             }
             else
@@ -91,15 +96,7 @@ namespace FiPSAutomation
 
         public async void goToLink(String link) {
             //await page.GoBackAsync();
-            if (URLConstant.ENVIRONMENT == "dev")
-            {
-                await page.GotoAsync(URLConstant.DEV_FIPS_URL + link);
-            }
-            else if (URLConstant.ENVIRONMENT == "test" || URLConstant.ENVIRONMENT == "local-testing-using-test-env")
-            {
-                await page.GotoAsync(URLConstant.TEST_FIPS_URL + link);
-            }
-            //else if (URLConstant.ENVIRONMENT == "")
+            await page.GotoAsync(activeEnvironment.ApplicationURL + link);
         }
 
         public async void clickLink(String link)
@@ -110,13 +107,30 @@ namespace FiPSAutomation
 
         protected async Task loginWithUsernameAndPasswordAndAcceptAndHideCookies()
         {
-            if (URLConstant.ENVIRONMENT == "dev")
+
+            using FileStream stream = File.OpenRead(Directory.GetParent(Environment.CurrentDirectory)
+                .Parent.Parent.FullName + "//FIPS.env.json");
+
+            loginConfig = await JsonSerializer.DeserializeAsync<LoginConfig>(stream);
+            
+            if (loginConfig != null)
             {
-                await page.GotoAsync(URLConstant.DEV_LOGIN_OAUTH_URL);
+                activeEnvironment = loginConfig.Envs.FirstOrDefault(e => e.Env == loginConfig?.ActiveEnv);
+                //Console.WriteLine($"Current env: {activeEnvironment}");
+                //Console.WriteLine($"Current URL: {activeEnvironment?.ApplicationURL}");
+            }
+
+            if (!loginConfig.LoginRequired)
+            {
+                goToLink("");
+            }
+            else if (loginConfig.ActiveEnv == "dev")
+            {
+                await page.GotoAsync(activeEnvironment.OAuthURL);
                 try
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
-                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
+                    await page.GetByPlaceholder("Email or phone").FillAsync(loginConfig.UserName);
 
                     //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
                     //string decodedString = Encoding.UTF8.GetString(decodedBytes);
@@ -125,7 +139,7 @@ namespace FiPSAutomation
 
                     ////await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
-                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
+                    await page.GetByPlaceholder("Password").FillAsync(loginConfig.Password);
 
                     //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
                     //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
@@ -136,18 +150,18 @@ namespace FiPSAutomation
                     Console.WriteLine("Error with :- " + ex.Message);
                 }
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.LOGIN_URL);
+                await page.WaitForURLAsync(loginConfig.LoginURL);
 
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.DEV_FIPS_URL);
+                await page.WaitForURLAsync(activeEnvironment.ApplicationURL);
             }
-            else if (URLConstant.ENVIRONMENT == "test")
+            else if (loginConfig.ActiveEnv == "test")
             {
-                await page.GotoAsync(URLConstant.TEST_LOGIN_OAUTH_URL);
+                await page.GotoAsync(activeEnvironment.OAuthURL);
                 try
                 {
                     await page.GetByPlaceholder("Email or phone").ClickAsync();
-                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
+                    await page.GetByPlaceholder("Email or phone").FillAsync(loginConfig.UserName);
 
                     //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
                     //string decodedString = Encoding.UTF8.GetString(decodedBytes);
@@ -158,7 +172,7 @@ namespace FiPSAutomation
 
                     ////await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
                     await page.GetByPlaceholder("Password").ClickAsync();
-                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
+                    await page.GetByPlaceholder("Password").FillAsync(loginConfig.Password);
 
                     //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
                     //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
@@ -169,37 +183,12 @@ namespace FiPSAutomation
                     Console.WriteLine("Error with :- " + ex.Message);
                 }
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.LOGIN_URL);
+                await page.WaitForURLAsync(loginConfig.LoginURL);
 
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.TEST_FIPS_URL);
+                await page.WaitForURLAsync(activeEnvironment.ApplicationURL);
             }
-            else if (URLConstant.ENVIRONMENT == "local-testing-using-test-env")
-            {
-                await page.GotoAsync(URLConstant.TEST_LOGIN_OAUTH_URL);
-                try
-                {
-                    await page.GetByPlaceholder("Email or phone").ClickAsync();
-                    await page.GetByPlaceholder("Email or phone").FillAsync(LoginConstant.USERNAME);
-                    await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
 
-                    //await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
-                    await page.GetByPlaceholder("Password").ClickAsync();
-                    await page.GetByPlaceholder("Password").FillAsync(LoginConstant.PASSWORD);
-                }
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Error with :- " + ex.Message);
-                }
-                await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.LOGIN_URL);
-
-                await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                await page.WaitForURLAsync(URLConstant.TEST_FIPS_URL);
-            }
-            else if(URLConstant.ENVIRONMENT == "WITHOUT_LOGIN") {
-                goToLink("");
-            }
             extentTest?.Log(Status.Pass, "loginWithUsernameAndPassword passed");
 
             await page.GetByRole(AriaRole.Button, new() { NameString = "Accept analytics cookies" }).ClickAsync();
