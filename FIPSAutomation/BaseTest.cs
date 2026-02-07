@@ -188,6 +188,39 @@ namespace FiPSAutomation
                 await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
                 await page.WaitForURLAsync(activeEnvironment.ApplicationURL);
             }
+            else if (loginConfig.ActiveEnv == "prod")
+            {
+                await page.GotoAsync(activeEnvironment.OAuthURL);
+                try
+                {
+                    await page.GetByPlaceholder("Email or phone").ClickAsync();
+                    await page.GetByPlaceholder("Email or phone").FillAsync(loginConfig.UserName);
+
+                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
+                    //string decodedString = Encoding.UTF8.GetString(decodedBytes);
+                    ////Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ decodedString);
+                    ////extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
+                    //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
+                    await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
+
+                    ////await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
+                    await page.GetByPlaceholder("Password").ClickAsync();
+                    await page.GetByPlaceholder("Password").FillAsync(loginConfig.Password);
+
+                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
+                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
+                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Error with :- " + ex.Message);
+                }
+                await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
+                await page.WaitForURLAsync(loginConfig.LoginURL);
+
+                await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
+                await page.WaitForURLAsync(activeEnvironment.ApplicationURL);
+            }
 
             extentTest?.Log(Status.Pass, "loginWithUsernameAndPassword passed");
 
