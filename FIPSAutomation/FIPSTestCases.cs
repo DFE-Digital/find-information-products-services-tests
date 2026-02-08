@@ -8,9 +8,13 @@ using static find_information_products_services_tests.utilities.ExcelReader;
 
 namespace FiPSAutomation
 {
+    [TestFixture]
+    [Category("Functional")]
+    [Order(1)]
     public class FIPSTestCases : BaseTest
     {
         [Test, Order(1)]
+        [Description("Login using username/password")]
         public async Task LoginWithUsernameAndPasswordUS231AC2()
         {
             await loginWithUsernameAndPasswordAndAcceptAndHideCookies();
