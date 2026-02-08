@@ -33,3 +33,5 @@ obj/
 
 appsettings.json
 playwright-report/
+FIPS.env.json
+

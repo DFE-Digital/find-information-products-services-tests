@@ -49,6 +49,8 @@ namespace FiPSAutomation
             //loginPage = new LoginPage(page);
             //homePage = new HomePage(page);
             //categoryPage = new CategoriesPage(page);
+
+            await loginWithUsernameAndPasswordAndAcceptAndHideCookies();
         }
 
         [OneTimeTearDown]
