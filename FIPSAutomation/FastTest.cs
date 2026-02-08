@@ -9,6 +9,9 @@ using static find_information_products_services_tests.utilities.ExcelReader;
 
 namespace find_information_products_services_tests
 {
+    [TestFixture]
+    [Category("Fast Test")]
+    [Order(2)]
     internal class FastTest : BaseTest
     {
 
@@ -55,7 +58,7 @@ namespace find_information_products_services_tests
                 var requestTag = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(requestTag).ToBeVisibleAsync();
                 await Assertions.Expect(requestTag).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading,new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("Type");
                 bool isRequestChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
                 Assert.That(isRequestChecked, Is.True);
@@ -64,7 +67,5 @@ namespace find_information_products_services_tests
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
-
-
     }
 }

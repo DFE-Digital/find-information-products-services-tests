@@ -1,9 +1,7 @@
 ﻿using AventStack.ExtentReports;
-using find_information_products_services_tests.constants;
 using find_information_products_services_tests.FIPSAutomation.login;
 using FiPSAutomation.utilities;
 using Microsoft.Playwright;
-using System.Text;
 using System.Text.Json;
 
 namespace FiPSAutomation
@@ -42,9 +40,10 @@ namespace FiPSAutomation
             {
                 ViewportSize = ViewportSize.NoViewport
             });
+
             page = await context.NewPageAsync();
-            //var reportPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestResults", "extent1.html");
-            extent = ExtentReportHelper.InitialiseReport("extent-"+ DateTime.Now.ToString("yyyy-MM-dd HHmmss")+".html", "FiPS Automation Report");
+
+            extent = ExtentReportHelper.GetInstance();
 
             // 2. Initialize each Page Object Model with the same IPage instance
             //loginPage = new LoginPage(page);
@@ -102,12 +101,10 @@ namespace FiPSAutomation
         public async void clickLink(String link)
         {
             await page.Locator(link).ClickAsync();
-
         }
 
         protected async Task loginWithUsernameAndPasswordAndAcceptAndHideCookies()
         {
-
             using FileStream stream = File.OpenRead(Directory.GetParent(Environment.CurrentDirectory)
                 .Parent.Parent.FullName + "//FIPS.env.json");
 
@@ -116,7 +113,6 @@ namespace FiPSAutomation
             if (loginConfig != null)
             {
                 activeEnvironment = loginConfig.Envs.FirstOrDefault(e => e.Env == loginConfig?.ActiveEnv);
-                //Console.WriteLine($"Current env: {activeEnvironment}");
                 //Console.WriteLine($"Current URL: {activeEnvironment?.ApplicationURL}");
             }
 
@@ -124,71 +120,7 @@ namespace FiPSAutomation
             {
                 goToLink("");
             }
-            else if (loginConfig.ActiveEnv == "dev")
-            {
-                await page.GotoAsync(activeEnvironment.OAuthURL);
-                try
-                {
-                    await page.GetByPlaceholder("Email or phone").ClickAsync();
-                    await page.GetByPlaceholder("Email or phone").FillAsync(loginConfig.UserName);
-
-                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
-                    //string decodedString = Encoding.UTF8.GetString(decodedBytes);
-                    //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
-                    await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-
-                    ////await page.WaitForURLAsync(URLConstant.DEV_LOGIN_SSO_URL);
-                    await page.GetByPlaceholder("Password").ClickAsync();
-                    await page.GetByPlaceholder("Password").FillAsync(loginConfig.Password);
-
-                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
-                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
-                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
-                }
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Error with :- " + ex.Message);
-                }
-                await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-                await page.WaitForURLAsync(loginConfig.LoginURL);
-
-                await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                await page.WaitForURLAsync(activeEnvironment.ApplicationURL);
-            }
-            else if (loginConfig.ActiveEnv == "test")
-            {
-                await page.GotoAsync(activeEnvironment.OAuthURL);
-                try
-                {
-                    await page.GetByPlaceholder("Email or phone").ClickAsync();
-                    await page.GetByPlaceholder("Email or phone").FillAsync(loginConfig.UserName);
-
-                    //byte[] decodedBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY3"));
-                    //string decodedString = Encoding.UTF8.GetString(decodedBytes);
-                    ////Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ decodedString);
-                    ////extentTest?.Log(Status.Pass, "decodedString:" + decodedString);
-                    //await page.GetByPlaceholder("Email or phone").FillAsync(decodedString);
-                    await page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-
-                    ////await page.WaitForURLAsync(URLConstant.TEST_LOGIN_SSO_URL);
-                    await page.GetByPlaceholder("Password").ClickAsync();
-                    await page.GetByPlaceholder("Password").FillAsync(loginConfig.Password);
-
-                    //byte[] decodedBytes2 = Convert.FromBase64String(Environment.GetEnvironmentVariable("KEY4"));
-                    //string decodedString2 = Encoding.UTF8.GetString(decodedBytes2);
-                    //await page.GetByPlaceholder("Password").FillAsync(decodedString2);
-                }
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Error with :- " + ex.Message);
-                }
-                await page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-                await page.WaitForURLAsync(loginConfig.LoginURL);
-
-                await page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                await page.WaitForURLAsync(activeEnvironment.ApplicationURL);
-            }
-            else if (loginConfig.ActiveEnv == "prod")
+            else 
             {
                 await page.GotoAsync(activeEnvironment.OAuthURL);
                 try
@@ -283,6 +215,10 @@ namespace FiPSAutomation
                         $"Row {rowIndex + 1}, Column '{headerName}': Expected value '{expectedValue}', but found '{actualValue}'.");
                 }
             }
+        }
+
+        public void LogStep(string message) {
+            extentTest.Info(message);
         }
 
     }
