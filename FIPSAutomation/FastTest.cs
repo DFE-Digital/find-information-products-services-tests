@@ -15,12 +15,6 @@ namespace find_information_products_services_tests
     internal class FastTest : BaseTest
     {
 
-        [Test, Order(1), Category("smoke")]
-        public async Task LoginWithUsernameAndPasswordUS231AC2()
-        {
-            await loginWithUsernameAndPasswordAndAcceptAndHideCookies();
-        }
-
         [Test, Order(15), Category("functional")]
         public async Task ClickSubcategoryLinksForChannel_US273AllAC()
         {

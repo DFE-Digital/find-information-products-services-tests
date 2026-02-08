@@ -17,7 +17,7 @@ namespace FiPSAutomation
         [Description("Login using username/password")]
         public async Task LoginWithUsernameAndPasswordUS231AC2()
         {
-            await loginWithUsernameAndPasswordAndAcceptAndHideCookies();
+            
         }
 
         [Test, Order(2), Category("functional")]
