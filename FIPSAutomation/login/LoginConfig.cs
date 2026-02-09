@@ -11,19 +11,19 @@ namespace find_information_products_services_tests.FIPSAutomation.login
     public class LoginConfig
     {
         [JsonPropertyName("activeEnv")]
-        public string ActiveEnv { get; set; } = string.Empty;
+        public string ActiveEnv { get; set; }
 
         [JsonPropertyName("loginRequired")]
         public bool LoginRequired { get; set; }
 
         [JsonPropertyName("userName")]
-        public string UserName { get; set; } = string.Empty;
+        public string UserName { get; set; }
 
         [JsonPropertyName("password")]
-        public string Password { get; set; } = string.Empty;
+        public string Password { get; set; }
 
         [JsonPropertyName("loginURL")]
-        public string LoginURL { get; set; } = string.Empty;
+        public string LoginURL { get; set; }
 
         [JsonPropertyName("envs")]
         public List<EnvironmentDetail> Envs { get; set; } = new();
@@ -32,12 +32,12 @@ namespace find_information_products_services_tests.FIPSAutomation.login
     public class EnvironmentDetail
     {
         [JsonPropertyName("env")]
-        public string Env { get; set; } = string.Empty;
+        public string Env { get; set; }
 
         [JsonPropertyName("applicationURL")]
-        public string ApplicationURL { get; set; } = string.Empty;
+        public string ApplicationURL { get; set; }
 
         [JsonPropertyName("oAuthURL")]
-        public string OAuthURL { get; set; } = string.Empty;
+        public string OAuthURL { get; set; }
     }
 }
