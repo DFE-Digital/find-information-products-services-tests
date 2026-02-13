@@ -123,9 +123,9 @@ namespace find_information_products_services_tests.utilities
                         Message = row.Cell(3).Value.ToString(),
                         Heading = row.Cell(4).Value.ToString(),
                         Filter_Text_Locator = row.Cell(5).Value.ToString(),
-                        Checkbox_Locator = row.Cell(6).Value.ToString(),
-                        Selected_UserTypes_Locator = row.Cell(7).Value.ToString(),
-                        Selected_UserTypes = row.Cell(8).Value.ToString()
+                       //Checkbox_Locator = row.Cell(6).Value.ToString(),
+                        Selected_UserTypes_Locator = row.Cell(6).Value.ToString(),
+                        Selected_UserTypes = row.Cell(7).Value.ToString()
                     };
                     dataList.Add(userData);
                 }
