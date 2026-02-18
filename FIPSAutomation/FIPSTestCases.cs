@@ -869,7 +869,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(39), Category("functional")]
-        public async Task ClickSubcategoryLinksForParentOrCarerUS99AC()
+        public async Task ClickSubcategoryLinksForParentOrCarer_US277AC9()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_ParentOrCarer");
             foreach (var row in dataRows)
@@ -877,15 +877,14 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
@@ -893,7 +892,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(40), Category("functional")]
-        public async Task ClickSubcategoryLinksForProfExternalUserofDfEDataUS100AC()
+        public async Task ClickSubcategoryLinksForProfExternalUserofDfEData_US277AC10()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcateg_ProfExtUserofDfEData");
             foreach (var row in dataRows)
@@ -901,16 +900,16 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+                await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -2038,7 +2037,7 @@ namespace FiPSAutomation
             await page.Locator(FipsLocator.TYPE_DATA_CHECKBOX).CheckAsync();
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
             await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).
-                                                     ToContainTextAsync("results for your selected filters");
+                                                     ToContainTextAsync(" your selected filters");
             await Assertions.Expect(page.Locator(FipsLocator.PHASE_FILTER_HEADING)).ToHaveTextAsync("Phase");
             await Assertions.Expect(page.Locator(FipsLocator.PHASE_NOT_CATEGORISED_FILTERTAG)).
                                                              ToHaveTextAsync("Not categorised × Remove Not categorised filter");
@@ -2077,7 +2076,7 @@ namespace FiPSAutomation
             // await page.Locator("a").Filter(new() { HasTextString = "Accessibility and inclusion" }).Nth(1).ClickAsync(); //not working as link is visually hidden
             goToLink("product/VRM-926");
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Accessibility and inclusion manual" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.Locator(FipsLocator.FIPS_ID_LINK)).ToHaveTextAsync("VRM-926");
+           //await Assertions.Expect(page.Locator(FipsLocator.FIPS_ID_LINK)).ToHaveTextAsync("VRM-926");
             await Assertions.Expect(page.Locator(FipsLocator.PHASE_COLUMN)).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator(FipsLocator.BUSINESS_AREA_COLUMN)).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator(FipsLocator.CONTACTS_COLUMN)).ToBeVisibleAsync();
@@ -2481,7 +2480,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(108), Category("functional")]
-        public async Task ClickSubcategoryLinksForSocialCareWorkforceUS101AC()
+        public async Task ClickSubcategoryLinksForSocialCareWorkforce_US277AC11()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_SCWorkforce");
             foreach (var row in dataRows)
@@ -2489,15 +2488,14 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
@@ -2505,7 +2503,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(109), Category("functional")]
-        public async Task ClickSubcategoryLinksForSocialWorkerUS128AC()
+        public async Task ClickSubcategoryLinksForSocialWorker_US277AC11()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_SocialWorker");
             foreach (var row in dataRows)
@@ -2513,15 +2511,14 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
@@ -2529,7 +2526,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(110), Category("functional")]
-        public async Task ClickSubcategoryLinksForEPAndEYWorkforceUS94AC()
+        public async Task ClickSubcategoryLinksForEPAndEYWorkforce_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_EPandEYWorkforce");
             foreach (var row in dataRows)
@@ -2537,16 +2534,16 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+                await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -2576,7 +2573,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(112), Category("functional")]
-        public async Task ClickSubcategoryLinksForEPEYAcademyAndTrustWorkforceUS130AC()
+        public async Task ClickSubcategoryLinksForAcademyAndTrustWorkforce_EPEY_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_AcademyTWorkforce");
             foreach (var row in dataRows)
@@ -2584,16 +2581,16 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+                await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -2623,7 +2620,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(114), Category("functional")]
-        public async Task ClickSubcategoryLinksForAlternatProvSettingWorkforceEPEYUS131AC()
+        public async Task ClickSubcategoryLinksForAlternatProvSettingWorkforce_EPEY_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_AltProSetWorkforce");
             foreach (var row in dataRows)
@@ -2631,15 +2628,14 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-                //bug raised for missing UG subcategory, once fixed this TC will pass
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
@@ -2670,7 +2666,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(116), Category("functional")]
-        public async Task ClickSubcategoryLinksForEarlyYearsWorkforceEPEYUS132AC()
+        public async Task ClickSubcategoryLinksForEarlyYearsWorkforce_EPEY_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcatg_EarlyYearsWorkforce");
             foreach (var row in dataRows)
@@ -2678,16 +2674,16 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+                await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
@@ -2717,7 +2713,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(118), Category("functional")]
-        public async Task ClickSubcategoryLinksForFurtherEducationWorkforceEPEYUS133AC()
+        public async Task ClickSubcategoryLinksForFurtherEducationWorkforce_EPEY_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcatg_FurtherEduWorkforce");
             foreach (var row in dataRows)
@@ -2725,15 +2721,14 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-                //bug raised for missing UG subcategory, once fixed this TC will pass
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
@@ -2764,7 +2759,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(120), Category("functional")]
-        public async Task ClickSubcategoryLinksForHigherEducationWorkforceEPEYUS134AC()
+        public async Task ClickSubcategoryLinksForHigherEducationWorkforce_EPEY_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcatg_HigherEduWorkforce");
             foreach (var row in dataRows)
@@ -2772,15 +2767,14 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
@@ -2811,7 +2805,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(122), Category("functional")]
-        public async Task ClickSubcategoryLinksForSENDProfessionalEPEYUS135AC()
+        public async Task ClickSubcategoryLinksForSENDProfessional_EPEY_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_SENDProfessional");
             foreach (var row in dataRows)
@@ -2819,15 +2813,14 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
@@ -2858,7 +2851,7 @@ namespace FiPSAutomation
         }
 
         [Test, Order(124), Category("functional")]
-        public async Task ClickSubcategoryLinksForSchoolWorkforceEPEYUS136AC()
+        public async Task ClickSubcategoryLinksForSchoolWorkforce_EPEY_US277AC5()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_SchoolWorkforce");
             foreach (var row in dataRows)
@@ -2866,16 +2859,16 @@ namespace FiPSAutomation
                 TestContext.WriteLine($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes} passed");
 
                 goToLink(row.Product_Locator);
-                // bug raised for missing UG subcategory, once fixed this TC will pass
+                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
+                await Assertions.Expect(page.Locator(FipsLocator.APPLIED_FILTERED_PANEL)).ToContainTextAsync("your selected filters");
+                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User group");
                 var FilterText = page.Locator(row.Filter_Tag);
                 await Assertions.Expect(FilterText).ToBeVisibleAsync();
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
-                await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = row.Heading })).ToBeVisibleAsync();
-                await Assertions.Expect(page.Locator(row.Filter_Text_Locator)).ToHaveTextAsync("User groups");
-                bool isUsertypeChecked = await page.Locator(row.Checkbox_Locator).IsCheckedAsync();
-                Assert.That(isUsertypeChecked, Is.True);
-                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveTextAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
+                await Assertions.Expect(page.Locator(FipsLocator.MISSING_PROD_SERVICE_DESC)).ToBeVisibleAsync();
                 await Assertions.Expect(page.Locator(FipsLocator.SHOWING_RESULTS_MESSAGE)).ToContainTextAsync("Showing");
+                await Assertions.Expect(page.Locator(FipsLocator.PRODUCTS_AND_SERVICES_LIST)).ToBeVisibleAsync();
 
                 extentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }

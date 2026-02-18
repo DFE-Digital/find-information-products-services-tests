@@ -216,7 +216,7 @@ namespace find_information_products_services_tests.constants
 
         //Product details page locators -
         public static readonly string PRODUCT_LINK = "//a[contains(text(), \"Accessibility and inclusion manual\")]";
-        public static readonly string FIPS_ID_LINK = ".govuk-caption-m";
+       //public static readonly string FIPS_ID_LINK = ".govuk-caption-m";    Id is removed now
         public static readonly string PHASE_COLUMN = "//th[normalize-space()='Phase']";
         public static readonly string BUSINESS_AREA_COLUMN = "//th[normalize-space()='Business area']";
         public static readonly string CONTACTS_COLUMN = "//th[normalize-space()='Contacts']";
