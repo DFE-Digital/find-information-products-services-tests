@@ -68,15 +68,15 @@ namespace FiPSAutomation
             }
             else
             {
-                await Page!.GotoAsync(ActiveEnvironment!.ApplicationURL);//TODO either we need line 71 or 72
-                //await Page!.GotoAsync(ActiveEnvironment!.OAuthURL); // TODO
+                //await Page!.GotoAsync(ActiveEnvironment!.ApplicationURL);
+                await Page!.GotoAsync(ActiveEnvironment!.OAuthURL); // TODO
                 try
                 {
                     await Page.GetByPlaceholder("Email or phone").ClickAsync();
-                    await Page.GetByPlaceholder("Email or phone").FillAsync(LoginConfig.UserName);
+                    await Page.GetByPlaceholder("Email or phone").FillAsync(StringUtility.Base64Decode(LoginConfig.UserName));
                     await Page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
                     await Page.GetByPlaceholder("Password").ClickAsync();
-                    await Page.GetByPlaceholder("Password").FillAsync(LoginConfig.Password);
+                    await Page.GetByPlaceholder("Password").FillAsync(StringUtility.Base64Decode(LoginConfig.Password));
                 }
                 catch (Exception ex)
                 {
@@ -84,9 +84,9 @@ namespace FiPSAutomation
                     return;
                 }
                 await Page.GetByRole(AriaRole.Button, new() { NameString = "Sign in" }).ClickAsync();
-                //await Page.WaitForURLAsync(LoginConfig.LoginURL); // TODO
+                await Page.WaitForURLAsync(LoginConfig.LoginURL); // TODO
                 await Page.GetByRole(AriaRole.Button, new() { NameString = "Yes" }).ClickAsync();
-                //await Page.WaitForURLAsync(ActiveEnvironment.ApplicationURL); // TODO either we need line 71 or 89
+                await Page.WaitForURLAsync(ActiveEnvironment.ApplicationURL); // TODO
             }
 
             await Page.GetByRole(AriaRole.Button, new() { NameString = "Accept analytics cookies" }).ClickAsync();
