@@ -16,4 +16,4 @@ dotnet test
 ### Important link:
 https://playwright.dev/dotnet/
 
-Update https://github.com/DFE-Digital/find-information-products-services-tests/blob/main/FIPS.env.json file with username/password and correct env. It picks env based on activeEnv value. Currently, it supports dev and test env.  If login is not required for dev/test environment then set false for loginRequired field in json file.
+Update https://github.com/DFE-Digital/find-information-products-services-tests/blob/main/FIPS.env.json file with Base64Encoded username and password and correct env. It picks env based on activeEnv value. Currently, it supports dev and test env.  If login is not required for dev/test environment then set false for loginRequired field in json file.
