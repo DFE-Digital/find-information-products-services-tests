@@ -68,7 +68,6 @@ namespace find_information_products_services_tests.utilities
                 {
                     var userData = new FipsSheetRow
                     {
-                        //Product_Locator Filter_Tag  Message Heading Filter_Text_Locator Checkbox_Locator
                         Product_Locator = row.Cell(1).Value.ToString(),
                         Filter_Tag = row.Cell(2).Value.ToString(),
                         Message = row.Cell(3).Value.ToString(),
@@ -84,8 +83,6 @@ namespace find_information_products_services_tests.utilities
 
         public static List<FipsSheetRowUG> getRowsFromExcelForSelectedUserType(string fileName, string sheetName)
         {
-            //string testDirectory = TestContext.CurrentContext.TestDirectory;
-
             string excelFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName
                 + "//" + fileName;
 

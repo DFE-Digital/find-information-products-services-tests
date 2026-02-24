@@ -26,9 +26,6 @@ namespace FiPSAutomation.utilities
                 .Parent.Parent.FullName + "//playwright-report//" 
                 + ("extent-" + DateTime.Now.ToString("yyyy-MM-dd HHmmss") + ".html"));
 
-                //var reportPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestResults", "extent1.html");
-
-
                 htmlReporter.Config.DocumentTitle = "FiPS Automation Report";
                 htmlReporter.Config.ReportName = "FIPS Automation";
                 htmlReporter.Config.Encoding = "utf-8";
