@@ -21,47 +21,43 @@ public class ProductSearchMainTests : BaseTest
     public async Task VerifyMainProductPageHeaderAndListUS103AC()
     {
         await Page.GetByRole(AriaRole.Link, new() { NameString = "Products" }).ClickAsync();
-        await productsSearchPage.VerifySearchHeadingAsync();
+        await productsSearchPage.VerifyProductsPageHeadingAsync();
+        await productsSearchPage.VerifyProductsListHeadingAsync();
+        await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
         await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         ExtentTest?.Log(Status.Pass, "VerifyMainProductPageHeaderAndListUS103AC passed");
     }
 
     [Test, Order(48)]
-    public async Task VerifyUserGroupsSearchFunctionalityUS103AC()
+    public async Task VerifySearchBoxFunctionality_UsingAcronymUS285AC1()
     {
-        await productsSearchPage.FilterPanel.SearchUserGroupAsync("Ac");
-        await productsSearchPage.FilterPanel.SelectUserGroupOption1Async();
-        await Assertions.Expect(Page.GetByLabel("Academy and trust workforce  (Education provider and early years workforce)")).ToBeCheckedAsync();
-        await productsSearchPage.FilterPanel.ClickUserGroupsListboxAsync();
-        await Task.Delay(1000);
-        await productsSearchPage.FilterPanel.SearchUserGroupAsync("Ac");
-        await Task.Delay(1000);
-        await productsSearchPage.FilterPanel.SelectUserGroupOption2Async();
-        await Assertions.Expect(Page.GetByLabel("Academy headteacher (secondary)  (Academy and trust workforce)")).ToBeCheckedAsync();
+        await productsSearchPage.SearchByKeywordAsync("GIAS");
         await productsSearchPage.FilterPanel.ApplyFiltersAsync();
+        await productsSearchPage.FilterTags.VerifyAppliedFiltersPanelContainsAsync("your selected filters");
+        await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
+        await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.GiasAcronym_FilterTag, "GIAS × Remove GIAS filter");
+        await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
         await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
-        await productsSearchPage.FilterPanel.SearchUserGroupAsync("DFE");
-        await productsSearchPage.FilterPanel.SelectUserGroupOption3Async();
-        await Assertions.Expect(Page.GetByLabel("Colleague supporting DfE users  (Department for Education workforce)")).ToBeCheckedAsync();
-        await productsSearchPage.FilterPanel.ApplyFiltersAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
-        await productsSearchPage.VerifyProductListVisibleAsync();
-        await Task.Delay(1000);
-        await productsSearchPage.FilterPanel.ClearFiltersAsync();
-        ExtentTest?.Log(Status.Pass, "VerifyUserGroupsSearchFunctionalityUS103AC passed");
+        await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
+
+        ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingAcronymUS285AC1 passed");
     }
 
     [Test, Order(49)]
-    public async Task VerifyProductNameSearchboxFunctionalityUS103AC()
+    public async Task VerifySearchBoxFunctionality_UsingAcronymUS285AC2()
     {
-        await productsSearchPage.FilterPanel.SearchByKeywordAsync("app");
+        await productsSearchPage.SearchByKeywordAsync("FIPS");
         await productsSearchPage.FilterPanel.ApplyFiltersAsync();
+        await productsSearchPage.FilterTags.VerifyAppliedFiltersPanelContainsAsync("your selected filters");
+        await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
+        await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.GiasAcronym_FilterTag, "FIPS × Remove FIPS filter");
+        await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
         await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
-        await Task.Delay(1000);
-        await productsSearchPage.FilterPanel.ClearKeywordSearchAsync();
-        ExtentTest?.Log(Status.Pass, "VerifyProductNameSearchboxFunctionalityUS103AC passed");
+        await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
+
+        ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingAcronymUS285AC2 passed");
     }
 }

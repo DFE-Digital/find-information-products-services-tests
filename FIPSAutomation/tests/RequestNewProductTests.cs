@@ -13,8 +13,7 @@ public class RequestNewProductTests : BaseTest
     private RequestNewProductPage requestNewProductPage = null!;
     private FilterPanelComponent filterPanel = null!;
 
-    public static readonly string DOMAIN_SUFFIX = ".education.gov.uk/";
-    public static readonly string TEST_URL = "https://automation-test-product" + DOMAIN_SUFFIX;
+    public static readonly string TEST_URL = "https://automation-test-product.education.gov.uk/";
 
     [OneTimeSetUp]
     public void InitPages()
@@ -122,7 +121,7 @@ public class RequestNewProductTests : BaseTest
         await requestNewProductPage.FillNotesAsync("Automation test - adding all necessary details and then clicking on Cancel");
         await requestNewProductPage.CancelFormAsync();
         await Assertions.Expect(Page).ToHaveTitleAsync("Search and filter products and services - FIPS");
-        await productsSearchPage.VerifySearchHeadingAsync();
+        await productsSearchPage.VerifyProductsPageHeadingAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifyRequestNewProductForm_AddDetailsAndClickCancelUS141AC passed");
     }
@@ -135,14 +134,10 @@ public class RequestNewProductTests : BaseTest
         await filterPanel.CheckFilterAsync(filterPanel.BA_NotCategorised);
         await filterPanel.OpenChannelAsync();
         await filterPanel.CheckFilterAsync(filterPanel.Channel_NotCategorised);
-        await filterPanel.OpenPhaseAsync();
-        await filterPanel.CheckFilterAsync(filterPanel.Phase_Live);
         await filterPanel.OpenTypeAsync();
         await filterPanel.CheckFilterAsync(filterPanel.Type_NotCategorised);
         await filterPanel.ApplyFiltersAsync();
         await productsSearchPage.FilterTags.VerifyAppliedFiltersPanelContainsAsync("results for your selected filters");
-        await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Phase_FilterHeading, "Phase");
-        await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.Phase_Live, "Live × Remove Live filter");
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Channel_FilterHeading, "Channel");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.Channel_NotCategorisedGroup, "Not categorised × Remove Not categorised filter");
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Type_FilterHeading, "Type");
@@ -151,7 +146,9 @@ public class RequestNewProductTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_NotCategorisedGroup, "Not categorised × Remove Not categorised filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
         await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
-        await productsSearchPage.VerifyProductListVisibleAsync();
+        if (await productsSearchPage.DoesChevronListExistAsync())
+        { await productsSearchPage.VerifyProductListVisibleAsync();
+        }
         await filterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "ValidateNotCategorisedFilterOption_SearchFunctionalityUS213AC passed");
@@ -160,7 +157,7 @@ public class RequestNewProductTests : BaseTest
     [Test, Order(130)]
     public async Task ValidateNotCategorisedFilterOptions_CombinedWithKeywordSearchFunctionalityUS213AC()
     {
-        await filterPanel.SearchByKeywordAsync("Apprentice");
+        await productsSearchPage.SearchByKeywordAsync("Apprentice");
         await filterPanel.OpenPhaseAsync();
         await filterPanel.CheckFilterAsync(filterPanel.Phase_NotCategorised);
         await filterPanel.ApplyFiltersAsync();

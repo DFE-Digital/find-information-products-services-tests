@@ -13,6 +13,10 @@ pwsh bin/Debug/net9.0/playwright.ps1 install
 ### To execute testcases run
 dotnet test
 
+## To execute specific category testcases run
+dotnet test --filter "TestCategory=functional"
+
+
 ### Important link:
 https://playwright.dev/dotnet/
 
