@@ -55,15 +55,10 @@ namespace FiPSAutomation.Components
         public string Type_Data => "label[for='type-data']";
         public string Type_Information => "label[for='type-information']";
         public string Type_Transactional => "label[for='type-transactional']";
-        public string Type_NotCategorised => "label[for='type-not-categorised']";
+        public string Type_NotCategorised => "label[for='type-not-categorised']";     
 
-        // User groups
-        private ILocator UserGroupsListbox => page.Locator("#user-autocomplete");
-        private ILocator UserGroupsOption1 => page.Locator("#user-autocomplete__option--1");
-        private ILocator UserGroupsOption2 => page.Locator("#user-autocomplete__option--3");
-        private ILocator UserGroupsOption3 => page.Locator("#user-autocomplete__option--2");
-        private ILocator KeywordSearchTextbox => page.Locator("#keywords");
-        private ILocator SelectedUserTypesCheckbox => page.Locator("#user-0");
+        // clear filters section
+        private ILocator ClearAllFilters => page.Locator("div[class='clear-filters-section'] a[class='govuk-link govuk-link--no-visited-state']");
 
         public FilterPanelComponent(IPage page)
         {
@@ -104,50 +99,20 @@ namespace FiPSAutomation.Components
             await page.GetByRole(AriaRole.Button, new() { NameString = "Apply filters" }).ClickAsync();
         }
 
-        public async Task ClearFiltersAsync()
+        /*public async Task ClearFiltersAsync()
         {
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear filters" }).ClickAsync();
-        }
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+        }*/
 
         public async Task ClearAllFiltersAsync()
         {
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Clear all filters" }).ClickAsync();
+            await ClearAllFilters.ClickAsync();
         }
 
-        public async Task SearchByKeywordAsync(string keyword)
-        {
-            await KeywordSearchTextbox.FillAsync(keyword);
-        }
-
-        public async Task ClearKeywordSearchAsync()
-        {
-            await KeywordSearchTextbox.FillAsync(string.Empty);
-        }
-
-        public async Task SearchUserGroupAsync(string text)
-        {
-            await UserGroupsListbox.FillAsync(text);
-        }
-
-        public async Task SelectUserGroupOption1Async()
-        {
-            await UserGroupsOption1.ClickAsync();
-        }
-
-        public async Task SelectUserGroupOption2Async()
-        {
-            await UserGroupsOption2.ClickAsync();
-        }
-
-        public async Task SelectUserGroupOption3Async()
-        {
-            await UserGroupsOption3.ClickAsync();
-        }
-
-        public async Task ClickUserGroupsListboxAsync()
-        {
-            await UserGroupsListbox.ClickAsync();
-        }
+        //public async Task ClearKeywordSearchAsync()
+        //{
+        //    await KeywordSearchTextbox.FillAsync(string.Empty);
+        //}
 
         public async Task VerifyBusinessAreaVisibleAsync()
         {

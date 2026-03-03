@@ -32,6 +32,8 @@ namespace FiPSAutomation.Pages
         public string ProductDetailTable => "(//table[@class = \"govuk-table\"])[1]";
         public string CategoriesDetailTable => "(//table[@class = \"govuk-table\"])[2]";
         public string UserProductTable => "(//table[@class = \"govuk-table\"])[3]";
+        public string tableHeader => ".govuk-table__head .govuk-table__row";
+        public string tableRow => ".govuk-table__body .govuk-table__row";
 
         // Beta banner
         private ILocator BetaPhaseBanner => page.Locator("div[class='govuk-phase-banner'] div[class='govuk-width-container']");
@@ -40,6 +42,15 @@ namespace FiPSAutomation.Pages
         private ILocator FeedbackBanner => page.Locator("//div[@class='dfe-feedback-banner--flex']");
         private ILocator SurveyLinkText => page.Locator("//*[@id=\"feedback-link-text\"]/a[1]");
 
+        // Users of Product 
+        private ILocator SearchTermsList => page.Locator(".govuk-details__summary-text");
+
+        //Page URL
+
+        public static readonly string GOV_URL = "https://www.gov.uk/government/organisations/department-for-education/about/personal-information-charter";
+        public static readonly string Product_URL = "https://accessibility.education.gov.uk";
+        public static readonly string Accessibility_URL = "https://accessibility.education.gov.uk/";
+        public static readonly string Accessibility_URL_Test = Accessibility_URL + "/automation-test";
         public ProductDetailPage(IPage page)
         {
             this.page = page;
@@ -108,19 +119,25 @@ namespace FiPSAutomation.Pages
             await Assertions.Expect(page.Locator("//div[@class='QuestionText BorderColor']")).ToBeVisibleAsync();
         }
 
-        public async Task AssertProductTableAsync(List<Dictionary<string, string>> expectedRows)
-        {
-            await GovTableComponent.AssertTableColumnValuesAsync(page, expectedRows, ProductDetailTable);
-        }
+        /*public async Task AssertProductTableAsync(List<Dictionary<string, string>> expectedRows)
+         {
+             await GovTableComponent.AssertTableColumnValuesAsync(page, expectedRows, ProductDetailTable);
+         }*/
 
         public async Task AssertCategoriesTableAsync(List<Dictionary<string, string>> expectedRows)
         {
             await GovTableComponent.AssertTableColumnValuesAsync(page, expectedRows, CategoriesDetailTable);
         }
 
-        public async Task AssertUsersTableAsync(List<Dictionary<string, string>> expectedRows)
+        /*public async Task AssertUsersTableAsync(List<Dictionary<string, string>> expectedRows)
         {
             await GovTableComponent.AssertTableColumnValuesAsync(page, expectedRows, UserProductTable);
+        }*/
+
+        public async Task VerifySearchTermsListAsync(string expectedText)
+        {
+            await Assertions.Expect(SearchTermsList).ToContainTextAsync(expectedText);
+            await SearchTermsList.ClickAsync();
         }
     }
 }

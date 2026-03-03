@@ -15,9 +15,10 @@ namespace FiPSAutomation.Pages
         private ILocator MissingProductServiceDesc => page.Locator("//details[@class='govuk-details']");
         private ILocator MissingProductServiceLink => page.Locator(".govuk-details__summary-text");
         private ILocator RequestNewProductDesc => page.Locator(".govuk-details__text");
-        private ILocator ClearAllFiltersDesc => page.Locator("//*[@id=\"main-content\"]/div/div/div[2]/div[3]/p[2]");
-        private ILocator ClearAllFiltersLink => page.Locator("div[class='govuk-inset-text'] a[class='govuk-link']");
+        private ILocator ClearAllFiltersDesc => page.Locator("//*[@id=\"main-content\"]/div/div/div[2]/div[3]/p[2]"); // no product found case
+        private ILocator ClearAllFiltersLink => page.Locator("div[class='govuk-inset-text'] a[class='govuk-link']"); // no product found case
         private ILocator ContactUsEmailDesc => page.Locator("//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]");
+        private ILocator KeywordSearchTextbox => page.Locator("#keywords");
 
         public ProductsSearchPage(IPage page)
         {
@@ -27,9 +28,14 @@ namespace FiPSAutomation.Pages
             Pagination = new PaginationComponent(page);
         }
 
-        public async Task VerifySearchHeadingAsync()
+        public async Task VerifyProductsPageHeadingAsync()
         {
             await Assertions.Expect(page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
+        }
+
+        public async Task VerifyProductsListHeadingAsync()
+        {
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "All products and services" })).ToBeVisibleAsync();
         }
 
         public async Task VerifyProductListVisibleAsync()
@@ -60,6 +66,11 @@ namespace FiPSAutomation.Pages
         public async Task ClickMissingProductLinkAsync()
         {
             await MissingProductServiceLink.ClickAsync();
+        }
+
+        public async Task SearchByKeywordAsync(string keyword)
+        {
+            await KeywordSearchTextbox.FillAsync(keyword);
         }
 
         public async Task VerifyContactUsEmailAsync()

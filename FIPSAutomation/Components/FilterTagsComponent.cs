@@ -69,14 +69,16 @@ namespace FiPSAutomation.Components
         // Search term filter
         public string Search_FilterHeading => "//h3[normalize-space()='Search term']";
         public string KeywordSearchTag => "a.filter-badge:has(span:text-is('Apprentice'))";
+        public string GiasAcronym_FilterTag => "a.filter-badge:has(span:text-is('GIAS'))";
+        public string FipsAcronym_FilterTag => "a.filter-badge:has(span:text-is('FIPS'))";
 
         // User groups filter tag
         public string UserGroups_FilterTag => "a.filter-badge:has(span:text-is('Department for Education workforce'))";
 
         // Multi not categorised group
-        public string Channel_NotCategorisedGroup => "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[2]/div/a";
-        public string Type_NotCategorisedGroup => "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[3]/div/a";
-        public string BA_NotCategorisedGroup => "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[4]/div/a";
+        public string Channel_NotCategorisedGroup => "a[href='/products?group=__not_categorised__&type=__not_categorised__']";        
+        public string Type_NotCategorisedGroup => "a[href='/products?group=__not_categorised__&channel=__not_categorised__']";
+        public string BA_NotCategorisedGroup => "a[href='/products?channel=__not_categorised__&type=__not_categorised__']";
 
         public FilterTagsComponent(IPage page)
         {
