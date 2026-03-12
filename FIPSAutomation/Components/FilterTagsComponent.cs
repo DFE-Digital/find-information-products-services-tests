@@ -66,12 +66,19 @@ namespace FiPSAutomation.Components
         // Type filter heading
         public string Type_FilterHeading => "//h3[normalize-space()='Type']";
 
-        // Search term filter
+        // Search term heading
         public string Search_FilterHeading => "//h3[normalize-space()='Search term']";
+
+        // Search term filter tags
         public string KeywordSearchTag => "a.filter-badge:has(span:text-is('Apprentice'))";
         public string GiasAcronym_FilterTag => "a.filter-badge:has(span:text-is('GIAS'))";
         public string FipsAcronym_FilterTag => "a.filter-badge:has(span:text-is('FIPS'))";
-
+        public string UGTermEYW_FilterTag => "a.filter-badge:has(span:text-is('Early years workforce'))";
+        public string UGTermCYP_FilterTag => "a.filter-badge:has(span:text-is('Child or young person'))";
+        public string NonPreferTermDfEStaff_FilterTag => "a.filter-badge:has(span:text-is('DfE staff'))";
+        public string NonPreferTermHEWorkforce_FilterTag => "a.filter-badge:has(span:text-is('HE workforce'))";
+        public string CrmAcronym_FilterTag => "a.filter-badge:has(span:text-is('CRM'))";
+        
         // User groups filter tag
         public string UserGroups_FilterTag => "a.filter-badge:has(span:text-is('Department for Education workforce'))";
 
