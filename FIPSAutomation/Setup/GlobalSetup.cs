@@ -73,9 +73,20 @@ namespace FiPSAutomation
                 try
                 {
                     await Page.GetByPlaceholder("Email or phone").ClickAsync();
+                    //byte[] usernameBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("USERNAME"));
+                    //string username = Encoding.UTF8.GetString(usernameBytes);
+                    ////Console.WriteLine("XXXXXXXXXXXXX: decodedString:"+ username);
+                    ////extentTest?.Log(Status.Pass, "decodedString:" + username);
+                    //await page.GetByPlaceholder("Email or phone").FillAsync(username);
+
                     await Page.GetByPlaceholder("Email or phone").FillAsync(StringUtility.Base64Decode(LoginConfig.UserName));
                     await Page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
+
+
                     await Page.GetByPlaceholder("Password").ClickAsync();
+                    //byte[] passwordBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("PASSWORD"));
+                    //string password = Encoding.UTF8.GetString(passwordBytes);
+                    //await page.GetByPlaceholder("Password").FillAsync(password);
                     await Page.GetByPlaceholder("Password").FillAsync(StringUtility.Base64Decode(LoginConfig.Password));
                 }
                 catch (Exception ex)
