@@ -19,6 +19,8 @@ namespace FiPSAutomation.Pages
         private ILocator ClearAllFiltersLink => page.Locator("div[class='govuk-inset-text'] a[class='govuk-link']"); // no product found case
         private ILocator ContactUsEmailDesc => page.Locator("//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]");
         private ILocator KeywordSearchTextbox => page.Locator("#keywords");
+        private ILocator FilterHeader => page.Locator(".moj-filter__header-title");
+        private ILocator CategoryFiltersBlock => page.Locator(".moj-filter__options");
 
         public ProductsSearchPage(IPage page)
         {
@@ -31,6 +33,13 @@ namespace FiPSAutomation.Pages
         public async Task VerifyProductsPageHeadingAsync()
         {
             await Assertions.Expect(page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
+        }
+
+        public async Task VerifyFilterOptionsBlockAsync()
+        {
+            await Assertions.Expect(FilterHeader).ToHaveTextAsync("Filter");
+            await Assertions.Expect(CategoryFiltersBlock).ToBeVisibleAsync();
+            await Assertions.Expect(KeywordSearchTextbox).ToBeVisibleAsync();
         }
 
         public async Task VerifyProductsListHeadingAsync()
@@ -96,11 +105,8 @@ namespace FiPSAutomation.Pages
 
         public async Task<bool> DoesChevronListExistAsync()
         {
-            // Locates the element
-            var locator = page.Locator("ul.dfe-chevron-card__list");
-
             // Returns true if 1 or more instances exist
-            return await locator.CountAsync() > 0;
+            return await ProductsAndServicesList.CountAsync() > 0;
         }
 
     }
