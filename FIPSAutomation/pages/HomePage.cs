@@ -13,7 +13,8 @@ namespace FiPSAutomation.Pages
         private ILocator BrowseCategoryLocator => page.Locator("//h2[text() = 'Browse categories']");
         private ILocator KeepInfoUpdateLocator => page.Locator("//h2[text() = 'Keep information updated']");
 
-        public HomePage(IPage page)
+        //A page object is passed as a dependency to the constructor,enabling flexible management of browser pages.
+        public HomePage(IPage page)   
         {
             this.page = page;
         }
@@ -25,9 +26,8 @@ namespace FiPSAutomation.Pages
 
         public async Task VerifyMainHeadingAsync()
         {
-            await Assertions.Expect(
-                page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })
-            ).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() 
+            { NameString = "Find information about products and services" })).ToBeVisibleAsync();
         }
 
         public async Task VerifyServiceDescriptionAsync()
