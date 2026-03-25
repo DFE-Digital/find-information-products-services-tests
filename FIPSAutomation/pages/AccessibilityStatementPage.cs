@@ -13,9 +13,7 @@ namespace FiPSAutomation.Pages
 
         public async Task VerifyAccessibilityStatementVisibleAsync()
         {
-            await Assertions.Expect(
-                page.GetByText("Accessibility statement", new() { Exact = true })
-            ).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByText("Accessibility statement", new() { Exact = true })).ToBeVisibleAsync();
         }
     }
 }

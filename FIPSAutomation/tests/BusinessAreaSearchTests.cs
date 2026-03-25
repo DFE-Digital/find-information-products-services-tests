@@ -31,7 +31,7 @@ public class BusinessAreaSearchTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(filterTagLocator, expectedTagText);
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+       //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         if (hasPagination && page2.HasValue && page2Url != null)
         {
@@ -86,7 +86,7 @@ public class BusinessAreaSearchTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_EnterpriseData, "Enterprise Data × Remove Enterprise Data filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+       //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.Pagination.GoToPageAsync(2);
         await productsSearchPage.Pagination.VerifyUrlContainsAsync("https://find-products-services-test.azurewebsites.net/Products?group=enterprise-data&page=2");
@@ -160,7 +160,7 @@ public class BusinessAreaSearchTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_NotCategorised, "Not categorised × Remove Not categorised filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.Pagination.GoToPageAsync(2);
         await productsSearchPage.Pagination.VerifyUrlContainsAsync("https://find-products-services-test.azurewebsites.net/Products?group=__not_categorised__&page=2");

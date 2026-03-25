@@ -6,6 +6,9 @@ namespace FiPSAutomation.Pages
     {
         private readonly IPage page;
 
+        public string ServiceEmailDesc => "//*[@id='main-content']/div/div/div[1]/div/p[1]";
+        public string EmailLink => "a[href='mailto:fips.service@education.gov.uk']";
+
         public KeepInfoUpdatedPage(IPage page)
         {
             this.page = page;
@@ -14,8 +17,7 @@ namespace FiPSAutomation.Pages
         public async Task VerifyHeadingAsync()
         {
             await Assertions.Expect(
-                page.GetByRole(AriaRole.Heading, new() { NameString = "Keep information updated" })
-            ).ToBeVisibleAsync();
+                page.GetByRole(AriaRole.Heading, new() { NameString = "Keep information updated" })).ToBeVisibleAsync();
         }
 
         public async Task ClickSearchLinkAsync()
@@ -37,5 +39,11 @@ namespace FiPSAutomation.Pages
         {
             await page.GetByRole(AriaRole.Link, new() { NameString = "Contact us" }).ClickAsync();
         }
+
+        //public async Task VerifyServiceEmailAsync()
+        //{
+        //    await Assertions.Expect(ServiceEmailDesc).ToBeVisibleAsync();
+        //    await 
+        //}
     }
 }

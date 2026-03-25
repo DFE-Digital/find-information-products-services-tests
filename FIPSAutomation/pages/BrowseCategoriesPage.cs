@@ -14,22 +14,19 @@ namespace FiPSAutomation.Pages
         public async Task VerifyDescriptionAsync()
         {
             await Assertions.Expect(
-                page.GetByText("Find products and services by how they are categorised", new() { Exact = true })
-            ).ToBeVisibleAsync();
+                page.GetByText("Find products and services by how they are categorised", new() { Exact = true })).ToBeVisibleAsync();
         }
 
         public async Task VerifyCategoryLinkVisibleAsync(string categoryName)
         {
             await Assertions.Expect(
-                page.GetByRole(AriaRole.Link, new() { NameString = categoryName })
-            ).ToBeVisibleAsync();
+                page.GetByRole(AriaRole.Link, new() { NameString = categoryName })).ToBeVisibleAsync();
         }
 
         public async Task VerifyCategoryDescriptionAsync(string description)
         {
             await Assertions.Expect(
-                page.GetByText(description, new() { Exact = true })
-            ).ToBeVisibleAsync();
+                page.GetByText(description, new() { Exact = true })).ToBeVisibleAsync();
         }
 
         public async Task ClickBackToAllCategoriesAsync()

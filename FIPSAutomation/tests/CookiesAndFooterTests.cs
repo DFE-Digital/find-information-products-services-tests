@@ -68,4 +68,27 @@ public class CookiesAndFooterTests : BaseTest
         await homePage.VerifyMainHeadingAsync();
         ExtentTest?.Log(Status.Pass, "VerifyAccessibilityLinkUS16AC passed");
     }
+
+    [Test, Order(45)]
+    public async Task VerifyPrivacyPolicyLinkUS15AC()
+    {
+        var newTab = await Page.RunAndWaitForPopupAsync(async () =>
+        {
+            await Page.GetByRole(AriaRole.Link, new() { NameString = "Privacy policy" }).ClickAsync();
+        });
+
+        await newTab.WaitForLoadStateAsync();
+        await newTab.GetByRole(AriaRole.Button, new() { NameString = "Accept additional cookies" }).ClickAsync();
+        await newTab.GetByRole(AriaRole.Button, new() { NameString = "Hide cookie message" }).ClickAsync();
+
+        // Assertions in the new tab
+        await Assertions.Expect(newTab).ToHaveURLAsync(ProductDetailPage.GOV_URL);        
+        await Assertions.Expect(newTab).ToHaveTitleAsync("Personal information charter - Department for Education - GOV.UK");          
+        await Assertions.Expect(newTab.GetByRole(AriaRole.Heading, new() { NameString = "Personal information charter" })).ToBeVisibleAsync();
+        await newTab.CloseAsync();
+        // Assertions back on the original page
+        await Assertions.Expect(Page).ToHaveTitleAsync("Find information about products and services - FIPS");
+
+        ExtentTest?.Log(Status.Pass, "VerifyPrivacyPolicyLinkUS15AC passed");
+    }
 }

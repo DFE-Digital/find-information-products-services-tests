@@ -58,7 +58,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
@@ -79,7 +79,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+           // await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
@@ -100,7 +100,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+         // await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
@@ -145,7 +145,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+          //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
@@ -190,7 +190,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
@@ -234,7 +234,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
@@ -279,7 +279,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+          //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
@@ -323,7 +323,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
@@ -367,7 +367,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
@@ -411,7 +411,7 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-            await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }

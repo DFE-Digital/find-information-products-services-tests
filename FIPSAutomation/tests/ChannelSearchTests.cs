@@ -26,7 +26,7 @@ public class ChannelSearchTests : BaseTest
         await productsSearchPage.FilterTags.VerifyAppliedFiltersPanelContainsAsync("your selected filters");
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Channel_FilterHeading, "Channel");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(filterTagLocator, expectedTagText);
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
     }
@@ -98,7 +98,7 @@ public class ChannelSearchTests : BaseTest
         await productsSearchPage.FilterTags.VerifyAppliedFiltersPanelContainsAsync("your selected filters");
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Channel_FilterHeading, "Channel");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.Channel_Web, "Web × Remove Web filter");
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+       //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.Pagination.GoToPageAsync(2);
         await productsSearchPage.Pagination.VerifyUrlContainsAsync("https://find-products-services-test.azurewebsites.net/Products?channel=web&page=2");

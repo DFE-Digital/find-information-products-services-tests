@@ -13,7 +13,7 @@ public class HomePageTests : BaseTest
     private KeepInfoUpdatedPage keepInfoUpdatedPage = null!;
     private HeaderComponent header = null!;
 
-    [OneTimeSetUp]
+    [OneTimeSetUp] //The HomePage and HeaderComponent objects are initialized in this method using the Page object shared from the BaseTest class.
     public void InitPages()
     {
         homePage = new HomePage(Page);
@@ -29,7 +29,7 @@ public class HomePageTests : BaseTest
         ExtentTest?.Log(Status.Pass, "LoginWithUsernameAndPasswordUS231AC2 passed");
     }
 
-    [Test, Order(2), Category("functional")]
+    [Test, Order(2)]
     public async Task HomePageVerificationUS12AC1()
     {
         await homePage.VerifyPageTitleAsync();
@@ -39,7 +39,7 @@ public class HomePageTests : BaseTest
         ExtentTest?.Log(Status.Pass, "HomePageVerificationUS12AC1 assertion passed");
     }
 
-    [Test, Order(3), Category("functional")]
+    [Test, Order(3)]
     public async Task ClickSearchButtonUS12AC2()
     {
         await homePage.ClickSearchButtonAsync();
@@ -48,7 +48,7 @@ public class HomePageTests : BaseTest
         ExtentTest?.Log(Status.Pass, "ClickSearchButtonUS12AC2 passed");
     }
 
-    [Test, Order(4), Category("functional")]
+    [Test, Order(4)]
     public async Task VerifyTilesAreVisibleUS12AC4()
     {
         await homePage.VerifyTilesVisibleAsync();
@@ -57,7 +57,7 @@ public class HomePageTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyTilesAreVisibleUS12AC4 passed");
     }
 
-    [Test, Order(5), Category("functional")]
+    [Test, Order(5)]
     public async Task ClickAllProductsAndServicesUS12AC5()
     {
         await homePage.ClickAllProductsAndServicesAsync();
@@ -66,7 +66,7 @@ public class HomePageTests : BaseTest
         ExtentTest?.Log(Status.Pass, "ClickAllProductsAndServicesUS12AC5 passed");
     }
 
-    [Test, Order(6), Category("functional")]
+    [Test, Order(6)]
     public async Task ClickBrowseCategoriesUS12AC6()
     {
         await homePage.ClickBrowseCategoriesAsync();
@@ -75,7 +75,7 @@ public class HomePageTests : BaseTest
         ExtentTest?.Log(Status.Pass, "ClickBrowseCategoriesUS12AC6 passed");
     }
 
-    [Test, Order(7), Category("functional")]
+    [Test, Order(7)]
     public async Task ClickAboutThisServiceTileUS12AC()
     {
         await homePage.ClickAboutThisServiceAsync();
@@ -84,7 +84,7 @@ public class HomePageTests : BaseTest
         ExtentTest?.Log(Status.Pass, "ClickAboutThisServiceTileUS12AC passed");
     }
 
-    [Test, Order(8), Category("functional")]
+    [Test, Order(8)]
     public async Task ClickKeepInformationUpdatedTileUS12AC8()
     {
         await homePage.ClickKeepInfoUpdatedAsync();
@@ -100,7 +100,8 @@ public class HomePageTests : BaseTest
         await Page.GoBackAsync();
         await keepInfoUpdatedPage.ClickContactUsLinkAsync();
         await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Contact us" })).ToBeVisibleAsync();
-        await Assertions.Expect(Page.Locator("//*[@id=\"main-content\"]/div/div/div[1]/div/p[1]")).ToBeVisibleAsync();
+        await Assertions.Expect(Page.Locator(keepInfoUpdatedPage.ServiceEmailDesc)).ToBeVisibleAsync();
+        await Assertions.Expect(Page.Locator(keepInfoUpdatedPage.EmailLink)).ToHaveAttributeAsync("href", "mailto:fips.service@education.gov.uk");
         await Page.GoBackAsync();
         await header.ClickServiceNameLinkAsync();
         await homePage.VerifyMainHeadingAsync();

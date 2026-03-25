@@ -1,4 +1,3 @@
-using AventStack.ExtentReports;
 using find_information_products_services_tests.FIPSAutomation.login;
 using FiPSAutomation.utilities;
 using Microsoft.Playwright;
@@ -19,16 +18,18 @@ namespace FiPSAutomation
         [OneTimeSetUp]
         public async Task RunBeforeAnyTests()
         {
-            Playwright = await Microsoft.Playwright.Playwright.CreateAsync();
+            //Initializes Playwright and starts a Chromium browser in headless mode -
+
+            Playwright = await Microsoft.Playwright.Playwright.CreateAsync(); 
             Browser = await Playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
                 Headless = true, //false,
                 Args = new List<string> { "--start-maximized" },
             });
-
+            //Configures the browser context and opens a new page -
             Context = await Browser.NewContextAsync(new BrowserNewContextOptions
             {
-                ViewportSize = ViewportSize.NoViewport
+                ViewportSize = ViewportSize.NoViewport //Sets viewport size for consistent UI testing.
             });
 
             Page = await Context.NewPageAsync();
@@ -43,10 +44,10 @@ namespace FiPSAutomation
         {
             if (Browser != null)
             {
-                await Browser.CloseAsync();
+                await Browser.CloseAsync(); //Closes the browser and releases Playwright resources
             }
             Playwright?.Dispose();
-            ExtentReportHelper.FlushReport();
+            ExtentReportHelper.FlushReport(); //Finalizes and flushes reports
         }
 
         private async Task LoginAndAcceptCookiesAsync()
@@ -55,7 +56,7 @@ namespace FiPSAutomation
                 Directory.GetParent(Environment.CurrentDirectory)!
                     .Parent!.Parent!.FullName + "//FIPS.env.json");
 
-            LoginConfig = await JsonSerializer.DeserializeAsync<LoginConfig>(stream);
+            LoginConfig = await JsonSerializer.DeserializeAsync<LoginConfig>(stream); //Reads the environment config from FIPS.env.json
 
             if (LoginConfig != null)
             {
@@ -81,7 +82,6 @@ namespace FiPSAutomation
 
                     await Page.GetByPlaceholder("Email or phone").FillAsync(StringUtility.Base64Decode(LoginConfig.UserName));
                     await Page.GetByRole(AriaRole.Button, new() { NameString = "Next" }).ClickAsync();
-
 
                     await Page.GetByPlaceholder("Password").ClickAsync();
                     //byte[] passwordBytes = Convert.FromBase64String(Environment.GetEnvironmentVariable("PASSWORD"));

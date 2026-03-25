@@ -23,7 +23,7 @@ namespace FiPSAutomation
             categoryDetailPage = new CategoryDetailPage(Page);
         }
 
-        [Test, Order(9), Category("functional")]
+        [Test, Order(9)]
         public async Task CheckBrowseCategoriesPageDescriptionUS05AC2()
         {
             await homePage.ClickBrowseCategoriesAsync();
@@ -31,14 +31,14 @@ namespace FiPSAutomation
             ExtentTest?.Log(Status.Pass, "CheckBrowseCategoriesPageDescriptionUS05AC2 passed");
         }
 
-        [Test, Order(10), Category("functional")]
+        [Test, Order(10)]
         public async Task CheckCategoriesListAndDescriptionUS05AC3()
         {
             await browseCategoriesPage.VerifyAllCategoryLinksAsync();
             ExtentTest?.Log(Status.Pass, "CheckCategoriesListAndDescriptionUS05AC3 passed");
         }
 
-        [Test, Order(11), Category("functional")]
+        [Test, Order(11)]
         public async Task ClickCategoriesLinksUS05AC4()
         {
             await NavigateToAsync("categories/channel");
