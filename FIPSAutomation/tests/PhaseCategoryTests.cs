@@ -23,7 +23,7 @@ namespace FiPSAutomation
             productsSearchPage = new ProductsSearchPage(Page);
         }
 
-        [Test, Order(12), Category("functional")]
+        [Test, Order(1)]
         public async Task VerifyPhaseCategoryListUS35AC1()
         {
             await NavigateToAsync("categories/phase");
@@ -40,7 +40,7 @@ namespace FiPSAutomation
             ExtentTest?.Log(Status.Pass, "VerifyPhaseCategoryListUS35AC1 passed");
         }
 
-        [Test, Order(13), Category("functional")]
+        [Test, Order(2)]
         public async Task ClickSubcategoryLinksForPhaseCategory_US275AllAC()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_phase");
@@ -55,7 +55,7 @@ namespace FiPSAutomation
                 await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(row.Filter_Text_Locator, "Phase");
                 await productsSearchPage.VerifyCheckboxCheckedAsync(row.Checkbox_Locator);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+              //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }

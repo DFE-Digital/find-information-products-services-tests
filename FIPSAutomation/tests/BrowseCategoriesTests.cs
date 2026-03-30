@@ -23,22 +23,23 @@ namespace FiPSAutomation
             categoryDetailPage = new CategoryDetailPage(Page);
         }
 
-        [Test, Order(9)]
+        [Test, Order(1)]
         public async Task CheckBrowseCategoriesPageDescriptionUS05AC2()
         {
-            await homePage.ClickBrowseCategoriesAsync();
+            await homePage.ClickCategoriesLinkAsync();
+            await categoryDetailPage.VerifyHeadingAsync("Browse categories");
             await browseCategoriesPage.VerifyDescriptionAsync();
             ExtentTest?.Log(Status.Pass, "CheckBrowseCategoriesPageDescriptionUS05AC2 passed");
         }
 
-        [Test, Order(10)]
+        [Test, Order(2)]
         public async Task CheckCategoriesListAndDescriptionUS05AC3()
         {
             await browseCategoriesPage.VerifyAllCategoryLinksAsync();
             ExtentTest?.Log(Status.Pass, "CheckCategoriesListAndDescriptionUS05AC3 passed");
         }
 
-        [Test, Order(11)]
+        [Test, Order(3)]
         public async Task ClickCategoriesLinksUS05AC4()
         {
             await NavigateToAsync("categories/channel");

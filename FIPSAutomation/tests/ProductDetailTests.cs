@@ -12,7 +12,7 @@ public class ProductDetailTests : BaseTest
     private ProductDetailPage productDetailPage = null!;
     private ProposeChangePage proposeChangePage = null!;
     private ProductsSearchPage productsSearchPage = null!;
-    private KeepInfoUpdatedPage keepInfoUpdatedPage = null!;
+  //private KeepInfoUpdatedPage keepInfoUpdatedPage = null!;
     private HeaderComponent header = null!;
 
     [OneTimeSetUp]
@@ -21,11 +21,11 @@ public class ProductDetailTests : BaseTest
         productDetailPage = new ProductDetailPage(Page);
         proposeChangePage = new ProposeChangePage(Page);
         productsSearchPage = new ProductsSearchPage(Page);
-        keepInfoUpdatedPage = new KeepInfoUpdatedPage(Page);
+      //keepInfoUpdatedPage = new KeepInfoUpdatedPage(Page);
         header = new HeaderComponent(Page);
     }
 
-    [Test, Order(95)]
+    [Test, Order(1)]
     public async Task VerifyProductOverviewPageHeadersUS168AC()
     {
         await NavigateToAsync("product/h7pjd1dx4hwvjm9zg6bv2gci");
@@ -70,27 +70,7 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyProductOverviewPageHeadersUS168AC passed");
     }
 
-    /*[Test, Order(96)]
-    public async Task VerifyProductDetailsInTableUS168AC()
-    {
-      //  await NavigateToAsync("product/VRM-926");
-        var expectedTableData = new List<Dictionary<string, string>>
-        {
-            new Dictionary<string, string>
-            {
-                { "Phase", "Phase: \n                                        Live" },
-                { "Business area", "Business area: \nCustomer Experience and Design" },
-                { "Contacts", "2 contacts" },
-                { "View product", "View product: \n                                        View product" }
-            },
-        };
-
-        await productDetailPage.AssertProductTableAsync(expectedTableData);
-
-        ExtentTest?.Log(Status.Pass, "VerifyProductDetailsInTableUS168AC passed");
-    }
-    */
-    [Test, Order(97)]
+    [Test, Order(2)]
     public async Task VerifyProductOverviewPageLinksUS168AC()
     {
         // Assertion for Overview link
@@ -114,7 +94,7 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyProductOverviewPageLinksUS168AC passed");
     }
 
-    [Test, Order(98)]       
+    [Test, Order(3)]       
     public async Task VerifyCategoriesDetailsInTableUS168AC()
     {
         await productDetailPage.ClickCategoriesLinkAsync();
@@ -167,7 +147,7 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyUsersOfTheProductTableUS168AC passed");
     }*/
 
-    [Test, Order(100)]
+    [Test, Order(4)]
     public async Task ClickSubcategoriesLinkInCategoriesTableUS168AC()
     {
         await Assertions.Expect(Page.GetByRole(AriaRole.Link, new() { NameString = "Customer Experience and Design" })).ToBeVisibleAsync();
@@ -198,7 +178,7 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "ClickSubcategoriesLinkInCategoriesTableUS168AC passed");
     }
 
-    [Test, Order(101)]
+    [Test, Order(5)]
     public async Task VerifyLinkInUsersProductTableUS168AC()
     {
         await NavigateToAsync("product/h7pjd1dx4hwvjm9zg6bv2gci/categories");
@@ -214,7 +194,7 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyLinkInUsersProductTableUS168AC passed");
     }
 
-    [Test, Order(102)]
+    [Test, Order(6)]
     public async Task VerifyProposeAChangeFormUS168AC()
     {
         await productDetailPage.ClickProposeChangeLinkAsync();
@@ -231,8 +211,8 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyProposeAChangeFormUS168AC passed");
     }
 
-    [Test, Order(103)]
-    [Ignore("This test triggers product update email to FIPS Inbox. So, skipped for now")]
+    [Test, Order(7)]
+  //[Ignore("This test triggers product update email to FIPS Inbox. So, skipped for now")]
     public async Task EditAndSubmitProposeAChangeFormUS168AC()
     {
         await proposeChangePage.FillProductTitleAsync("Automation Test - Accessibility and inclusion manual");
@@ -250,7 +230,7 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "EditAndSubmitProposeAChangeFormUS168AC passed");
     }
 
-    [Test, Order(104)]
+    [Test, Order(8)]
     public async Task EditProposeAChangeFormAndClickCancelUS168AC()
     {
         await productDetailPage.ClickProposeChangeLinkAsync();
@@ -270,27 +250,27 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "EditProposeAChangeFormAndClickCancelUS168AC passed");
     }
 
-    [Test, Order(105)]
-    public async Task VerfiyImproveMissingOrInaccurateInformationLinkUS169AC()
-    {
-        await productDetailPage.VerifyBetaPhaseBannerAsync();
-        await Page.GetByRole(AriaRole.Link, new() { NameString = "improve missing or inaccurate information" }).ClickAsync();
-        await keepInfoUpdatedPage.VerifyHeadingAsync();
-        await keepInfoUpdatedPage.ClickSearchLinkAsync();
-        await productsSearchPage.VerifyProductsPageHeadingAsync();
-        await Page.GoBackAsync();
-        await keepInfoUpdatedPage.ClickRequestNewProductEntryLinkAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        await keepInfoUpdatedPage.ClickAboutThisServiceLinkAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "About this service" })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        await keepInfoUpdatedPage.ClickContactUsLinkAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Contact us" })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        await header.ClickServiceNameLinkAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
+    //[Test, Order(105)]
+    //public async Task VerfiyImproveMissingOrInaccurateInformationLinkUS169AC()
+    //{
+    //    await productDetailPage.VerifyBetaPhaseBannerAsync();
+    //    await Page.GetByRole(AriaRole.Link, new() { NameString = "improve missing or inaccurate information" }).ClickAsync();
+    //    await keepInfoUpdatedPage.VerifyHeadingAsync();
+    //    await keepInfoUpdatedPage.ClickSearchLinkAsync();
+    //    await productsSearchPage.VerifyProductsPageHeadingAsync();
+    //    await Page.GoBackAsync();
+    //    await keepInfoUpdatedPage.ClickRequestNewProductEntryLinkAsync();
+    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
+    //    await Page.GoBackAsync();
+    //    await keepInfoUpdatedPage.ClickAboutThisServiceLinkAsync();
+    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "About this service" })).ToBeVisibleAsync();
+    //    await Page.GoBackAsync();
+    //    await keepInfoUpdatedPage.ClickContactUsLinkAsync();
+    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Contact us" })).ToBeVisibleAsync();
+    //    await Page.GoBackAsync();
+    //    await header.ClickServiceNameLinkAsync();
+    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
 
-        ExtentTest?.Log(Status.Pass, "VerfiyImproveMissingOrInaccurateInformationLinkUS169AC passed");
-    }
+    //    ExtentTest?.Log(Status.Pass, "VerfiyImproveMissingOrInaccurateInformationLinkUS169AC passed");
+    //}
 }

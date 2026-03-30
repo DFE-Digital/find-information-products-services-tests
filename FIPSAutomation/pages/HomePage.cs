@@ -6,12 +6,11 @@ namespace FiPSAutomation.Pages
     {
         private readonly IPage page;
 
-        private ILocator SearchButton => page.Locator("[class=\"govuk-button govuk-button--start govuk-button--inverse home-cta-link\"]");
-        private ILocator HomeTiles => page.Locator("(//div[@class='govuk-grid-column-full'])[1]");
-        private ILocator AboutServiceLocator => page.Locator("//*[@id=\"main-content\"]/div/div/div/div[2]/a[2]");
-        private ILocator AllProductsLocator => page.Locator("//h2[text() = 'All products and services']");
-        private ILocator BrowseCategoryLocator => page.Locator("//h2[text() = 'Browse categories']");
-        private ILocator KeepInfoUpdateLocator => page.Locator("//h2[text() = 'Keep information updated']");
+        private ILocator SearchButton => page.Locator("[class='govuk-button govuk-button--start govuk-button--inverse home-cta-link']");
+        private ILocator SearchProductsAndServicesButton => page.Locator("a[class=\"govuk-button govuk-button--start\"]");
+        private ILocator SearchLinkDescLocator => page.Locator("ol[class = 'govuk-list govuk-list--number'] li:nth-child(1)");
+        public string ServiceEmailDesc => "main[id='main-content'] p:nth-child(1)";
+        public string EmailLink => "a[href='mailto:fips.service@education.gov.uk']";
 
         //A page object is passed as a dependency to the constructor,enabling flexible management of browser pages.
         public HomePage(IPage page)   
@@ -47,45 +46,53 @@ namespace FiPSAutomation.Pages
             await SearchButton.ClickAsync();
         }
 
-        public async Task VerifyTilesVisibleAsync()
+        public async Task VerifyPageHeadingsAsync()
         {
-            await Assertions.Expect(HomeTiles).ToBeVisibleAsync();
-        }
-
-        public async Task VerifyTileHeadingsAsync()
-        {
-            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "All products and services" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Browse categories" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "What you can use this service for" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Use the service" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Keep information updated" })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "About this service" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Update a product or service" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = "Add a missing product or service" })).ToBeVisibleAsync();
         }
 
-        public async Task VerifyTileDescriptionsAsync()
+        public async Task VerifySearchProductsAndServicesButtonAsync()
         {
-            await Assertions.Expect(page.GetByText("Search and filter the products and services.", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("Find products and services by how they are categorised", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("How to update information about products listed in this service.", new() { Exact = true })).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByText("Find out what this service is and how it works.", new() { Exact = true })).ToBeVisibleAsync();
+            await Assertions.Expect(SearchProductsAndServicesButton).ToBeVisibleAsync();
         }
 
-        public async Task ClickAllProductsAndServicesAsync()
+        public async Task ClickSearchProductsAndServicesButtonAsync()
         {
-            await AllProductsLocator.ClickAsync();
+            await SearchProductsAndServicesButton.ClickAsync();
         }
 
-        public async Task ClickBrowseCategoriesAsync()
+        public async Task VerifySearchLinkDescription()
         {
-            await BrowseCategoryLocator.ClickAsync();
+            await Assertions.Expect(SearchLinkDescLocator).ToBeVisibleAsync();
         }
 
-        public async Task ClickAboutThisServiceAsync()
+        public async Task ClickSearchLinkAsync()
         {
-            await AboutServiceLocator.ClickAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Search" }).ClickAsync();
         }
 
-        public async Task ClickKeepInfoUpdatedAsync()
+        public async Task ClickRequestNewProductEntryLinkAsync()
         {
-            await KeepInfoUpdateLocator.ClickAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "request a new product entry" }).ClickAsync();
+        }
+
+        public async Task ClickContactLinkAsync()
+        {
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Contact" }).ClickAsync();
+        }
+
+        public async Task ClickBackToHomeAsync()
+        {
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Back to home" }).ClickAsync();
+        }
+
+        public async Task ClickCategoriesLinkAsync()
+        {
+            await page.GetByRole(AriaRole.Link, new() { NameString = "Categories" }).ClickAsync();
         }
     }
 }

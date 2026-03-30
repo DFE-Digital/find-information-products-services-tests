@@ -17,7 +17,7 @@ public class FeedbackTests : BaseTest
         feedback = new FeedbackSectionComponent(Page);
     }
 
-    [Test, Order(45), Category("functional")]
+    [Test, Order(1)]
     public async Task VerifyGiveFeedbackOrReportAProblemWithThisPageLinkUS162AC()
     {
         await NavigateToAsync("");
@@ -32,7 +32,7 @@ public class FeedbackTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyGiveFeedbackOrReportAProblemWithThisPageLinkUS162AC passed");
     }
 
-    [Test, Order(46), Category("functional")]
+    [Test, Order(2)]
     public async Task ValidateMaxCharsinGiveFeedbackOrReportAProblemFormUS162AC()
     {
         await NavigateToAsync("");

@@ -21,7 +21,7 @@ namespace FiPSAutomation
             productsSearchPage = new ProductsSearchPage(Page);
         }
 
-        [Test, Order(14), Category("functional")]
+        [Test, Order(1)]
         public async Task VerifyChannelCategoryListUS26AC1()
         {
             await NavigateToAsync("categories/channel");
@@ -38,7 +38,7 @@ namespace FiPSAutomation
             ExtentTest?.Log(Status.Pass, "VerifyChannelCategoryListUS26AC1 passed");
         }
 
-        [Test, Order(15), Category("functional")]
+        [Test, Order(2)]
         public async Task ClickSubcategoryLinksForChannel_US273AllAC()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_channel");

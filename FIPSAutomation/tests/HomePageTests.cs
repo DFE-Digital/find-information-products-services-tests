@@ -10,14 +10,14 @@ namespace FiPSAutomation;
 public class HomePageTests : BaseTest
 {
     private HomePage homePage = null!;
-    private KeepInfoUpdatedPage keepInfoUpdatedPage = null!;
+    private RequestNewProductPage requestNewProductPage = null!;
     private HeaderComponent header = null!;
 
-    [OneTimeSetUp] //The HomePage and HeaderComponent objects are initialized in this method using the Page object shared from the BaseTest class.
+    [OneTimeSetUp] 
     public void InitPages()
     {
         homePage = new HomePage(Page);
-        keepInfoUpdatedPage = new KeepInfoUpdatedPage(Page);
+        requestNewProductPage = new RequestNewProductPage(Page);
         header = new HeaderComponent(Page);
     }
 
@@ -40,7 +40,7 @@ public class HomePageTests : BaseTest
     }
 
     [Test, Order(3)]
-    public async Task ClickSearchButtonUS12AC2()
+    public async Task ClickMainSearchButtonUS12AC2()
     {
         await homePage.ClickSearchButtonAsync();
         await Assertions.Expect(Page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
@@ -49,62 +49,47 @@ public class HomePageTests : BaseTest
     }
 
     [Test, Order(4)]
-    public async Task VerifyTilesAreVisibleUS12AC4()
+    public async Task VerifyHomePageChangesUS305AC1()
     {
-        await homePage.VerifyTilesVisibleAsync();
-        await homePage.VerifyTileHeadingsAsync();
-        await homePage.VerifyTileDescriptionsAsync();
-        ExtentTest?.Log(Status.Pass, "VerifyTilesAreVisibleUS12AC4 passed");
+        await homePage.VerifyPageHeadingsAsync();
+        await homePage.VerifySearchProductsAndServicesButtonAsync();
+        await homePage.ClickSearchProductsAndServicesButtonAsync();
+        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
+        await Page.GoBackAsync();
+        ExtentTest?.Log(Status.Pass, "VerifyHomePageUpdatesUS305AC1 passed");
     }
 
     [Test, Order(5)]
-    public async Task ClickAllProductsAndServicesUS12AC5()
+    public async Task VerifySearchLinkFunctionalityUS305AC2()
     {
-        await homePage.ClickAllProductsAndServicesAsync();
-        await Assertions.Expect(Page.GetByText("Search and filter products and services")).ToBeVisibleAsync();
+        await homePage.VerifySearchLinkDescription();
+        await homePage.ClickSearchLinkAsync();
+        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
         await Page.GoBackAsync();
-        ExtentTest?.Log(Status.Pass, "ClickAllProductsAndServicesUS12AC5 passed");
+        ExtentTest?.Log(Status.Pass, "VerifySearchLinkFunctionalityUS305AC2 passed");
     }
 
     [Test, Order(6)]
-    public async Task ClickBrowseCategoriesUS12AC6()
+    public async Task VerifyRequestANewProductEntryLinkUS305AC3()
     {
-        await homePage.ClickBrowseCategoriesAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Browse categories" })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        ExtentTest?.Log(Status.Pass, "ClickBrowseCategoriesUS12AC6 passed");
+        await homePage.ClickRequestNewProductEntryLinkAsync();
+        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
+        await requestNewProductPage.VerifyFormVisibleAsync();
+        await header.ClickServiceNameLinkAsync();
+        ExtentTest?.Log(Status.Pass, "VerifyRequestANewProductEntryLinkUS305AC3 passed");
     }
 
     [Test, Order(7)]
-    public async Task ClickAboutThisServiceTileUS12AC()
+    public async Task VerifyContactLinkInFooterUS305AC4()
     {
-        await homePage.ClickAboutThisServiceAsync();
-        await Assertions.Expect(Page.GetByText("About this service", new() { Exact = true })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        ExtentTest?.Log(Status.Pass, "ClickAboutThisServiceTileUS12AC passed");
-    }
-
-    [Test, Order(8)]
-    public async Task ClickKeepInformationUpdatedTileUS12AC8()
-    {
-        await homePage.ClickKeepInfoUpdatedAsync();
-        await keepInfoUpdatedPage.VerifyHeadingAsync();
-        await keepInfoUpdatedPage.ClickSearchLinkAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Search and filter products and services" })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        await keepInfoUpdatedPage.ClickRequestNewProductEntryLinkAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        await keepInfoUpdatedPage.ClickAboutThisServiceLinkAsync();
-        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "About this service" })).ToBeVisibleAsync();
-        await Page.GoBackAsync();
-        await keepInfoUpdatedPage.ClickContactUsLinkAsync();
+        await homePage.ClickContactLinkAsync();
         await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Contact us" })).ToBeVisibleAsync();
-        await Assertions.Expect(Page.Locator(keepInfoUpdatedPage.ServiceEmailDesc)).ToBeVisibleAsync();
-        await Assertions.Expect(Page.Locator(keepInfoUpdatedPage.EmailLink)).ToHaveAttributeAsync("href", "mailto:fips.service@education.gov.uk");
-        await Page.GoBackAsync();
-        await header.ClickServiceNameLinkAsync();
+        await Assertions.Expect(Page.Locator(homePage.ServiceEmailDesc)).ToBeVisibleAsync();
+        await Assertions.Expect(Page.Locator(homePage.EmailLink)).ToHaveAttributeAsync("href", "mailto:fips.service@education.gov.uk");
+        await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Give feedback" })).ToBeVisibleAsync();
+        await Assertions.Expect(Page.GetByText("If you have any feedback for the service, use the feedback link at the end of each page.")).ToBeVisibleAsync();
+        await homePage.ClickBackToHomeAsync();
         await homePage.VerifyMainHeadingAsync();
-        ExtentTest?.Log(Status.Pass, "ClickKeepInformationUpdatedTileUS12AC8 passed");
+        ExtentTest?.Log(Status.Pass, "VerifyContactLinkInFooterUS305AC4 passed");
     }
 }

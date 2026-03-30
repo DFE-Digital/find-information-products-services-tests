@@ -40,7 +40,6 @@ public class FilterCombinationTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_SchoolsDigital, "Schools Digital × Remove Schools Digital filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
         ExtentTest?.Log(Status.Pass, "ValidateFilterLogicUpdate_ANDLogic_SearchFunctionalityUS220TC1 passed");
@@ -65,7 +64,6 @@ public class FilterCombinationTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_OperationsAndInfra, "Operations and Infrastructure × Remove Operations and Infrastructure filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await Task.Delay(1000);
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
@@ -88,7 +86,6 @@ public class FilterCombinationTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_SkillsAndGrowth, "Skills and Growth × Remove Skills and Growth filter");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_Strategy, "Strategy × Remove Strategy filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
         ExtentTest?.Log(Status.Pass, "ValidateFilterLogicUpdate_ANDLogic_SearchFunctionalityUS220TC3 passed");
@@ -110,7 +107,6 @@ public class FilterCombinationTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_ChildrenAndFamilies, "Children and Families × Remove Children and Families filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
         ExtentTest?.Log(Status.Pass, "ValidateFilterLogicUpdate_ANDLogic_SearchFunctionalityUS220TC4 passed");
@@ -134,7 +130,6 @@ public class FilterCombinationTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_FundingAndFinancialOversight, "Funding and Financial Oversight × Remove Funding and Financial Oversight filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
         ExtentTest?.Log(Status.Pass, "ValidateFilterLogicUpdate_ANDLogic_SearchFunctionalityUS220TC5 passed");
@@ -158,7 +153,6 @@ public class FilterCombinationTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_EnterpriseData, "Enterprise Data × Remove Enterprise Data filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
         ExtentTest?.Log(Status.Pass, "ValidateFilterLogicUpdate_ANDLogic_SearchFunctionalityUS220TC6 passed");

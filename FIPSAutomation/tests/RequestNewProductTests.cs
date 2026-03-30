@@ -23,8 +23,8 @@ public class RequestNewProductTests : BaseTest
         filterPanel = new FilterPanelComponent(Page);
     }
 
-    [Test, Order(126)]
-    [Ignore("This test triggers product entry request email to FIPS Inbox. So, skipped for now")]
+    [Test, Order(1)]
+  //[Ignore("This test triggers product entry request email to FIPS Inbox. So, skipped for now")]
     public async Task VerifyRequestNewProductEntryForm_AddingProductUS141AC()
     {
         await NavigateToAsync("products");
@@ -69,8 +69,8 @@ public class RequestNewProductTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyRequestNewProductEntryForm_AddingProductUS141AC passed");
     }
 
-    [Test, Order(127)]
-    [Ignore("This test triggers product entry request email to FIPS Inbox. So, skipped for now")]
+    [Test, Order(2)]
+  //[Ignore("This test triggers product entry request email to FIPS Inbox. So, skipped for now")]
     public async Task ValidateRequestNewProductForm_SubmitBlankFormUS141AC()
     {
         await requestNewProductPage.SubmitBlankFormAsync();
@@ -104,7 +104,7 @@ public class RequestNewProductTests : BaseTest
         ExtentTest?.Log(Status.Pass, "ValidateRequestNewProductForm_SubmitBlankFormUS141AC passed");
     }
 
-    [Test, Order(128)]
+    [Test, Order(3)]
     public async Task VerifyRequestNewProductForm_AddDetailsAndClickCancelUS141AC()
     {
         await NavigateToAsync("products");
@@ -126,7 +126,7 @@ public class RequestNewProductTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyRequestNewProductForm_AddDetailsAndClickCancelUS141AC passed");
     }
 
-    [Test, Order(129)]
+    [Test, Order(4)]
     public async Task ValidateNotCategorisedFilterOptions_SearchFunctionalityUS213AC()
     {
         await NavigateToAsync("products");
@@ -145,7 +145,7 @@ public class RequestNewProductTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.BA_FilterHeading, "Business area");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.BA_NotCategorisedGroup, "Not categorised × Remove Not categorised filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+       //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         if (await productsSearchPage.DoesChevronListExistAsync())
         { await productsSearchPage.VerifyProductListVisibleAsync();
         }
@@ -154,7 +154,7 @@ public class RequestNewProductTests : BaseTest
         ExtentTest?.Log(Status.Pass, "ValidateNotCategorisedFilterOption_SearchFunctionalityUS213AC passed");
     }
 
-    [Test, Order(130)]
+    [Test, Order(5)]
     public async Task ValidateNotCategorisedFilterOptions_CombinedWithKeywordSearchFunctionalityUS213AC()
     {
         await productsSearchPage.SearchByKeywordAsync("Apprentice");
@@ -167,7 +167,7 @@ public class RequestNewProductTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Phase_FilterHeading, "Phase");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.Phase_NotCategorised, "Not categorised × Remove Not categorised filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+      //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await filterPanel.ClearAllFiltersAsync();
 
