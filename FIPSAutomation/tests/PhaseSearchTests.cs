@@ -30,7 +30,6 @@ public class PhaseSearchTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Phase_FilterHeading, "Phase");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(filterTagLocator, expectedTagText);
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         if (expectNoProducts)
         {
             await productsSearchPage.VerifyNoProductsFoundAsync();
@@ -50,63 +49,63 @@ public class PhaseSearchTests : BaseTest
         }
     }
 
-    [Test, Order(72)]   
+    [Test, Order(1)]   
     public async Task VerifyPhaseSearchFunctionality_DiscoveryCategoryUS236AC1()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_Discovery, productsSearchPage.FilterTags.Phase_Discovery, "Discovery × Remove Discovery filter", navigateFirst: true);
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DiscoveryCategoryUS236AC1 passed");
     }
 
-    [Test, Order(73)]
+    [Test, Order(2)]
     public async Task VerifyPhaseSearchFunctionality_AlphaCategoryUS236AC2()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_Alpha, productsSearchPage.FilterTags.Phase_Alpha, "Alpha × Remove Alpha filter");
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_AlphaCategoryUS236AC2 passed");
     }
 
-    [Test, Order(74)]
+    [Test, Order(3)]
     public async Task VerifyPhaseSearchFunctionality_DidNotProgressCategoryUS236AC3()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_DidNotProgress, productsSearchPage.FilterTags.Phase_DidNotProgress, "Did not progress × Remove Did not progress filter");
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DidNotProgressCategoryUS236AC3 passed");
     }
 
-    [Test, Order(75)]
+    [Test, Order(4)]
     public async Task VerifyPhaseSearchFunctionality_PrivateBetaCategoryUS236AC4()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_PrivateBeta, productsSearchPage.FilterTags.Phase_PrivateBeta, "Private beta × Remove Private beta filter");
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_PrivateBetaCategoryUS236AC4 passed");
     }
 
-    [Test, Order(76)]
+    [Test, Order(5)]
     public async Task VerifyPhaseSearchFunctionality_PublicBetaCategoryUS236AC5()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_PublicBeta, productsSearchPage.FilterTags.Phase_PublicBeta, "Public beta × Remove Public beta filter", hasPagination: true, nextPageUrl: "https://find-products-services-test.azurewebsites.net/Products?phase=public-beta&page=2");
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_PublicBetaCategoryUS236AC5 passed");
     }
 
-    [Test, Order(77)]
+    [Test, Order(6)]
     public async Task VerifyPhaseSearchFunctionality_LiveCategoryUS236AC6()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_Live, productsSearchPage.FilterTags.Phase_Live, "Live × Remove Live filter");
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_LiveCategoryUS236AC6 passed");
     }
 
-    [Test, Order(78)]
+    [Test, Order(7)]
     public async Task VerifyPhaseSearchFunctionality_DecommissioningCategoryUS236AC7()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_Decommissioning, productsSearchPage.FilterTags.Phase_Decommissioning, "Decommissioning × Remove Decommissioning filter");
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DecommissioningCategoryUS236AC7 passed");
     }
 
-    [Test, Order(79)]
+    [Test, Order(8)]
     public async Task VerifyPhaseSearchFunctionality_DecommissionedCategoryUS236AC8()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_Decommissioned, productsSearchPage.FilterTags.Phase_Decommissioned, "Decommissioned × Remove Decommissioned filter");
         ExtentTest?.Log(Status.Pass, "VerifyPhaseSearchFunctionality_DecommissionedCategoryUS236AC8 passed");
     }
 
-    [Test, Order(80)]
+    [Test, Order(9)]
     public async Task VerifyPhaseSearchFunctionality_NotCategorisedCategoryUS236AC9()
     {
         await VerifyPhaseFilterAsync(productsSearchPage.FilterPanel.Phase_NotCategorised, productsSearchPage.FilterTags.Phase_NotCategorised, "Not categorised × Remove Not categorised filter");

@@ -25,7 +25,7 @@ public class CookiesAndFooterTests : BaseTest
         homePage = new HomePage(Page);
     }
 
-    [Test, Order(41)]
+    [Test, Order(1)]
     public async Task VerifyFooterCookiesLinkUS13AC()
     {
         await footer.ClickCookiesLinkAsync();
@@ -37,7 +37,7 @@ public class CookiesAndFooterTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyFooterCookiesLinkUS13AC passed");
     }
 
-    [Test, Order(42)]       
+    [Test, Order(2)]       
     public async Task VerifyCookiesPageFunctionalitiesUS13AC()
     {
         await NavigateToAsync("cookies");
@@ -50,7 +50,7 @@ public class CookiesAndFooterTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyCookiesPageFunctionalitiesUS13AC passed");
     }
 
-    [Test, Order(43)]
+    [Test, Order(3)]
     public async Task VerifyCookiesPageBackToHomeFunctionalityUS13AC()
     {
         await NavigateToAsync("cookies");
@@ -59,7 +59,7 @@ public class CookiesAndFooterTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyCookiesPageBackToHomeFunctionalityUS13AC passed");
     }
 
-    [Test, Order(44)]
+    [Test, Order(4)]
     public async Task VerifyAccessibilityLinkUS16AC()
     {
         await footer.ClickAccessibilityStatementAsync();
@@ -69,7 +69,7 @@ public class CookiesAndFooterTests : BaseTest
         ExtentTest?.Log(Status.Pass, "VerifyAccessibilityLinkUS16AC passed");
     }
 
-    [Test, Order(45)]
+    [Test, Order(5)]
     public async Task VerifyPrivacyPolicyLinkUS15AC()
     {
         var newTab = await Page.RunAndWaitForPopupAsync(async () =>

@@ -20,16 +20,32 @@ namespace FiPSAutomation
         [TearDown]
         public async Task TearDown()
         {
-            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var result = TestContext.CurrentContext.Result;
+            var status = result.Outcome.Status;
+
             if (status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
-                byte[] screenshot = await Page.ScreenshotAsync();
+                // 1. Capture Full Scrollable Page screenshot
+                byte[] screenshot = await Page.ScreenshotAsync(new PageScreenshotOptions
+                {
+                    FullPage = true
+                    
+                });
                 string base64Screenshot = Convert.ToBase64String(screenshot);
 
-                ExtentTest?.Fail("Test failed",
+                // 2. Retrieve URL and failure details
+                string currentUrl = Page.Url;
+                string errorMessage = result.Message;
+                string stackTrace = result.StackTrace;
+
+                // 3. Log to Extent Report
+                // Log the URL and Error Message as a header
+                ExtentTest?.Fail($"<b>Failed URL:</b> <a href='{currentUrl}' target='_blank'>{currentUrl}</a><br/>" +
+                                $"<b>Error:</b> {errorMessage}",
                     MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64Screenshot).Build());
 
-                ExtentTest?.Log(Status.Fail, "Test failed");
+                // 4. Log the Stack Trace in a formatted block
+                ExtentTest?.Log(Status.Fail, $"Stack Trace: <pre>{stackTrace}</pre>");
             }
             else if (status == NUnit.Framework.Interfaces.TestStatus.Passed)
             {
@@ -40,6 +56,7 @@ namespace FiPSAutomation
                 ExtentTest?.Skip("Test skipped");
             }
         }
+
 
         protected async Task NavigateToAsync(string path)
         {

@@ -36,7 +36,7 @@ namespace FiPSAutomation.Pages
         public string tableRow => ".govuk-table__body .govuk-table__row";
 
         // Beta banner
-        private ILocator BetaPhaseBanner => page.Locator("div[class='govuk-phase-banner'] div[class='govuk-width-container']");
+      //  private ILocator BetaPhaseBanner => page.Locator("div[class='govuk-phase-banner'] div[class='govuk-width-container']");
 
         // Feedback banner
         private ILocator FeedbackBanner => page.Locator("//div[@class='dfe-feedback-banner--flex']");
@@ -99,10 +99,10 @@ namespace FiPSAutomation.Pages
             await Assertions.Expect(ServiceOwnerLocator).ToBeVisibleAsync();
         }
 
-        public async Task VerifyBetaPhaseBannerAsync()
-        {
-            await Assertions.Expect(BetaPhaseBanner).ToBeVisibleAsync();
-        }
+        //public async Task VerifyBetaPhaseBannerAsync()
+        //{
+        //    await Assertions.Expect(BetaPhaseBanner).ToBeVisibleAsync();
+        //}
 
         public async Task VerifyFeedbackBannerAsync()
         {

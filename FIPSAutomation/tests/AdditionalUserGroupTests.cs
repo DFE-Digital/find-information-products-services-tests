@@ -19,7 +19,7 @@ public class AdditionalUserGroupTests : BaseTest
         productsSearchPage = new ProductsSearchPage(Page);
     }
 
-    [Test, Order(107)]
+    [Test, Order(1)]
     public async Task VerifyUGSocialWorkerSubcategoryListUS101AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_SocialWorker_list");
@@ -42,7 +42,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(108)]
+    [Test, Order(2)]
     public async Task ClickSubcategoryLinksForSocialCareWorkforce_US277AC11()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_SCWorkforce");
@@ -58,12 +58,12 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(109)]
+    [Test, Order(3)]
     public async Task ClickSubcategoryLinksForSocialWorker_US277AC11()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_SocialWorker");
@@ -79,12 +79,12 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-           // await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(110)]
+    [Test, Order(4)]
     public async Task ClickSubcategoryLinksForEPAndEYWorkforce_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_EPandEYWorkforce");
@@ -100,13 +100,13 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-         // await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(111)]
+    [Test, Order(5)]
     public async Task VerifyUGEPEYAcademyAndTrustWorkforceSubcategoryListUS130AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEYAcademyTruWorkforce_list");
@@ -129,7 +129,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(112)]
+    [Test, Order(6)]
     public async Task ClickSubcategoryLinksForAcademyAndTrustWorkforce_EPEY_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_AcademyTWorkforce");
@@ -145,13 +145,13 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-          //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(113)]
+    [Test, Order(7)]
     public async Task VerifyUGEPEYAlternatProvSettingWorkforceSubcategListUS131AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEYAltProvSetWorkforce_list");
@@ -174,7 +174,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(114)]
+    [Test, Order(8)]
     public async Task ClickSubcategoryLinksForAlternatProvSettingWorkforce_EPEY_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_AltProSetWorkforce");
@@ -190,12 +190,12 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(115)]
+    [Test, Order(9)]
     public async Task VerifyUGEPEYEarlyYearsWorkforceSubcategoryListUS132AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEYEarlyYearsWorkforce_list");
@@ -218,7 +218,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(116)]
+    [Test, Order(10)]
     public async Task ClickSubcategoryLinksForEarlyYearsWorkforce_EPEY_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcatg_EarlyYearsWorkforce");
@@ -234,13 +234,13 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(117)]
+    [Test, Order(11)]
     public async Task VerifyUGEPEYFurtherEducationWorkforceSubcategoryListUS133AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEYFurtherEduWorkforce_list");
@@ -263,7 +263,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(118)]
+    [Test, Order(12)]
     public async Task ClickSubcategoryLinksForFurtherEducationWorkforce_EPEY_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcatg_FurtherEduWorkforce");
@@ -279,12 +279,12 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-          //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(119)]
+    [Test, Order(13)]
     public async Task VerifyUGEPEYHigherEducationWorkforceSubcategoryListUS134AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEYHigherEduWorkforce_list");
@@ -307,7 +307,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(120)]
+    [Test, Order(14)]
     public async Task ClickSubcategoryLinksForHigherEducationWorkforce_EPEY_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcatg_HigherEduWorkforce");
@@ -323,12 +323,12 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(121)]
+    [Test, Order(15)]
     public async Task VerifyUGEPEY_SENDProfessionalSubcategoryListUS135AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEY_SENDProfessional_list");
@@ -351,7 +351,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(122)]
+    [Test, Order(16)]
     public async Task ClickSubcategoryLinksForSENDProfessional_EPEY_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_SENDProfessional");
@@ -367,12 +367,12 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }
 
-    [Test, Order(123)]
+    [Test, Order(17)]
     public async Task VerifyUGEPEYSchoolWorkforceSubcategoryListUS136AC()
     {
         List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "UG_EPEY_SchoolWorkforce_list");
@@ -395,7 +395,7 @@ public class AdditionalUserGroupTests : BaseTest
         }
     }
 
-    [Test, Order(124)]
+    [Test, Order(18)]
     public async Task ClickSubcategoryLinksForSchoolWorkforce_EPEY_US277AC5()
     {
         List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "EPEYSubcateg_SchoolWorkforce");
@@ -411,8 +411,8 @@ public class AdditionalUserGroupTests : BaseTest
             await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
             await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
             await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-           //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
             await productsSearchPage.VerifyProductListVisibleAsync();
+
             ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
         }
     }

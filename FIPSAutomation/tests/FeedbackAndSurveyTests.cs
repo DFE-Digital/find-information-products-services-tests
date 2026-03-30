@@ -16,7 +16,7 @@ public class FeedbackAndSurveyTests : BaseTest
         productDetailPage = new ProductDetailPage(Page);
     }
 
-    [Test, Order(125)]
+    [Test, Order(1)]
     public async Task VerifyFeedbackLinks_ContentChangeUS207AC()
     {
         await NavigateToAsync("");

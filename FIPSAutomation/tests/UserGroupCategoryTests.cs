@@ -19,7 +19,7 @@ namespace FiPSAutomation
             categoryDetailPage = new CategoryDetailPage(Page);
         }
 
-        [Test, Order(20), Category("functional")]
+        [Test, Order(1)]
         public async Task VerifyUserGroupCategoryListUS30AC()
         {
             await NavigateToAsync("categories/user-group");
@@ -61,7 +61,7 @@ namespace FiPSAutomation
             ExtentTest?.Log(Status.Pass, "VerifyUserGroupCategoryListUS30AC passed");
         }
 
-        [Test, Order(21), Category("functional")]
+        [Test, Order(2)]
         public async Task VerifyUGAdultLearner18SubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_AdultLearner18_list");
@@ -84,7 +84,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(22), Category("functional")]
+        [Test, Order(3)]
         public async Task VerifyUGCareersAdviserOrWorkCoachSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_CareersAdviser_list");
@@ -107,7 +107,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(23), Category("functional")]
+        [Test, Order(4)]
         public async Task VerifyUGChildOrYoungPersonSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_ChildOrYoungPers_list");
@@ -130,7 +130,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(24), Category("functional")]
+        [Test, Order(5)]
         public async Task VerifyUGDfEWorkforceSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_DfEWorkforce_list");
@@ -153,7 +153,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(25), Category("functional")]
+        [Test, Order(6)]
         public async Task VerifyUGEPAndEYWorkforceSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_EPandEYWorkforce_list");
@@ -176,7 +176,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(26), Category("functional")]
+        [Test, Order(7)]
         public async Task VerifyUGEmployerSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_Employer_list");
@@ -199,7 +199,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(27), Category("functional")]
+        [Test, Order(8)]
         public async Task VerifyUGLocalAuthorityWorkforceSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_LAWorkforce_list");
@@ -222,7 +222,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(28), Category("functional")]
+        [Test, Order(9)]
         public async Task VerifyUGNEETOrCareerSeekerSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_NEETOrCareerSeek_list");
@@ -245,7 +245,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(29), Category("functional")]
+        [Test, Order(10)]
         public async Task VerifyUGParentOrCarerSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_ParentOrCarer_list");
@@ -268,7 +268,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(30), Category("functional")]
+        [Test, Order(11)]
         public async Task VerifyUGProfExternalUserofDfEDataSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_ProfExtUserofDfE_list");
@@ -291,7 +291,7 @@ namespace FiPSAutomation
             }
         }
 
-        [Test, Order(31), Category("functional")]
+        [Test, Order(12)]
         public async Task VerifyUGSocialCareWorkforceSubcategoryListUS30AC()
         {
             List<SheetRow> dataRows = ExcelReader.getCategoryRowsFromExcelFileBySheetName("testdata.xlsx", "usergroup_SocialCWorkforce_list");

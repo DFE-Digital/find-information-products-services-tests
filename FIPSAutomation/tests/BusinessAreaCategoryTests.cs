@@ -23,7 +23,7 @@ namespace FiPSAutomation
             productsSearchPage = new ProductsSearchPage(Page);
         }
 
-        [Test, Order(16), Category("functional")]
+        [Test, Order(1)]
         public async Task VerifyBusinessAreaCategoryListUS27AC1()
         {
             await NavigateToAsync("categories/business-area");
@@ -43,7 +43,7 @@ namespace FiPSAutomation
             ExtentTest?.Log(Status.Pass, "VerifyBusinessAreaCategoryListAC passed");
         }
 
-        [Test, Order(17), Category("functional")]
+        [Test, Order(2)]
         public async Task ClickSubcategoryLinksForBusinessArea_US274AllAC()
         {
             List<FipsSheetRow> dataRows = ExcelReader.getRowsFromExcelFileBySheetName("testdata.xlsx", "category_businessarea");

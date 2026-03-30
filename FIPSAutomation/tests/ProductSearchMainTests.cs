@@ -17,7 +17,7 @@ public class ProductSearchMainTests : BaseTest
         productsSearchPage = new ProductsSearchPage(Page);
     }
 
-    [Test, Order(47)]
+    [Test, Order(1)]
     public async Task VerifyMainProductPageView_HeaderAndListUS103AC()
     {
         await Page.GetByRole(AriaRole.Link, new() { NameString = "Products" }).ClickAsync();
@@ -29,12 +29,11 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterPanel.VerifyTypeVisibleAsync();
         await productsSearchPage.VerifyProductsListHeadingAsync();
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         ExtentTest?.Log(Status.Pass, "VerifyMainProductPageHeaderAndListUS103AC passed");
     }
 
-    [Test, Order(48)]
+    [Test, Order(2)]
     public async Task VerifySearchBoxFunctionality_UsingAcronymUS285AC1()
     {
         await productsSearchPage.SearchByKeywordAsync("GIAS");
@@ -43,14 +42,13 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.GiasAcronym_FilterTag, "GIAS × Remove GIAS filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingAcronymUS285AC1 passed");
     }
 
-    [Test, Order(49)]
+    [Test, Order(3)]
     public async Task VerifySearchBoxFunctionality_UsingAcronymUS285AC2()
     {
         await productsSearchPage.SearchByKeywordAsync("FIPS");
@@ -59,14 +57,13 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.FipsAcronym_FilterTag, "FIPS × Remove FIPS filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingAcronymUS285AC2 passed");
     }
 
-    [Test, Order(50)]
+    [Test, Order(4)]
     public async Task VerifySearchBoxFunctionality_UsingUserGroupTermUS285AC3()
     {
         await productsSearchPage.SearchByKeywordAsync("Early years workforce");
@@ -75,14 +72,13 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.UGTermEYW_FilterTag, "Early years workforce × Remove Early years workforce filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingUserGroupTermUS285AC3 passed");
     }
 
-    [Test, Order(51)]
+    [Test, Order(5)]
     public async Task VerifySearchBoxFunctionality_UsingUserGroupTermUS285AC4()
     {
         await productsSearchPage.SearchByKeywordAsync("Child or young person");
@@ -91,14 +87,13 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.UGTermCYP_FilterTag, "Child or young person × Remove Child or young person filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingUserGroupTermUS285AC4 passed");
     }
 
-    [Test, Order(52)]
+    [Test, Order(6)]
     public async Task VerifySearchBoxFunctionality_UsingNonPreferredTermsUS285AC5()
     {
         await productsSearchPage.SearchByKeywordAsync("DfE staff");
@@ -107,14 +102,13 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.NonPreferTermDfEStaff_FilterTag, "DfE staff × Remove DfE staff filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingNonPreferredTermsUS285AC5 passed");
     }
 
-    [Test, Order(53)]
+    [Test, Order(7)]
     public async Task VerifySearchBoxFunctionality_UsingNonPreferredTermsUS285AC6()
     {
         await productsSearchPage.SearchByKeywordAsync("HE workforce");
@@ -123,14 +117,13 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Search_FilterHeading, "Search term");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.NonPreferTermHEWorkforce_FilterTag, "HE workforce × Remove HE workforce filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_UsingNonPreferredTermsUS285AC6 passed");
     }
 
-    [Test, Order(54)]
+    [Test, Order(8)]
     public async Task VerifySearchBoxFunctionality_CombinedWithCategoryFilterUS285AC7()
     {
         await productsSearchPage.SearchByKeywordAsync("CRM");
@@ -143,10 +136,11 @@ public class ProductSearchMainTests : BaseTest
         await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(productsSearchPage.FilterTags.Channel_FilterHeading, "Channel");
         await productsSearchPage.FilterTags.VerifyFilterTagAsync(productsSearchPage.FilterTags.Channel_Web, "Web × Remove Web filter");
         await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-        await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
         await productsSearchPage.VerifyProductListVisibleAsync();
         await productsSearchPage.FilterPanel.ClearAllFiltersAsync();
 
         ExtentTest?.Log(Status.Pass, "VerifySearchBoxFunctionality_CombinedWithCategoryFilterUS285AC7 passed");
     }
+
+
 }

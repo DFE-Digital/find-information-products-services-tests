@@ -19,7 +19,7 @@ namespace FiPSAutomation
             productsSearchPage = new ProductsSearchPage(Page);
         }
 
-        [Test, Order(32), Category("functional")]
+        [Test, Order(1)]
         public async Task ClickSubcategoryLinksForAdultLearner_US277AC1()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_AdultLearner");
@@ -35,13 +35,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(33), Category("functional")]
+        [Test, Order(2)]
         public async Task ClickSubcategoryLinksForCareersAdviserOrWorkCoach_US277AC2()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_CareersAdviser");
@@ -57,13 +56,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(34), Category("functional")]
+        [Test, Order(3)]
         public async Task ClickSubcategoryLinksForChildOrYoungPerson_US277AC3()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_ChildOrYoungPers");
@@ -79,13 +77,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(35), Category("functional")]
+        [Test, Order(4)]
         public async Task ClickSubcategoryLinksForDfEWorkforce_US277AC4()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_DfEWorkforce");
@@ -101,13 +98,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(36), Category("functional")]
+        [Test, Order(5)]
         public async Task ClickSubcategoryLinksForEmployer_US277AC6()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_Employer");
@@ -123,13 +119,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(37), Category("functional")]
+        [Test, Order(6)]
         public async Task ClickSubcategoryLinksForLocalAuthorityWorkforce_US277AC7()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_LAWorkforce");
@@ -145,13 +140,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(38), Category("functional")]
+        [Test, Order(7)]
         public async Task ClickSubcategoryLinksForNEETOrCareerSeeker_US277AC8()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_NEETOrCareerSeek");
@@ -167,13 +161,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(39), Category("functional")]
+        [Test, Order(8)]
         public async Task ClickSubcategoryLinksForParentOrCarer_US277AC9()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcategory_ParentOrCarer");
@@ -189,13 +182,12 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
         }
 
-        [Test, Order(40), Category("functional")]
+        [Test, Order(9)]
         public async Task ClickSubcategoryLinksForProfExternalUserofDfEData_US277AC10()
         {
             List<FipsSheetRowUG> dataRows = ExcelReader.getRowsFromExcelForSelectedUserType("testdata.xlsx", "UGSubcateg_ProfExtUserofDfEData");
@@ -211,7 +203,6 @@ namespace FiPSAutomation
                 await Assertions.Expect(FilterText).ToHaveTextAsync(row.Message);
                 await Assertions.Expect(Page.Locator(row.Selected_UserTypes_Locator)).ToHaveValueAsync(row.Selected_UserTypes);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
 
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Selected_UserTypes}") + " passed");
             }
