@@ -22,7 +22,6 @@
 
     <div class="controls">
         <button onclick="handleEncode()">Encode to Base64</button>
-        <button onclick="handleDecode()">Decode from Base64</button>
     </div>
 
     <strong>Output:</strong>
@@ -38,25 +37,10 @@
             }
         }
 
-        // Method 2: Decode Base64 to String
-        function decodeBase64(b64) {
-            try {
-                return decodeURIComponent(escape(atob(b64)));
-            } catch (e) {
-                return "Error: Invalid Base64 string.";
-            }
-        }
-
         // UI Logic to show strings on page
         function handleEncode() {
             const input = document.getElementById('inputString').value;
             const result = encodeBase64(input);
-            document.getElementById('output').innerText = result;
-        }
-
-        function handleDecode() {
-            const input = document.getElementById('inputString').value;
-            const result = decodeBase64(input);
             document.getElementById('output').innerText = result;
         }
     </script>
