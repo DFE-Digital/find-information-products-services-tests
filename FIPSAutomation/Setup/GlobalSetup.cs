@@ -54,7 +54,7 @@ namespace FiPSAutomation
         {
             using FileStream stream = File.OpenRead(
                 Directory.GetParent(Environment.CurrentDirectory)!
-                    .Parent!.Parent!.FullName + "//FIPS.env.json");
+                    .Parent!.Parent!.FullName + "//env.json");
 
             LoginConfig = await JsonSerializer.DeserializeAsync<LoginConfig>(stream); //Reads the environment config from FIPS.env.json
 

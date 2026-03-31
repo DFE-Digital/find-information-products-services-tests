@@ -6,6 +6,9 @@ namespace FiPSAutomation.Components
     {
         private readonly IPage page;
 
+        //Search box button
+        private ILocator SearchButton => page.Locator("button[title='Search']");
+
         // Category accordion buttons
         private ILocator BusinessAreaButton => page.Locator("//button[@data-target=\"group-filter\"]");
         private ILocator ChannelButton => page.Locator("//button[@data-target=\"channel-filter\"]");
@@ -132,6 +135,11 @@ namespace FiPSAutomation.Components
         public async Task VerifyTypeVisibleAsync()
         {
             await Assertions.Expect(TypeButton).ToBeVisibleAsync();
+        }
+
+        public async Task ClickSearchBoxButtonAsync() 
+        {
+            await SearchButton.ClickAsync();
         }
     }
 }

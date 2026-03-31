@@ -9,7 +9,7 @@ namespace FiPSAutomation.Pages
         private ILocator AnalyticsOff => page.Locator("#analytics-off");
         private ILocator AnalyticsOn => page.Locator("#analytics-on");
         private ILocator SuccessAlert => page.Locator(".govuk-notification-banner.govuk-notification-banner--success");
-
+        private ILocator BackToHomeButton => page.Locator("//a[@class='govuk-button govuk-button--secondary' and contains (text(), 'Back to home')]");
         public CookiesPage(IPage page)
         {
             this.page = page;
@@ -37,7 +37,7 @@ namespace FiPSAutomation.Pages
 
         public async Task VerifyBackToHomeLinkAsync()
         {
-            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = "Back to home" })).ToBeVisibleAsync();
+            await Assertions.Expect(BackToHomeButton).ToBeVisibleAsync();
         }
 
         public async Task SelectAnalyticsOffAsync()
@@ -69,7 +69,7 @@ namespace FiPSAutomation.Pages
 
         public async Task ClickBackToHomeAsync()
         {
-            await page.GetByRole(AriaRole.Link, new() { NameString = "Back to home" }).ClickAsync();
+            await BackToHomeButton.ClickAsync();
         }
     }
 }

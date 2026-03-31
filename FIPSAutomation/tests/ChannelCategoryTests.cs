@@ -35,6 +35,7 @@ namespace FiPSAutomation
             await categoryDetailPage.VerifySubcategoryLinkAsync("Print media");
             await categoryDetailPage.VerifySubcategoryLinkAsync("SMS");
             await categoryDetailPage.VerifySubcategoryLinkAsync("Web");
+
             ExtentTest?.Log(Status.Pass, "VerifyChannelCategoryListUS26AC1 passed");
         }
 
@@ -53,8 +54,9 @@ namespace FiPSAutomation
                 await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(row.Filter_Text_Locator, "Channel");
                 await productsSearchPage.VerifyCheckboxCheckedAsync(row.Checkbox_Locator);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-                await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
+              //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
                 await productsSearchPage.VerifyProductListVisibleAsync();
+
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }

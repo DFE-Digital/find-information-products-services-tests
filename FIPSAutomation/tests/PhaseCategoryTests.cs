@@ -37,6 +37,7 @@ namespace FiPSAutomation
             await categoryDetailPage.VerifySubcategoryLinkAsync("Decommissioning");
             await categoryDetailPage.VerifySubcategoryLinkAsync("Decommissioned");
             await browseCategoriesPage.ClickBackToAllCategoriesAsync();
+
             ExtentTest?.Log(Status.Pass, "VerifyPhaseCategoryListUS35AC1 passed");
         }
 
@@ -55,8 +56,12 @@ namespace FiPSAutomation
                 await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(row.Filter_Text_Locator, "Phase");
                 await productsSearchPage.VerifyCheckboxCheckedAsync(row.Checkbox_Locator);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-              //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
-                ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
+                if (await productsSearchPage.DoesChevronListExistAsync())
+                {
+                    await productsSearchPage.VerifyProductListVisibleAsync();
+                }
+
+                    ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
     }
