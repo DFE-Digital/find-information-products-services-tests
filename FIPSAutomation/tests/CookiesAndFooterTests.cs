@@ -72,6 +72,7 @@ public class CookiesAndFooterTests : BaseTest
     [Test, Order(5)]
     public async Task VerifyPrivacyPolicyLinkUS15AC()
     {
+        //Fails because Privacy link is coded to open in a new tab, need to update after March 2026 release
         var newTab = await Page.RunAndWaitForPopupAsync(async () =>
         {
             await Page.GetByRole(AriaRole.Link, new() { NameString = "Privacy policy" }).ClickAsync();

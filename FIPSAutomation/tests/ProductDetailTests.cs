@@ -12,7 +12,6 @@ public class ProductDetailTests : BaseTest
     private ProductDetailPage productDetailPage = null!;
     private ProposeChangePage proposeChangePage = null!;
     private ProductsSearchPage productsSearchPage = null!;
-  //private KeepInfoUpdatedPage keepInfoUpdatedPage = null!;
     private HeaderComponent header = null!;
 
     [OneTimeSetUp]
@@ -21,7 +20,6 @@ public class ProductDetailTests : BaseTest
         productDetailPage = new ProductDetailPage(Page);
         proposeChangePage = new ProposeChangePage(Page);
         productsSearchPage = new ProductsSearchPage(Page);
-      //keepInfoUpdatedPage = new KeepInfoUpdatedPage(Page);
         header = new HeaderComponent(Page);
     }
 
@@ -47,12 +45,11 @@ public class ProductDetailTests : BaseTest
 
         // Assert that when clicking on 'contacts' link Contacts description is displayed -
         await targetValueRow.GetByRole(AriaRole.Link, new LocatorGetByRoleOptions {NameRegex = new Regex("contacts")}).ClickAsync();
-        //  await targetValueRow.GetByRole(AriaRole.Link, new LocatorGetByRoleOptions { NameString = "contacts" }).ClickAsync();
         await productDetailPage.VerifyResponsibilitiesHeaderAsync();
         await productDetailPage.VerifyServiceOwnerAsync();
         await productDetailPage.VerifyContactsNameLinkAsync();
 
-        // clicking on 'View products', product details page opens in new tab
+        // clicking on 'View products', product details page opens in new tab. Failing at this step currently -
         var newTab = await Page.RunAndWaitForPopupAsync(async () =>
         {
             await targetValueRow.GetByRole(AriaRole.Link, new() { NameString = "View product" }).ClickAsync();
@@ -64,6 +61,7 @@ public class ProductDetailTests : BaseTest
         await Assertions.Expect(newTab).ToHaveTitleAsync("Accessibility and inclusive design manual | Accessibility manual - Department for Education");
         await Assertions.Expect(newTab.GetByRole(AriaRole.Heading, new() { NameString = "Accessibility and inclusive design manual" })).ToBeVisibleAsync();
         await newTab.CloseAsync();
+
         // Assertions back on the original page
         await Assertions.Expect(Page).ToHaveTitleAsync("Accessibility and inclusion manual - FIPS");
 
@@ -73,6 +71,7 @@ public class ProductDetailTests : BaseTest
     [Test, Order(2)]
     public async Task VerifyProductOverviewPageLinksUS168AC()
     {
+        await NavigateToAsync("product/h7pjd1dx4hwvjm9zg6bv2gci"); //above TC failing due to 'View products' link change, so added direct navigation
         // Assertion for Overview link
         await productDetailPage.ClickOverviewLinkAsync();
         await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Description" })).ToBeVisibleAsync();
@@ -212,7 +211,7 @@ public class ProductDetailTests : BaseTest
     }
 
     [Test, Order(7)]
-  //[Ignore("This test triggers product update email to FIPS Inbox. So, skipped for now")]
+    [Ignore("This test triggers product update email to FIPS Inbox. So, skipped for now")]
     public async Task EditAndSubmitProposeAChangeFormUS168AC()
     {
         await proposeChangePage.FillProductTitleAsync("Automation Test - Accessibility and inclusion manual");
@@ -250,27 +249,4 @@ public class ProductDetailTests : BaseTest
         ExtentTest?.Log(Status.Pass, "EditProposeAChangeFormAndClickCancelUS168AC passed");
     }
 
-    //[Test, Order(105)]
-    //public async Task VerfiyImproveMissingOrInaccurateInformationLinkUS169AC()
-    //{
-    //    await productDetailPage.VerifyBetaPhaseBannerAsync();
-    //    await Page.GetByRole(AriaRole.Link, new() { NameString = "improve missing or inaccurate information" }).ClickAsync();
-    //    await keepInfoUpdatedPage.VerifyHeadingAsync();
-    //    await keepInfoUpdatedPage.ClickSearchLinkAsync();
-    //    await productsSearchPage.VerifyProductsPageHeadingAsync();
-    //    await Page.GoBackAsync();
-    //    await keepInfoUpdatedPage.ClickRequestNewProductEntryLinkAsync();
-    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Request a new product entry" })).ToBeVisibleAsync();
-    //    await Page.GoBackAsync();
-    //    await keepInfoUpdatedPage.ClickAboutThisServiceLinkAsync();
-    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "About this service" })).ToBeVisibleAsync();
-    //    await Page.GoBackAsync();
-    //    await keepInfoUpdatedPage.ClickContactUsLinkAsync();
-    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Contact us" })).ToBeVisibleAsync();
-    //    await Page.GoBackAsync();
-    //    await header.ClickServiceNameLinkAsync();
-    //    await Assertions.Expect(Page.GetByRole(AriaRole.Heading, new() { NameString = "Find information about products and services" })).ToBeVisibleAsync();
-
-    //    ExtentTest?.Log(Status.Pass, "VerfiyImproveMissingOrInaccurateInformationLinkUS169AC passed");
-    //}
 }

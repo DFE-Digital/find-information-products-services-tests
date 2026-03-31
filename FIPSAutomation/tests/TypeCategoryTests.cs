@@ -32,6 +32,7 @@ namespace FiPSAutomation
             await categoryDetailPage.VerifySubcategoryLinkAsync("Data");
             await categoryDetailPage.VerifySubcategoryLinkAsync("Information");
             await categoryDetailPage.VerifySubcategoryLinkAsync("Transactional");
+
             ExtentTest?.Log(Status.Pass, "VerifyTypeCategoryListUS29AC1 passed");
         }
 
@@ -51,6 +52,7 @@ namespace FiPSAutomation
                 await productsSearchPage.VerifyCheckboxCheckedAsync(row.Checkbox_Locator);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
                 await productsSearchPage.VerifyProductListVisibleAsync();
+
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }

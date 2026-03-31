@@ -13,23 +13,17 @@ namespace FiPSAutomation.Pages
 
         public async Task VerifyHeadingAsync(string heading)
         {
-            await Assertions.Expect(
-                page.GetByRole(AriaRole.Heading, new() { NameString = heading })
-            ).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { NameString = heading })).ToBeVisibleAsync();
         }
 
         public async Task VerifyDescriptionAsync(string description)
         {
-            await Assertions.Expect(
-                page.GetByText(description, new() { Exact = true })
-            ).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByText(description, new() { Exact = true })).ToBeVisibleAsync();
         }
 
         public async Task VerifySubcategoryLinkAsync(string linkName)
         {
-            await Assertions.Expect(
-                page.GetByRole(AriaRole.Link, new() { NameString = linkName })
-            ).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { NameString = linkName })).ToBeVisibleAsync();
         }
 
         public async Task VerifySubcategoryDescriptionAsync(string locator, string expectedText)
@@ -44,7 +38,7 @@ namespace FiPSAutomation.Pages
 
         public ILocator GetSubcategoryDescription(int index)
         {
-            return page.Locator($"//*[@id=\"main-content\"]/div/div/div/ul/li[{index}]/div/p");
+            return page.Locator($"(//*[@id=\"main-content\"]/div/div/div/ul/li[{index}]/div/p)[2]");
         }
     }
 }

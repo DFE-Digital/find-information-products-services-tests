@@ -7,7 +7,7 @@ namespace FiPSAutomation.Components
         private readonly IPage page;
 
         private ILocator AppliedFiltersPanel => page.Locator("div.applied-filters-panel");
-        private ILocator ShowingResultsMessage => page.Locator("//p[@class =\"govuk-body\" and contains(text(), \"Showing \")]");
+        //private ILocator ShowingResultsMessage => page.Locator("//p[@class =\"govuk-body\" and contains(text(), \"Showing \")]");
 
         // Business Area filter tags
         public string BA_Commercial => "a.filter-badge:has(span:text-is('Commercial'))";
@@ -78,7 +78,13 @@ namespace FiPSAutomation.Components
         public string NonPreferTermDfEStaff_FilterTag => "a.filter-badge:has(span:text-is('DfE staff'))";
         public string NonPreferTermHEWorkforce_FilterTag => "a.filter-badge:has(span:text-is('HE workforce'))";
         public string CrmAcronym_FilterTag => "a.filter-badge:has(span:text-is('CRM'))";
-        
+        public string NationalCareer_FilterTag => "a.filter-badge:has(span:text-is('National career'))";
+        public string AI_FilterTag => "a.filter-badge:has(span:text-is('AI'))";
+        public string AndyJones_FilterTag => "a.filter-badge:has(span:text-is('Andy Jones'))";
+        public string SamBarton_FilterTag => "a.filter-badge:has(span:text-is('Sam Barton'))";
+        public string PrivateBetaSearch_FilterTag => "a.filter-badge:has(span:text-is('private beta'))";
+        public string CustExpAndDesignSearch_FilterTag => "a.filter-badge:has(span:text-is('customer experience and design'))";
+
         // User groups filter tag
         public string UserGroups_FilterTag => "a.filter-badge:has(span:text-is('Department for Education workforce'))";
 
@@ -112,9 +118,9 @@ namespace FiPSAutomation.Components
             await Assertions.Expect(page.Locator(tagLocator)).ToBeVisibleAsync();
         }
 
-        public async Task VerifyShowingResultsAsync()
-        {
-           // await Assertions.Expect(ShowingResultsMessage).ToContainTextAsync("Showing");
-        }
+        //public async Task VerifyShowingResultsAsync()
+        //{
+        //   // await Assertions.Expect(ShowingResultsMessage).ToContainTextAsync("Showing");
+        //}
     }
 }

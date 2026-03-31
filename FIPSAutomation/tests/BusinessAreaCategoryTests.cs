@@ -40,6 +40,7 @@ namespace FiPSAutomation
             await categoryDetailPage.VerifySubcategoryLinkAsync("Skills and Growth");
             await categoryDetailPage.VerifySubcategoryLinkAsync("Strategy");
             await browseCategoriesPage.ClickBackToAllCategoriesAsync();
+
             ExtentTest?.Log(Status.Pass, "VerifyBusinessAreaCategoryListAC passed");
         }
 
@@ -58,8 +59,8 @@ namespace FiPSAutomation
                 await productsSearchPage.FilterTags.VerifyFilterHeadingAsync(row.Filter_Text_Locator, "Business area");
                 await productsSearchPage.VerifyCheckboxCheckedAsync(row.Checkbox_Locator);
                 await productsSearchPage.VerifyMissingProductSectionVisibleAsync();
-              //await productsSearchPage.FilterTags.VerifyShowingResultsAsync();
                 await productsSearchPage.VerifyProductListVisibleAsync();
+
                 ExtentTest?.Log(Status.Pass, ($"Running test for: Product={row.Product_Locator}, Filter={row.Checkbox_Locator}") + " passed");
             }
         }
